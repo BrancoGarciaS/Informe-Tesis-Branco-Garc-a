@@ -1,0 +1,85 @@
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Antecedentes y motivaci\'on}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Contexto}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Motivaci\'on}{2}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Impacto esperado}{3}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Descripci\'on del problema}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Pregunta de investigación}{5}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Soluci\'on propuesta}{8}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Hipótesis de trabajo}{9}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Características de la solución}{9}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Objetivos y alcance del proyecto}{11}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Objetivo general}{11}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Objetivos espec\'ificos}{11}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Alcances}{12}{subsection.1.4.3}%
+\contentsline {section}{\numberline {1.5}Metodolog\'ia y herramientas utilizadas}{14}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Metodolog\'ia}{14}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Herramientas de desarrollo}{18}{subsection.1.5.2}%
+\contentsline {section}{\numberline {1.6}Organizaci\'on del documento}{19}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Antecedentes}{22}{chapter.2}%
+\contentsline {section}{\numberline {2.1}El cáncer como problema de salud pública y su impacto}{22}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Definición de cáncer}{22}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Impacto global del cáncer}{22}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Epidemiología e impacto socioeconómico del cáncer en Chile}{23}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Clasificación y caracterización de las neoplasias malignas}{24}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Sistema de Grupos Relacionados por el Diagnóstico (GRD)}{27}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Origen y evolución del modelo GRD en Chile}{27}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Estructura de datos y componentes del estándar IR-GRD}{28}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Relevancia de los procedimientos médicos y quirúrgicos en la gestión hospitalaria}{29}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Marco teórico metodológico y computacional}{30}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Remuestreo estadístico y robustez mediante Bootstrapping}{30}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Modelos de aprendizaje automático y algoritmos de ensamble}{31}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Inteligencia artificial explicable (XAI) y valores de Shapley (SHAP)}{33}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Estado del arte}{35}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Estrategia de búsqueda y selección de estudios}{35}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Estudios sobre caracterización de cohortes oncológicas mediante aprendizaje automático e inteligencia artificial explicable}{37}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Caracterización de cohortes oncológicas mediante análisis epidemiológico y estadística descriptiva}{45}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Enfoques de solución}{50}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Justificación del enfoque seleccionado}{51}{subsection.2.4.5}%
+\contentsline {chapter}{\numberline {3}Marco Metodológico}{52}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Fase 1: Entendimiento del problema (\textit {Business Understanding})}{52}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Fase 2: Comprensión y preparación inicial de los datos}{53}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Adquisición e identificación de formatos}{53}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Limpieza básica y clasificación de la cohorte oncológica}{54}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Análisis de variables identificadoras}{55}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Análisis de distribución y cardinalidad de variables categóricas}{55}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Análisis de variables temporales}{56}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Limpieza y normalización de variables numéricas}{57}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Procesamiento de las variables objetivo (\textit {Targets})}{57}{subsection.3.2.7}%
+\contentsline {subsection}{\numberline {3.2.8}Simulación de impacto y reducción de cardinalidad}{58}{subsection.3.2.8}%
+\contentsline {subsection}{\numberline {3.2.9}Ingeniería de características (\textit {Feature Engineering})}{59}{subsection.3.2.9}%
+\contentsline {subsection}{\numberline {3.2.10}Análisis de correlación y reducción de multicolinealidad}{60}{subsection.3.2.10}%
+\contentsline {subsection}{\numberline {3.2.11}Codificación One-Hot y partición estratificada del conjunto de datos}{60}{subsection.3.2.11}%
+\contentsline {section}{\numberline {3.3}Fase 4: Modelado algorítmico (\textit {Modeling})}{61}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Estrategia de balanceo basal}{61}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Selección y entrenamiento de algoritmos}{62}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Validación de estabilidad de variables mediante \textit {Bootstrapping}}{63}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Fase 5: Evaluación de los modelos (\textit {Evaluation})}{63}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Resultados y análisis}{66}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Resultados de la exploración de datos (Fase 2)}{66}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Resultados del análisis de los archivos brutos de GRD}{66}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Distribución oncológica y control de la cohorte}{67}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Análisis de variables demográficas, clínicas y hospitalarias}{70}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Análisis de variables identificadoras}{70}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Análisis de variables temporales}{73}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Análisis de variables categóricas}{75}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Variables categóricas objetivo (targets)}{76}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Variables categóricas de entrada}{78}{subsubsection.4.2.3.2}%
+\contentsline {subsection}{\numberline {4.2.4}Análisis de variables numéricas}{88}{subsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.4.1}Variable numérica objetivo (consumo de recursos)}{88}{subsubsection.4.2.4.1}%
+\contentsline {subsubsection}{\numberline {4.2.4.2}Análisis de variables numéricas de entrada}{93}{subsubsection.4.2.4.2}%
+\contentsline {section}{\numberline {4.3}Resultados del procesamiento de variables objetivo}{94}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Resultados del procesamiento de variables de entrada}{96}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Resultados de la generación de variables derivadas}{104}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Análisis de las variables derivadas categóricas}{104}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Comportamiento de las Variables Numéricas Derivadas}{104}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Depuración de Anomalías Temporales}{106}{subsection.4.5.3}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{108}{chapter.5}%
+\contentsline {chapter}{Glosario}{109}{chapter.5}%
+\contentsline {chapter}{Referencias bibliogr\'aficas}{110}{chapter*.56}%
+\contentsline {chapter}{Anexos}{114}{chapter*.57}%
+\contentsline {chapter}{\numberline {A}Título del anexo ejemplo}{114}{chapter.1}%
+\contentsline {chapter}{Apéndices}{115}{chapter.1}%
+\contentsline {chapter}{\numberline {A}Título del apéndice ejemplo}{115}{chapter.1}%

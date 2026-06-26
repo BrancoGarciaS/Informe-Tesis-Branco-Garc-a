@@ -1,0 +1,346 @@
+\begin{thebibliography}{47}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Alsinglawi et~al.(2022)Alsinglawi, Alshari, Alorjani, Mubin,
+  Alnajjar, Novoa, \& Darwish}]{article16}
+Alsinglawi, B., Alshari, O., Alorjani, M., Mubin, O., Alnajjar, F., Novoa, M.,
+  \& Darwish, O. (2022).
+\newblock An explainable machine learning framework for lung cancer hospital
+  length of stay prediction.
+\newblock {\em Scientific Reports\/}, {\em 12\/}(1).
+
+\bibitem[{Chen et~al.(2021)Chen, Cherry, Nalawade, Qiao, Kumar, Lowy, Simpson,
+  \& Murphy}]{article10}
+Chen, Q., Cherry, D.~R., Nalawade, V., Qiao, E.~M., Kumar, A., Lowy, A.~M.,
+  Simpson, D.~R., \& Murphy, J.~D. (2021).
+\newblock Clinical data prediction model to identify patients with early-stage
+  pancreatic cancer.
+\newblock {\em JCO Clinical Cancer Informatics\/}, {\em 5\/}, 279--287.
+
+\bibitem[{Chen \& Guestrin(2016)}]{chen2016xgboost}
+Chen, T., \& Guestrin, C. (2016).
+\newblock Xgboost: A scalable tree boosting system.
+\newblock In {\em Proceedings of the 22nd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining\/}, (pp. 785--794). ACM.
+\newline\urlprefix\url{https://dl.acm.org/doi/10.1145/2939672.2939785}
+
+\bibitem[{Cid et~al.(2024)Cid, Dawson, Medina, Espinoza, \& Bastías}]{Cid2024}
+Cid, C., Dawson, N., Medina, C., Espinoza, A., \& Bastías, G. (2024).
+\newblock Lecciones y desafíos del uso de los grupos relacionados por el
+  diagnóstico en chile.
+\newblock {\em Revista Panamericana de Salud Pública\/}, {\em 48\/}.
+
+\bibitem[{{Clapes UC}(2023)}]{ClapesUC2023}
+{Clapes UC} (2023).
+\newblock Gestión hospitalaria pública en chile y el mecanismo de pago grd.
+\newblock Tech. rep., Pontificia Universidad Católica de Chile.
+\newline\urlprefix\url{https://assets.clapesuc.cl/Mecanismo_GRD_17_Nov_final_v2_e4d6520d7f.pdf}
+
+\bibitem[{{DEIS}(2023)}]{minsal2023norma}
+{DEIS} (2023).
+\newblock Norma técnica n° 820: Estándares de información de salud.
+\newblock Tech. Rep. Exento N° 231, Departamento de Estadísticas e
+  Información de Salud, Ministerio de Salud de Chile, Santiago, Chile.
+\newblock Publicado en el Diario Oficial el 12 de enero de 2023.
+
+\bibitem[{Delgado(2016)}]{delgado2016exposicion}
+Delgado, F. (2016).
+\newblock \textit{Piñera es el presidenciable con más exposición en la
+  prensa según investigación Usach }.
+\newblock Recuperado el Martes 29 de Julio de 2016, de
+  \url{http://www.biobiochile.cl/noticias/nacional/politica/2016/06/20/pinera-es-el-presidenciable-con-mas-exposicion-en-la-prensa-segun-investigacion}
+  \url{-usach.shtml}.
+
+\bibitem[{{Departamento de Estadísticas e Información de Salud
+  (DEIS)}(2018)}]{ministerio_salud}
+{Departamento de Estadísticas e Información de Salud (DEIS)} (2018).
+\newblock Manual con orientaciones de codificación para el capítulo ii
+  "tumores [neoplasias]" para el tipo de actividad hospitalización.
+\newblock Tech. rep., Ministerio de Salud de Chile.
+\newline\urlprefix\url{https://repositoriodeis.minsal.cl/ContenidoSitioWeb2020/uploads/2018/07/Orientaciones-de-codificaci%C3%B3n-para-el-Cap%C3%ADtulo-II-de-la-CIE-10.pdf}
+
+\bibitem[{Efron(1979)}]{efron1979bootstrap}
+Efron, B. (1979).
+\newblock Bootstrap methods: Another look at the jackknife.
+\newblock {\em The Annals of Statistics\/}, {\em 7\/}(1), 1--26.
+\newline\urlprefix\url{https://projecteuclid.org/journals/annals-of-statistics/volume-7/issue-1/Bootstrap-Methods-Another-Look-at-the-Jackknife/10.1214/aos/1176344552.full}
+
+\bibitem[{{Fondo Nacional de Salud (FONASA)}(2023)}]{fonasa2023_presupuesto}
+{Fondo Nacional de Salud (FONASA)} (2023).
+\newblock Informe trimestral programa 05: Implementación grd hospitales
+  públicos (glosa 03).
+\newblock Tech. rep., Ministerio de Salud, Gobierno de Chile.
+\newline\urlprefix\url{https://www.senado.cl/site/presupuesto/2023/cumplimiento/Glosas%202023/16%20Salud/1602_19576_08112023_FONASA.pdf}
+
+\bibitem[{{Fondo Nacional de Salud (FONASA)}(2024)}]{fonasa_visor_grd}
+{Fondo Nacional de Salud (FONASA)} (2024).
+\newblock Visor público de grupos relacionados por el diagnóstico (grd).
+\newblock Plataforma de datos abiertos. Accedido en línea.
+\newline\urlprefix\url{https://public.tableau.com/views/PropuestaTableroGRD/PropuestaTableroGRD?%3AshowVizHome=no}
+
+\bibitem[{Hastie et~al.(2009)Hastie, Tibshirani, \&
+  Friedman}]{hastie2009elements}
+Hastie, T., Tibshirani, R., \& Friedman, J. (2009).
+\newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
+  and Prediction\/}.
+\newblock Springer Series in Statistics. Springer Science \& Business Media, 2
+  ed.
+
+\bibitem[{Huang et~al.(2022)Huang, Kwon, Tomizawa, Choi, Hernandez-Boussard, \&
+  Hwang}]{article5}
+Huang, R.~J., Kwon, N. S.-E., Tomizawa, Y., Choi, A.~Y., Hernandez-Boussard,
+  T., \& Hwang, J.~H. (2022).
+\newblock A comparison of logistic regression against machine learning
+  algorithms for gastric cancer risk prediction within real-world clinical data
+  streams.
+\newblock {\em JCO Clinical Cancer Informatics\/}, {\em 6\/}, e2200039.
+
+\bibitem[{Hunter(2007)}]{hunter2007matplotlib}
+Hunter, J.~D. (2007).
+\newblock Matplotlib: A 2d graphics environment.
+\newblock {\em Computing in science \& engineering\/}, {\em 9\/}(3), 90--95.
+
+\bibitem[{Hwang et~al.(2023)Hwang, Urbanowicz, Lynch, Vernon, Bresz, Giraldo
+  et~al.}]{article3}
+Hwang, S., Urbanowicz, R., Lynch, S., Vernon, T., Bresz, K., Giraldo, C.,
+  et~al. (2023).
+\newblock Toward predicting 30-day readmission among oncology patients:
+  Identifying timely and actionable risk factors.
+\newblock {\em JCO Clinical Cancer Informatics\/}, {\em 7\/}.
+
+\bibitem[{Jacobson et~al.(2022)Jacobson, Cadieux, Higano, Henry, Bachmann,
+  Rehn, Stopeck, \& Saad}]{article6}
+Jacobson, D., Cadieux, B., Higano, C.~S., Henry, D.~H., Bachmann, B.~A., Rehn,
+  M., Stopeck, A.~T., \& Saad, H. (2022).
+\newblock Risk factors associated with skeletal-related events following
+  discontinuation of denosumab treatment among patients with bone metastases
+  from solid tumors: A real-world machine learning approach.
+\newblock {\em Journal of Bone Oncology\/}, {\em 34\/}.
+
+\bibitem[{Lai et~al.(2022)Lai, Fan, Zhu, Zhang, Guo, Wang et~al.}]{article4}
+Lai, S.-W., Fan, Y.-L., Zhu, Y.-H., Zhang, F., Guo, Z., Wang, B., et~al.
+  (2022).
+\newblock Machine learning-based dynamic prediction of lateral lymph node
+  metastasis in patients with papillary thyroid cancer.
+\newblock {\em Frontiers in Endocrinology\/}, {\em 13\/}.
+
+\bibitem[{Lema{\^i}tre et~al.(2017)Lema{\^i}tre, Nogueira, \&
+  Aridas}]{lemaitre2017imbalanced}
+Lema{\^i}tre, G., Nogueira, F., \& Aridas, C.~K. (2017).
+\newblock Imbalanced-learn: A python toolbox to tackle the curse of imbalanced
+  datasets in machine learning.
+\newblock {\em Journal of machine learning research\/}, {\em 18\/}(17), 1--5.
+
+\bibitem[{Li et~al.(2020)Li, Tian, Zhu, Zhou, Li, Ding, \& Li}]{article11}
+Li, J., Tian, Y., Zhu, Y., Zhou, T., Li, J., Ding, K., \& Li, J. (2020).
+\newblock A multicenter random forest model for effective prognosis prediction
+  in collaborative clinical research network.
+\newblock {\em Artificial Intelligence in Medicine\/}, {\em 103\/}.
+
+\bibitem[{Lundberg \& Lee(2017)}]{lundberg2017shap}
+Lundberg, S.~M., \& Lee, S.-I. (2017).
+\newblock A unified approach to interpreting model predictions.
+\newblock In I.~Guyon, U.~V. Luxburg, S.~Bengio, H.~Wallach, R.~Fergus,
+  S.~Vishwanathan, \& R.~Garnett (Eds.) {\em Advances in Neural Information
+  Processing Systems 30 (NIPS 2017)\/}, (pp. 4765--4774). Curran Associates,
+  Inc.
+\newline\urlprefix\url{https://papers.nips.cc/paper_files/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html}
+
+\bibitem[{Luo et~al.(2025)Luo, Kan, Wang, Shi, Zhu, Chen, Wang, Zhu, Wang, \&
+  Sun}]{article1}
+Luo, X., Kan, X., Wang, D., Shi, Y., Zhu, S., Chen, Z., Wang, C., Zhu, W.,
+  Wang, X., \& Sun, W. (2025).
+\newblock Development and validation of an explainable machine learning model
+  for predicting prognosis in sepsis patients with a history of cancer who were
+  admitted to the intensive care unit.
+\newblock {\em Journal of International Medical Research\/}, {\em 53\/}(8).
+
+\bibitem[{McKinney et~al.(2010)}]{mckinney2010pandas}
+McKinney, W., et~al. (2010).
+\newblock Data structures for statistical computing in python.
+\newblock In {\em Proceedings of the 9th Python in Science Conference\/}, vol.
+  445, (pp. 51--56).
+
+\bibitem[{{Metamodelo}(2024{\natexlab{a}})}]{metamodelo2024_analisis}
+{Metamodelo} (2024{\natexlab{a}}).
+\newblock Análisis de producción en salud 2024.
+\newline\urlprefix\url{https://www.metamodelo.cl/2024/12/16/analisis-produccion-salud-2024/}
+
+\bibitem[{{Metamodelo}(2024{\natexlab{b}})}]{Metamodelo2024}
+{Metamodelo} (2024{\natexlab{b}}).
+\newblock Mecanismo de pago por grd explicado en fácil.
+\newline\urlprefix\url{https://www.metamodelo.cl/2024/01/30/mecanismo-de-pago-por-grd-explicado-en-facil/}
+
+\bibitem[{{Ministerio de Salud de Chile}(2022)}]{minsal2022}
+{Ministerio de Salud de Chile} (2022).
+\newblock Plan nacional del cáncer 2022-2027.
+\newblock Tech. rep., Subsecretaría de Salud Pública, Gobierno de Chile.
+\newline\urlprefix\url{https://www.iccp-portal.org/sites/default/files/plans/Plan-Nacional-de-Cancer-2022-2027.pdf}
+
+\bibitem[{{Ministerio de Salud de El
+  Salvador}(2024)}]{minsal2024_procedimientos}
+{Ministerio de Salud de El Salvador} (2024).
+\newblock Clasificación internacional de procedimientos en medicina (cie-9-mc)
+  - versión 2024.
+\newblock Tech. rep.
+\newline\urlprefix\url{https://www.salud.gob.sv/wp-content/uploads/2024/11/clasificacion-internacional-de-procedimientos-CIE-9MC-version-2024-lista-tabular-el-salvador-2024.pdf}
+
+\bibitem[{Molnar(2020)}]{molnar2020interpretable}
+Molnar, C. (2020).
+\newblock {\em Interpretable Machine Learning\/}.
+\newblock Lulu. com.
+\newblock \url{https://christophm.github.io/interpretable-ml-book/}.
+
+\bibitem[{{OECD}(2024)}]{oecd2024}
+{OECD} (2024).
+\newblock Abordando el impacto del cáncer en la salud, la economía y la
+  sociedad: Chile.
+\newblock OECD: Organisation for Economic Co-operation and Development.
+\newline\urlprefix\url{https://www.oecd.org/es/publications/2024/11/tackling-the-impact-of-cancer-on-health-the-economy-and-society-country-notes_db760f3f/chile_5e85efac.html}
+
+\bibitem[{{Organización Mundial de la Salud (OMS)}(2022)}]{oms2022_cancer}
+{Organización Mundial de la Salud (OMS)} (2022).
+\newblock Cáncer: Datos y cifras.
+\newblock Accedido en línea.
+\newline\urlprefix\url{https://www.who.int/es/news-room/fact-sheets/detail/cancer}
+
+\bibitem[{{Organización Panamericana de la Salud (OPS) y Organización Mundial
+  de la Salud (OMS)}(2018)}]{paho}
+{Organización Panamericana de la Salud (OPS) y Organización Mundial de la
+  Salud (OMS)} (2018).
+\newblock {\em Clasificación Estadística Internacional de Enfermedades y
+  Problemas Relacionados con la Salud, Décima Revisión (CIE-10). Volumen
+  1\/}.
+\newblock Washington, D.C.: OPS.
+\newline\urlprefix\url{https://ais.paho.org/classifications/chapters/pdf/volume1.pdf}
+
+\bibitem[{Orrego et~al.(2025)Orrego, Vega, Cuevas, Arias, \&
+  Bustos-Medina}]{scielo1}
+Orrego, C., Vega, F., Cuevas, J.~P., Arias, A., \& Bustos-Medina, L. (2025).
+\newblock Perfil cl{\'i}nico, demogr{\'a}fico y anatomopatol{\'o}gico de
+  pacientes con c{\'a}ncer pulmonar en el hospital de temuco (2019-2023).
+\newblock {\em Revista M{\'e}dica de Chile\/}, {\em 153\/}(2), 104--110.
+
+\bibitem[{Ortega-Ceavichay et~al.(2023)Ortega-Ceavichay, Villarroel-Pulgar, \&
+  Mart{\'i}nez-Rondanelli}]{scielo2}
+Ortega-Ceavichay, A., Villarroel-Pulgar, J., \& Mart{\'i}nez-Rondanelli, B.
+  (2023).
+\newblock Mortalidad por c{\'a}ncer oral y orofar{\'i}ngeo en chile entre los
+  a{\~n}os 1955 al 2021.
+\newblock {\em Revista M{\'e}dica de Chile\/}, {\em 151\/}(10), 1303--1308.
+
+\bibitem[{Pardo(2025)}]{uc2025}
+Pardo, P.~L. (2025).
+\newblock Una fotografía sobre el cáncer en chile: artículo presenta la
+  realidad de esta enfermedad en la última década y los desafíos para su
+  investigación.
+\newblock Facultad de Ciencias Biológicas, UC.
+\newline\urlprefix\url{https://biologia.uc.cl/una-fotografia-sobre-el-cancer-en-chile-articulo-presenta-la-realidad-de-esta-enfermedad-en-la-ultima-decada-y-los-desafios-para-su-investigacion/}
+
+\bibitem[{Parra-Soto et~al.(2020)Parra-Soto, Petermann-Rocha,
+  Mart{\'i}nez-Sanguinetti, Leiva-Orde{\~n}ez, Troncoso-Pantoja, Ulloa,
+  Diaz-Mart{\'i}nez, \& Celis-Morales}]{scielo4}
+Parra-Soto, S., Petermann-Rocha, F., Mart{\'i}nez-Sanguinetti, M.~A.,
+  Leiva-Orde{\~n}ez, A.~M., Troncoso-Pantoja, C., Ulloa, N., Diaz-Mart{\'i}nez,
+  X., \& Celis-Morales, C. (2020).
+\newblock C{\'a}ncer en chile y en el mundo: una mirada actual y su futuro
+  escenario epidemiol{\'o}gico.
+\newblock {\em Revista M{\'e}dica de Chile\/}, {\em 148\/}(10), 1489--1495.
+
+\bibitem[{Pedregosa et~al.(2011)}]{pedregosa2011scikit}
+Pedregosa, F., et~al. (2011).
+\newblock Scikit-learn: Machine learning in python.
+\newblock {\em Journal of machine learning research\/}, {\em 12\/}(Oct),
+  2825--2830.
+
+\bibitem[{Peterson et~al.(2021)Peterson, Ostberg, Blayney, Brooks, \&
+  Hernandez-Boussard}]{article8}
+Peterson, D.~J., Ostberg, N.~P., Blayney, D.~W., Brooks, J.~D., \&
+  Hernandez-Boussard, T. (2021).
+\newblock Machine learning applied to electronic health records: Identification
+  of chemotherapy patients at high risk for preventable emergency department
+  visits and hospital admissions.
+\newblock {\em JCO Clinical Cancer Informatics\/}, {\em 5\/}, 1106--1126.
+
+\bibitem[{Probst et~al.(2019)Probst, Wright, \& Boulesteix}]{probst2019rf}
+Probst, P., Wright, M.~N., \& Boulesteix, A.-L. (2019).
+\newblock Hyperparameters and tuning strategies for random forest.
+\newblock {\em Wiley Interdisciplinary Reviews: Data Mining and Knowledge
+  Discovery\/}, {\em 9\/}(3).
+
+\bibitem[{Raschka et~al.(2020)Raschka, Patterson, \&
+  Nolet}]{raschka2020machine}
+Raschka, S., Patterson, J., \& Nolet, C. (2020).
+\newblock Machine learning in python: Main developments and technology trends
+  in data science, machine learning, and artificial intelligence.
+\newblock {\em Information\/}, {\em 11\/}(4), 193.
+
+\bibitem[{Rubio et~al.(2021)Rubio, Monsalve, Molina, \& Lineros}]{scielo3}
+Rubio, N., Monsalve, V., Molina, P., \& Lineros, V. (2021).
+\newblock Comportamiento del c{\'a}ncer de tiroides en la unidad de cirug{\'i}a
+  adulto del hospital cl{\'i}nico herminda mart{\'i}n de chill{\'a}n.
+  per{\'i}odo 2017 al 2019.
+\newblock {\em Revista de Cirug{\'i}a\/}, {\em 73\/}(6), 663--667.
+
+\bibitem[{Schr{\"o}er et~al.(2021)Schr{\"o}er, Kruse, \&
+  G{\'o}mez}]{schroer2021systematic}
+Schr{\"o}er, C., Kruse, F., \& G{\'o}mez, J.~M. (2021).
+\newblock A systematic literature review on applying crisp-dm process model.
+\newblock {\em Procedia Computer Science\/}, {\em 181\/}, 526--534.
+
+\bibitem[{{Sigesa}(2019{\natexlab{a}})}]{Sigesa2019}
+{Sigesa} (2019{\natexlab{a}}).
+\newblock Chile es la referencia de américa latina en el uso de grd.
+\newline\urlprefix\url{https://www.sigesa.com/chile-es/}
+
+\bibitem[{{Sigesa}(2019{\natexlab{b}})}]{minsal2018_cmbd}
+{Sigesa} (2019{\natexlab{b}}).
+\newblock Grupos relacionados por el diagnóstico (grd).
+\newline\urlprefix\url{https://www.sigesa.com/grd/}
+
+\bibitem[{{Sociedad Castellano-Manchega de Patología Respiratoria
+  (SOCAMPAR)}(2023)}]{revista_socampar}
+{Sociedad Castellano-Manchega de Patología Respiratoria (SOCAMPAR)} (2023).
+\newblock Artículo original.
+\newblock {\em Revista SOCAMPAR\/}.
+\newblock Reemplaza el campo 'title' y 'author' con los datos exactos del
+  artículo si los necesitas detallar en tu bibliografía.
+\newline\urlprefix\url{https://revista-socampar.com/images/articulos/ArticulosSeparadosNum18/Original%203.pdf}
+
+\bibitem[{Wodchis et~al.(2016)Wodchis, Arthurs, Khan, Gandhi, MacKinnon, \&
+  Sussman}]{Wodchis2016}
+Wodchis, W.~P., Arthurs, E., Khan, A.~I., Gandhi, S., MacKinnon, M., \&
+  Sussman, J. (2016).
+\newblock Cost trajectories for cancer patients.
+\newblock {\em Current Oncology\/}, {\em 23\/}(Suppl 1), S64--S75.
+
+\bibitem[{Yamashita et~al.(2022)Yamashita, Wakata, Nakaguma, Nohara, Hato,
+  Kawamura et~al.}]{article7}
+Yamashita, T., Wakata, Y., Nakaguma, H., Nohara, Y., Hato, S., Kawamura, S.,
+  et~al. (2022).
+\newblock Machine learning for classification of postoperative patient status
+  using standardized medical data.
+\newblock {\em Computer Methods and Programs in Biomedicine\/}, {\em 214\/}.
+
+\bibitem[{Yuan et~al.(2021)Yuan, Cai, Hong, Du, Johnson, Lanuti, Cai, \&
+  Christiani}]{article9}
+Yuan, Q., Cai, T., Hong, C., Du, M., Johnson, B.~E., Lanuti, M., Cai, T., \&
+  Christiani, D.~C. (2021).
+\newblock Performance of a machine learning algorithm using electronic health
+  record data to identify and estimate survival in a longitudinal cohort of
+  patients with lung cancer.
+\newblock {\em JAMA Network Open\/}, {\em 4\/}(7).
+
+\bibitem[{Zhou et~al.(2024)Zhou, Mao, Fu, Ding, Bertolaccini, Liu, Zhang, \&
+  Li}]{article2}
+Zhou, L., Mao, C., Fu, T., Ding, X., Bertolaccini, L., Liu, A., Zhang, J., \&
+  Li, S. (2024).
+\newblock Development of an ai model for predicting hypoxia status and
+  prognosis in non-small cell lung cancer using multi-modal data.
+\newblock {\em Translational Lung Cancer Research\/}, {\em 13\/}(12),
+  3642--3656.
+
+\end{thebibliography}

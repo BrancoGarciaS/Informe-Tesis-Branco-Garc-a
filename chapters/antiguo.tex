@@ -1,0 +1,304 @@
+
+\section{Marco teórico metodológico y computacional}
+
+% \subsubsection{Selección de características y análisis de asociación estadística}
+
+% COMPLETAR DESPUES
+
+\subsection{Remuestreo estadístico y robustez mediante Bootstrapping}
+
+El desbalance masivo de clases corresponde a un problema frecuente en bases de datos poblacionales de salud pública, donde la proporción de episodios que presentan una determinada patología (como cáncer) frente a aquellos que no la presentan es significativamente asimétrica. Para abordar un desafío de esta naturaleza sin incurrir en sesgos deterministas ni perder variabilidad clínica, existen técnicas de remuestreo computacional no paramétrico, como el \textit{bootstrapping}, introducido por Bradley Efron en 1979 (\cite{efron1979bootstrap}).
+
+La técnica de remuestreo mediante \textit{bootstrapping} consiste en extraer aleatoriamente $B$ muestras repetidas de tamaño $N$, permitiendo el reemplazo de las observaciones; es decir, una misma observación puede ser seleccionada múltiples veces en distintas muestras. Matemáticamente, si se dispone de un conjunto original de datos $Z = (z_1, z_2, ..., z_n)$, una muestra \textit{bootstrap} $Z^{*b}$ contendrá elementos seleccionados desde $Z$ con probabilidad $1/n$ (\cite{efron1979bootstrap, hastie2009elements}).
+
+En el contexto específico de esta investigación, el remuestreo se utiliza para forzar artificialmente el balance de clases, por ejemplo, emparejando aleatoriamente una determinada cantidad de pacientes oncológicos con pacientes sin cáncer en cada iteración. Al repetir este proceso sobre cientos de submuestras aleatorias, el algoritmo reduce el sesgo inherente asociado a una única partición de los datos. La justificación matemática de este enfoque metodológico reside en el Teorema del Límite Central (TLC) y en la Ley de los Grandes Números, los cuales establecen que, a medida que el número de iteraciones \textit{bootstrap} $B$ tiende al infinito, la distribución empírica de la importancia de las características converge hacia la verdadera distribución poblacional subyacente. Esto asegura que las variables finalmente seleccionadas correspondan a aquellas que demuestran persistencia estadística estructural, aislando el ruido estocástico y garantizando que los perfiles operativos identificados mediante selección de características no sean un artefacto del azar presente en una muestra aislada (\cite{hastie2009elements}).
+
+
+%%%% PENDIENTEEEEEEE
+\subsubsection{Modelos de aprendizaje automático y algoritmos de ensamble}
+
+Para clasificar la información y extraer relaciones multivariadas entre las características de los datos GRD, este estudio emplea tres arquitecturas algorítmicas fundamentales: un modelo paramétrico utilizado como línea base (Regresión Logística) y dos algoritmos avanzados de ensamble basados en árboles de decisión, específicamente \textit{Random Forest} y XGBoost (\textit{eXtreme Gradient Boosting}) (\cite{hastie2009elements}).
+
+% hastie2009elements: https://books.google.cl/books?id=VRzITwgNV2UC&pg=PA43&hl=es&source=gbs_selected_pages&cad=1#v=onepage&q&f=false
+
+La \textbf{regresión logística} se seleccionó como modelo estadístico base debido a su elevada interpretabilidad inherente. Este algoritmo estima la probabilidad de que una instancia hospitalaria pertenezca a una determinada clase objetivo, como la condición de fallecido en el \textit{target} de mortalidad ($Y=1$), dada una matriz de características $X$, utilizando la función sigmoide definida en la Ecuación \ref{eq:logistica}:
+
+\begin{equation}
+    P(Y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)}}
+    \label{eq:logistica}
+\end{equation}
+
+Donde $\beta_0$ corresponde al intercepto y $\beta_i$ representa los coeficientes que cuantifican la influencia de cada variable $x_i$ sobre los \textit{log-odds} de la variable objetivo (por ejemplo, mortalidad). El ajuste óptimo de estos coeficientes se obtiene mediante la minimización de la función de pérdida de entropía cruzada binaria o \textit{Log-Loss}, expresada en la Ecuación \ref{eq:logloss}, donde $y_k$ representa la etiqueta real del episodio hospitalario $k$ y $\hat{y}_k = P(Y=1|X_k)$ corresponde a la probabilidad estimada por el modelo para dicha instancia:
+
+\begin{equation}
+    \mathcal{L}(\beta) = -\frac{1}{N} \sum_{k=1}^{N} \left[ y_k \ln(\hat{y}_k) + (1 - y_k) \ln(1 - \hat{y}_k) \right]
+    \label{eq:logloss}
+\end{equation}
+
+Para operar de manera estable en entornos de alta dimensionalidad y controlar la multicolinealidad estructural característica de las bases de datos de salud, la función de pérdida base se optimiza mediante técnicas de regularización elástica (\textit{Elastic Net}). Esta aproximación penaliza la magnitud de los coeficientes combinando simultáneamente regularización L1 (\textit{Lasso}) y L2 (\textit{Ridge}), transformando la función objetivo según la Ecuación \ref{eq:regularizacion}:
+
+\begin{equation}
+    \mathcal{L}_{\text{reg}}(\beta) = \mathcal{L}(\beta) + \lambda \left[ \alpha \sum_{j=1}^{m} |\beta_j| + \frac{1-\alpha}{2} \sum_{j=1}^{m} \beta_j^2 \right]
+    \label{eq:regularizacion}
+\end{equation}
+
+En esta fórmula, el hiperparámetro $\lambda$ controla la intensidad global de la penalización aplicada al modelo, mientras que el parámetro de mezcla $\alpha \in [0,1]$ regula la proporción relativa entre ambos tipos de regularización. Estos términos poseen distintas implicancias operativas sobre el comportamiento de los coeficientes (\cite{hastie2009elements}):
+
+\begin{itemize}
+\item \textbf{Penalización L1 o Lasso ($\alpha = 1$):} añade un costo proporcional al valor absoluto de los coeficientes. Debido a la geometría de sus contornos normativos en forma de diamante, este operador induce dispersión (\textit{sparsity}), forzando que los coeficientes de variables redundantes o con baja asociación estadística se reduzcan exactamente a cero. En la práctica, este comportamiento permite que el algoritmo actúe automáticamente como un selector de características descriptivas.
+\item \textbf{Penalización L2 o Ridge ($\alpha = 0$):} añade un costo proporcional al cuadrado de la magnitud de los coeficientes. Sus contornos elípticos contraen uniformemente los pesos hacia cero, pero sin anularlos completamente, como ocurre en la regularización L1. Esta penalización resulta especialmente efectiva para manejar grupos de variables correlacionadas, como diagnósticos concurrentes codificados, distribuyendo el peso de manera más equilibrada entre ellas.
+\end{itemize}
+
+
+
+\textbf{Random Forest:} corresponde a un algoritmo de ensamble robusto basado en la técnica de agregación por arranque (\textit{Bagging} o \textit{Bootstrap Aggregating}), donde se construye un conjunto de $B$ árboles de decisión profundos de manera independiente ${T_1(X), T_2(X), \dots, T_B(X)}$. Además, para garantizar la descorrelación estructural entre los árboles y evitar que aprendan patrones idénticos, en cada división de nodo (\textit{split}) el algoritmo evalúa únicamente un subconjunto aleatorio de características extraídas desde la matriz global de datos. Finalmente, la predicción del ensamble para un problema de clasificación binaria ($Y \in {0,1}$) se obtiene formalmente mediante votación por mayoría, descrita en la Ecuación \ref{eq:rf_vote}:
+\begin{equation}
+    \hat{Y}(X) = \arg\max_{c \in \{0,1\}} \sum_{b=1}^{B} \mathbb{I}(C_b(X) = c)
+    \label{eq:rf_vote}
+\end{equation}
+
+Donde $C_b(X)$ representa la predicción de clase emitida por el árbol número $b$ e $\mathbb{I}(\cdot)$ corresponde a la función indicadora, la cual toma el valor de 1 cuando la condición interna se cumple y 0 en caso contrario. La naturaleza no paramétrica de este algoritmo le permite modelar interacciones altamente no lineales sin requerir transformaciones previas de los datos, además de presentar una elevada resistencia al sobreajuste (\textit{overfitting}) debido al promedio estocástico de sus componentes (\cite{hastie2009elements}).
+
+\textbf{XGBoost (\textit{eXtreme Gradient Boosting}):} a diferencia del enfoque basado en \textit{bagging}, XGBoost utiliza la técnica de \textit{boosting}, la cual consiste en construir árboles de decisión de manera secuencial y aditiva. Cada nuevo árbol, denominado aprendiz débil, se optimiza específicamente para corregir los errores residuales (gradientes) calculados en las etapas anteriores; es decir, los errores cometidos por el conjunto previo de árboles. Matemáticamente, XGBoost minimiza directamente una función objetivo regularizada $\mathcal{L}$ en cada iteración $k$, equilibrando el ajuste empírico con la complejidad estructural de cada árbol $f_k$, tal como se expresa en la Ecuación \ref{eq:xgboost}:
+
+\begin{equation}
+    \mathcal{L} = \sum_{i=1}^{n} l(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k)
+    \label{eq:xgboost}
+\end{equation}
+
+Donde $l(\cdot)$ representa la función de pérdida diferenciable (por ejemplo, entropía cruzada para clasificación binaria), encargada de medir la discrepancia entre la etiqueta real $y_i$ y la estimación $\hat{y}_i$. Por otro lado, el término diferenciador clave del algoritmo corresponde al penalizador de complejidad topológica $\Omega(f_k)$, el cual restringe explícitamente el tamaño de la estructura para mitigar el sobreajuste. Este término de regularización se define mediante la Ecuación \ref{eq:xgboost_reg}:
+
+En donde $l(\cdot)$ representa la función de pérdida diferenciable (como la entropía cruzada para variables binarias) que mide la discrepancia entre la etiqueta real $y_i$ y la estimación $\hat{y}_i$. Por otro lado, el término diferenciador clave del algoritmo es el penalizador de complejidad topológica $\Omega(f_k)$, el cual restringe explícitamente el tamaño de la estructura para mitigar el sobreajuste. Este término de regularización se define específicamente en la Ecuación \ref{eq:xgboost_reg} (\cite{chen2016xgboost}):
+
+\begin{equation}
+    \Omega(f_k) = \gamma T + \frac{1}{2}\lambda \sum_{j=1}^{T} w_j^2
+    \label{eq:xgboost_reg}
+\end{equation}
+
+En esta expresión, $T$ corresponde al número total de hojas presentes en el árbol $f_k$, mientras que $w_j$ representa el peso asociado a cada hoja $j$. El hiperparámetro $\gamma$ actúa como una penalización sobre el número de divisiones del árbol, funcionando como un umbral mínimo de ganancia requerido para permitir una nueva partición. En paralelo, el parámetro $\lambda$ aplica regularización L2 (\textit{Ridge}) sobre los pesos de las hojas, suavizando las actualizaciones numéricas individuales. Esta combinación matemática otorga a XGBoost una elevada estabilidad computacional en estructuras tabulares dispersas y una capacidad nativa para manejar desbalances de clases mediante ajuste de gradientes (\cite{chen2016xgboost}).
+
+\subsubsection{Inteligencia artificial explicable (XAI) y valores de Shapley (SHAP)}
+
+Si bien los modelos de aprendizaje automático avanzados como \textit{Random Forest} y \textit{XGBoost} ofrecen altos rendimientos predictivos en la identificación de patrones no lineales, operan arquitectónicamente como modelos de caja negra (\textit{black-box}), lo que significa que permiten clasificar o predecir un desenlace (como el fallecimiento de pacientes), pero no explican de forma transparente cómo cada variable de entrada contribuye a esa predicción. Esta falta de interpretabilidad algorítmica dificulta la toma de decisiones clínicas y limita su aporte a la gestión sanitaria pública, donde la transparencia constituye un requisito ético y regulatorio. Para superar esta barrera, la investigación integra la metodología SHAP (\textit{SHapley Additive exPlanations}) \cite{lundberg2017shap}.
+
+Este método fue desarrollado por Lundberg y Lee, y traduce los principios de la teoría de juegos cooperativos (introducida por Lloyd Shapley en 1953) al dominio del aprendizaje automático. En esta analogía matemática, la predicción del modelo equivale al pago total del juego, mientras que las características del paciente (como la edad, los procedimientos o los diagnósticos) actúan como jugadores. En este contexto, SHAP calcula la contribución marginal exacta $\phi_i$ de cada variable evaluando su impacto sobre todas las permutaciones posibles de características, según la Ecuación \ref{eq:shap}:
+\begin{equation}
+    \phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|! (|F| - |S| - 1)!}{|F|!} [f_x(S \cup \{i\}) - f_x(S)]
+    \label{eq:shap}
+\end{equation}
+
+En donde $F$ corresponde al conjunto de todas las características, $S$ representa un subconjunto de características que excluye a la variable $i$ (cuya contribución se desea calcular), y $f_x(S)$ corresponde a la predicción del modelo condicionada únicamente a las características presentes en el subconjunto $S$ \cite{lundberg2017shap}.
+
+
+Si se aplica SHAP directamente sobre un problema de clasificación binaria (por ejemplo, fallecido y sobreviviente), el valor SHAP parte de un valor base correspondiente a la prevalencia promedio o probabilidad base estimada por el modelo. A partir de dicho punto, la metodología entrega una atribución direccional transparente:
+
+\begin{itemize}
+    \item \textbf{Valores SHAP positivos:} indican que la presencia (o una magnitud elevada) de una variable empuja la predicción del modelo a favor de la Clase 1, atribuyendo estadísticamente el riesgo hacia la presencia de esa clase (por ejemplo, mortalidad).
+    \item \textbf{Valores SHAP negativos:} indican que la variable ejerce una contribución inversa, disminuyendo, por ejemplo, la probabilidad de fallecimiento y asociando el perfil clínico del paciente hacia la Clase 0 (pacientes sobrevivientes).
+\end{itemize}
+
+%%%% PENDIENTEEEEEEEEEEEEE
+\subsection{Estado del arte}
+
+
+\subsubsection{Estrategia de búsqueda y selección de estudios}
+
+Para la revisión sistemática de la literatura se establecieron dos estrategias diferentes: una búsqueda global en \textbf{Scopus} para identificar el estado del arte internacional y una búsqueda local (Chile) en \textbf{SciELO}.
+
+En primer lugar, se ejecutó una consulta en Scopus para responder las siguientes preguntas de investigación sobre variables, tecnologías y metodologías usadas en la caracterización de pacientes oncológicos:
+
+\begin{itemize}
+    \item \textbf{Variables y factores asociados:} ¿Qué atributos o variables hospitalarias, administrativas y clínicas (registrados en GRD u otros sistemas de datos hospitalarios) se han utilizado en la literatura para caracterizar pacientes con cáncer, tanto en Chile como internacionalmente?
+    
+    \item \textbf{Tecnologías:} ¿Qué enfoques computacionales (estadística, minería de datos, aprendizaje automático) se han aplicado para caracterizar perfiles de pacientes oncológicos utilizando registros clínico-administrativos, como datos hospitalarios (por ejemplo, GRD), electrónicos o de seguros de salud?
+    
+    \item \textbf{Metodologías exitosas o existentes:} ¿Qué metodologías han demostrado ser más efectivas para identificar patrones y atributos relevantes en la caracterización del cáncer a partir de registros clínicos u hospitalarios?
+\end{itemize}
+
+Dicha consulta fue la siguiente:
+
+\begin{lstlisting}[style=query]
+("cancer" OR "oncology" OR "neoplasms")
+AND
+("Diagnosis Related Groups" OR DRG OR "hospital discharge data" 
+OR "administrative hospital data" OR "hospital data" 
+OR "electronic health records" OR EHR OR "claims data")
+AND
+(attributes OR features OR variables OR "risk factors" 
+OR "clinical profile" OR "patient profiling" 
+OR "patient characterization" OR "clinical characterization")
+AND
+("machine learning" OR "data mining" OR "artificial intelligence" 
+OR "statistical analysis" OR "predictive modeling" 
+OR "risk prediction" OR "pattern recognition" OR "feature selection")
+\end{lstlisting}
+
+De los 182 resultados iniciales, se aplicaron los siguientes filtros, reduciendo la búsqueda a 104 resultados:
+\begin{itemize}
+    \item \textbf{Año:} 2020--2025
+    \item \textbf{Área temática:} Medicina, Informática, Multidisciplinario, Profesionales de la Salud
+    \item \textbf{Tipo de documento:} Artículo y Revista
+    \item \textbf{Idioma:} Inglés y Español
+\end{itemize}
+
+Posteriormente, se aplicó un proceso de selección basado en tres filtros secuenciales para identificar los artículos más relevantes para el objetivo de esta propuesta, a través de la lectura de sus títulos y resúmenes:
+
+\begin{enumerate}
+    \item \textbf{Filtro de relevancia central:} Se seleccionaron mayormente artículos que usan aprendizaje automático supervisado en oncología con datos análogos a GRD (como datos EHR y administrativos), y se descartaron artículos cuyo enfoque principal no era el aprendizaje automático, como NLP puro o análisis de imágenes/radiómica.
+
+    \item \textbf{Filtro de alineación de objetivos:} Se priorizaron estudios que predicen resultados similares a los de esta propuesta, como la mortalidad, supervivencia, severidad, complicaciones y consumo de recursos o costos.
+    
+    \item \textbf{Filtro de relevancia metodológica:} Se seleccionaron artículos que usan técnicas de interpretabilidad como SHAP para crear perfiles de riesgo.
+\end{enumerate}
+
+Finalmente, este proceso resultó en la selección de 12 artículos internacionales que se resumen en la Tabla \ref{tab:resumen_scopus}.
+
+En segundo lugar, se ejecutó una búsqueda en SciELO en busca de estudios sobre la aplicación de aprendizaje automático sobre datos GRD en el área de oncología, sin embargo, esta consulta arrojó 0 resultados. 
+
+Entonces, para cambiar a un enfoque descriptivo y responder a la necesidad de construir una línea base contextual sólida, se ejecutó una segunda búsqueda ampliada orientada a identificar estudios que, mediante estadística descriptiva o análisis epidemiológico, caracterizaran el cáncer en la población chilena utilizando datos locales, en donde se ejecutó la siguiente consulta:
+
+\begin{lstlisting}[style=query]
+(TITLE:("cancer" OR "oncologia" OR "tumor" OR "neoplasia")) 
+AND (clínico OR demográfico OR epidemiológico OR "egreso hospitalario" OR "carga de enfermedad") 
+AND (Chile OR "población chilena" OR "hospital chileno")
+\end{lstlisting}
+
+De 1583 resultados iniciales, se aplicaron los siguientes filtros, reduciendo la búsqueda a 44 resultados:
+
+\begin{itemize}
+    \item \textbf{Año:} 2018--2025
+    \item \textbf{País:} Chile, para captar estudios locales.
+\end{itemize}
+
+Tras aplicar los filtros anteriores, se leyeron los resúmenes de los artículos y se aplicaron los siguientes criterios de selección final para asegurar su relevancia con el problema de los GRD:
+
+\begin{itemize}
+    \item \textbf{Enfoque poblacional o de cohorte:} Se seleccionaron estudios con muestras significativas (N $>$ 100) o estadísticas nacionales (DEIS), descartando reportes de casos únicos que no permiten generalizar perfiles.
+    \item \textbf{Contexto local y territorial:} Se incluyeron investigaciones de hospitales públicos chilenos (Temuco, Chillán) para validar variables territoriales como la ruralidad y el tipo de establecimiento.
+    \item \textbf{Variables presentes en GRD:} Se seleccionaron estudios que analizaron variables que están presentes en GRD, como edad, sexo y mortalidad.
+\end{itemize}
+
+Finalmente, en la búsqueda de SciELO se seleccionaron 4 artículos fundamentales que constituyen la evidencia base sobre la carga demográfica y hospitalaria del cáncer en Chile, indicados en la Tabla \ref{tab:resumen_scielo}.
+
+
+\subsection{Estudios sobre caracterización de cohortes oncológicas mediante aprendizaje automático e inteligencia artificial explicable}
+
+En la literatura se identifican dos principales corrientes metodológicas en el uso de datos sanitarios en oncología. La primera corresponde a la predicción clínica mediante aprendizaje automático e inteligencia artificial, donde se ha demostrado que registros clínicos y administrativos, análogos a los GRD (como los Registros de Salud Electrónicos, EHR), contienen patrones latentes capaces de predecir desenlaces como mortalidad, supervivencia, duración de la hospitalización y readmisión, utilizando algoritmos como Random Forest, XGBoost y regresión LASSO (\cite{article2}; \cite{article3}; \cite{article10}).
+
+Para enfrentar el desbalance de clases, se aplicaron técnicas de remuestreo como submuestreo o SMOTE, que consiste en crear muestras sintéticas de la clase minoritaria interpolando entre ejemplos existentes (\cite{article4}; \cite{article6}; \cite{article16}). Se emplearon validaciones temporales o prospectivas, separando el conjunto de entrenamiento y prueba por fecha para evitar fugas de datos (uso de información en el entrenamiento que no estaría disponible en el momento de la predicción). La calibración de los modelos se evaluó mediante la puntuación de Brier, que cuantifica la diferencia cuadrática media entre las probabilidades predichas y los desenlaces observados (\cite{article1}; \cite{article8}; \cite{article9}). Además, se incorporaron técnicas de interpretabilidad como SHAP, estableciendo un estándar de explicabilidad dual: global, para caracterizar factores de riesgo a nivel poblacional, y local, para justificar decisiones individuales, cuantificando la influencia de cada variable en las predicciones (\cite{article1}; \cite{article4}; \cite{article7}; \cite{article11}). Finalmente, estos modelos alcanzaron desempeños moderados y altos, con valores de AUC-ROC entre 0.71 y 0.94, con una capacidad predictiva superior al azar.
+
+En específico, para esta corriente se tienen los siguientes estudios:
+\begin{itemize}
+    \item \textbf{Desarrollo y validación de un modelo de aprendizaje automático explicable para predecir el pronóstico en pacientes con sepsis y antecedentes de cáncer ingresados ​​en la unidad de cuidados intensivos:} El objetivo de este estudio era construir y validar un modelo de aprendizaje automático explicable para predecir la mortalidad intrahospitalaria en pacientes con sepsis y antecedentes de cáncer ingresados en la unidad de cuidados intensivos (UCI). Para este estudio se hizo un análisis retrospectivo de 3364 pacientes presentes en los registros de salud electrónicos (EHR) de la base de datos MIMIC-IV, que contiene información de pacientes ingresados en la UCI del hospital Beth Israel Deaconess Medical Center. Como metodología, la variable a predecir fue la mortalidad hospitalaria (como variable binaria), se seleccionaron 11 variables pronósticas clave mediante regresión LASSO y eliminación recursiva de características (RFE), se entrenaron 8 algoritmos de aprendizaje automático como Random Forest (RF), XGBoost, árbol de decisión (DT) y SVM para las predicciones, y se aplicaron técnicas de interpretabilidad con métodos SHAP y gráficos de dependencia parcial (PDPs) para la interpretabilidad de los modelos. Finalmente, como resultado Random Forest fue el modelo con mayor precisión predictiva, con un AUC de 0.78 y el Brier Score más bajo. Y el análisis de explicabilidad reveló que la característica más influyente para la mortalidad fue la puntuación de gravedad APSIII (puntuación que mide la disfunción fisiología aguda III). además de la puntuación SOFA (evaluación secuencial de la insuficiencia orgánica), la saturación de oxígeno (SpO$_2$), la frecuencia cardíaca y respiratoria (\cite{article1}).
+     % Duda: cuales fueron las 11 variables seleccionadas y cuales fueron los 8 modelos entrenados
+    \item \textbf{Desarrollo de un modelo de IA para predecir el estado de hipoxia y el pronóstico en el cáncer de pulmón de células no pequeñas utilizando datos multimodales:} El objetivo de este estudio era crear un modelo de inteligencia artificial (IA) para pacientes con cáncer de pulmón de células no pequeñas (NSCLC) que integre datos multimodales para predecir el estado de hipoxia y la supervivencia general. Como metodología, utilizaron datos de 452 pacientes provenientes de múltiples cohortes clínicas y bases públicas, en específico, usaron datos multimodales que incluyeron registros de salud electrónicos (EHR), características radiómicas de imágenes de tomografía computarizada (TC) y conjuntos de datos genómicos como The Cancer Genome Atlas (TCGA) y Gene Expression Omnibus (GEO). Para la construcción del modelo, los pacientes se clasificaron en grupos de hipoxia alta o baja en base a su expresión génica utilizando el método ssGSEA, y se entrenaron modelos específicos para cada tipo de dato: LASSO para las características radiómicas de TC (en donde se seleccionaron 28 características radiómicas asociadas a la hipoxia), ssuBERT para extraer información fenotípica estructurada de textos libres en los datos EHR y una red neuronal profunda (DNN) para integrar las características de las distintas fuentes de datos. Finalmente, el modelo de IA multimodal, que fusionó las características clínicas, radiómicas y genómicas, obtuvoun AUC promedio de 0.8449, demostrando que la integración transversal de diferentes arquitecturas de datos mejoró de forma sustancial la predicción pronóstica frente a los enfoques aislados de una sola modalidad. Además, se concluyó que niveles más altos de hipoxia se correlacionaban con peores resultados de supervivencia global en todas las cohortes de pacientes, y el modelo unimodal con mayor rendimiento fue ssuBERT con un AUC de 0.7662 (\cite{article2}).
+    \item \textbf{Hacia la predicción de la rehospitalización a los 30 días en pacientes oncológicos: identificación de factores de riesgo oportunos y que permitan tomar medidas:} El objetivo de este estudio fue desarrollar modelos de predicción de readmisión hospitalaria no planificada a 30 días para pacientes oncológicos (variable binaria), con el fin de identificar intervenciones oportunas y procesables. Para ello, se utilizaron datos de registros de salud electrónicos (EHR) de una cohorte retrospectiva de 2460 pacientes oncológicos del centro de tratamiento Ann B. Barshinger Cancer Institute (ABBCI). Como metodología, se estableció un pipeline de trabajo que incluyó el preprocesamiento, selección de características y entrenamiento de 11 algoritmos de aprendizaje automático como Random Forest, XGBoost y LGB; además, se usó Optuna (optimización bayesiana) para optimizar los hiperparámetros de los modelos, métricas de evaluación como ROC y AUPRC, validación cruzada de 10 pliegues anidada y SHAP para la identificación de los factores de riesgo más importantes para las predicciones. Cabe destacar, que los múltiples clasificadores de ML se entrenaron comparando el rendimiento al usar todas las variables de la visita clínica frente a usar solo las disponibles a las primeras 48 horas de admisión. Finalmente, el modelo Light Gradient Boosting (LGB) obtuvo el mejor rendimiento global (con un AUROC de 0.711) utilizando todas las características, mientras que Random Forest fue el superior usando datos limitados a 48 horas (con un AUROC de 0.684). Dentro de los predictores más influyentes de la readmisión hospitalaria se encontraron factores de riesgo dinámicos (como albúmina baja y frecuencia cardiaca elevada al alta), el cambio de peso anual, síntomas de depresión y el nivel de ingresos por código postal. Y se demostró que el aprendizaje automático puede igualar o superar modelos propietarios existentes y ofrecer perspectivas clínicas y socioeconómicas accionables de forma temprana (\cite{article3}).
+    \item \textbf{Predicción dinámica de metástasis en ganglios linfáticos laterales mediante aprendizaje automático en pacientes con cáncer papilar de tiroides:} El objetivo de este estudio fue desarrollar un modelo de aprendizaje automático basado en la web, para predecir dinámicamente la metástasis en ganglios linfáticos laterales (LLNM) en pacientes con cáncer papilar de tiroides (PTC) antes de la cirugía. Para ello, se analizaron retrospectivamente datos de ultrasonido y EHR clínicos de un centro médico en China (First Medical Centre of the Chinese PLA General Hospital), con una cohorte de 1815 pacientes. Como metodología, se aplicó regresión LASSO para seleccionar las 30 características más relevantes para construir los modelos, se entrenaron 6 algoritmos de aprendizaje automático, incluyendo XGBoost, Random Forest, árbol de decisión, SVM, red neuronal y KNN, y se compararon con un nomograma de regresión logística tradicional. Se evaluó cada modelo en base a su precisión, sensibilidad, AUC y DCA; y se utilizó SHAP para identificar las características más influyentes en las predicciones del modelo. Finalmente, el modelo Random Forest demostró ser el más robusto, con un AUC de 0.8 y sensibilidad de 0.69. SHAP identificó que las características más influyentes para predecir LLNM fueron el tamaño del tumor, la edad, la microcalcificación, el tamaño de los ganglios linfáticos y la ubicación del tumor. Finalmente, la investigación entregó una herramienta accesible para facilitar la estratificación de riesgos a nivel individual (\cite{article4}).
+    \item \textbf{Comparación de la regresión logística con algoritmos de aprendizaje automático para la predicción del riesgo de cáncer gástrico en flujos de datos clínicos reales:} El objetivo de este estudio fue comparar la eficacia de la regresión logística (LR) frente a algoritmos de aprendizaje automático (ML) para predecir el riesgo de cáncer gástrico no cardial (NCGC) utilizando datos clínicos reales. Para ello, se analizaron retrospectivamente datos de registros de salud electrónicos (EHR) de dos sistemas de salud académicos en Estados Unidos: Stanford y Universidad de Washington (UW), con una cohorte total de 59.000 pacientes. Como metodología, se comparó el modelo clásico de regresión logística (basado en factores de riesgo preestablecidos como histología, infección previa por Helicobacter pylori, raza, etnia, tabaquismo, anemia) con cuatro algoritmos de aprendizaje automático: Random Forest, SVM, LASSO penalizado y KNN (que seleccionaron variables de manera agnóstica), utilizando métricas de evaluación como exactitud, sensibilidad, especificidad y curvas AUC/ROC. Finalmente, el rendimiento del modelo de regresión logística no fue inferior a los modelos de ML en la validación externa, logrando una precisión del 72.4\%. Además, en validaciones tanto internas como externas, la regresión logística mostró una precisión, sensibilidad y especificidad comparables a los modelos de aprendizaje automático optimizados, por ende, el estudio concluyó que los modelos estadísticos clásicos construidos sobre variables predictoras robustas y seleccionadas manualmente no son inferiores a los modelos de aprendizaje automático impulsados por datos masivos para la predicción del riesgo de cáncer gástrico. Por otra parte, dentro de los modelos de ML, el modelo KNN mostró una mayor precisión y especificidad (\cite{article5}).
+    \item \textbf{Factores de riesgo asociados con eventos relacionados con el esqueleto tras la interrupción del tratamiento con denosumab en pacientes con metástasis óseas de tumores sólidos: un enfoque de aprendizaje automático en el mundo real:} El objetivo de este estudio fue identificar los factores de riesgo asociados a la aparición de eventos relacionados con el esqueleto (SREs) tras la interrupción del tratamiento con denosumab (un anticuerpo monoclonal) en pacientes con metástasis óseas derivadas de tumores sólidos. Para ello, se analizaron retrospectivamente datos de registros de salud electrónicos (EHR) de Optum PanTher, considerando pacientes diagnosticados entre enero de 2007 y septiembre de 2019. Como metodología, se utilizó el algoritmo XGBoost para las predicciones, se gestionó el desbalance de clases mediante técnicas de sobremuestreo, submuestreo y penalización, además, se ajustaron los hiperparámetros con optimización bayesiana con validación cruzada de 5 pliegues y el rendimiento del modelo se evaluó mediante las métricas de precisión, sensibilidad, AUROC y especificidad. Para la interpretabilidad, se aplicó SHAP para evaluar sin sesgos la importancia de más de 60 variables predictoras. Como resultado se obtuvo que el modelo XGBoost obtuvo un AUROC de 77\% en la predicción de SREs, y dentro de los factores de riesgo más influyentes para la detección de SREs se encontraron los SREs previos, menor duración de tratamiento con denosumab, la edad joven y tener cáncer de próstata. Finalmente, este estudio demostró que el aprendizaje automático puede guiar las decisiones sobre la continuidad del tratamiento con denosumab para mejorar los desenlaces del paciente (\cite{article6}).
+    \item \textbf{Aprendizaje automático para la clasificación del estado postoperatorio del paciente utilizando datos médicos estandarizados:} Este estudio tiene el objetivo de identificar factores de riesgo e interacciones temporales que contribuyen a una hospitalización postoperatoria prolongada en pacientes con cáncer de pulmón. Para ello, el estudio empleó Datos del Mundo Real (RWD) estandarizados, provenientes de los sistemas Diagnosis Procedure Combination (DPC) y vías clínicas (Clinical Pathway o CP). Como metodología, utilizaron métodos de agrupamiento o de Clustering (algoritmo CLUTO) para agrupar pacientes según patrones de ítems DPC, en conjunto de la construcción de modelos de aprendizaje automático y se aplicó la técnica de SHAP para cuantificar la contribución de cada variable a la predicción de hospitalización prolongada, en conjunto de un gráfico dirigido para explorar las relaciones temporales entre las variables que conducen a hospitalizaciones largas en vez de cortas. Como resultados, el modelo identificó que el factor de riesgo más influyente en la hospitalización prolongada fue la varianza de estreñimiento (en POD1-4), y el clustering agrupó variables como tabaquismo, obesidad, estado respiratorio y estreñimiento, por un lado, y el manejo de drenajes, heridas y goteo, por otro lado. Finalmente, este estudio demostró que la minería de datos sobre registros médicos estandarizados permite revelar vías causales que apoyan la toma de decisiones clínicas tempranas (\cite{article7}).
+    \item \textbf{Aprendizaje automático aplicado a los registros electrónicos de salud: identificación de pacientes de quimioterapia con alto riesgo de visitas evitables a urgencias e ingresos hospitalarios:} Este estudio tuvo como objetivo predecir el riesgo de uso prevenible de cuidados agudos (ACU), como visitas a urgencias o ingresos hospitalarios no planificados, en pacientes oncológicos que están iniciando la quimioterapia. Para ello, se analizaron datos estructurados de registros de salud electrónicos (EHR) generados antes del inicio de la quimioterapia de pacientes adultos tratados en sitios comunitarios afiliados entre enero de 2013 y julio de 2019. Como metodología, se entrenaron, con información generada antes de iniciar el tratamiento, 9 modelos de aprendizaje automático, incluyendo LASSO, Random Forest, Ridge, Elastic Net, redes neuronales perceptrón multicapa (MLP), LightGBM, SVM, KNN y un modelo de votación ensamblado. Como resultado, el modelo LASSO obtuvo el mejor rendimiento predictivo a 180 días, con un AUROC de 0.783. Además, dentro de las variables clave seleccionadas por el modelo LASSO se encontraban hospitalizaciones previas, diagnóstico de depresión, saturación de oxígeno, pulso, entre otras. Finalmente, este estudio validó que los modelos de aprendizaje automático basados en EHR integrales pueden identificar eficazmente a los pacientes en riesgo para focalizar intervenciones preventivas (\cite{article8}).
+    \item \textbf{Rendimiento de un algoritmo de aprendizaje automático que utiliza datos de registros médicos electrónicos para identificar y estimar la supervivencia en una cohorte longitudinal de pacientes con cáncer de pulmón:} El objetivo de este estudio consistió en investigar la viabilidad de ensamblar una cohorte clínica longitudinal de cáncer de pulmón a partir de datos de registros médicos electrónicos (EHR) mediante aprendizaje automático y utilizarla para desarrollar un modelo pronóstico de supervivencia. Para ello, se utilizaron registros de más de 76000 pacientes del sistema de salud Mass General Brigham (MGB) desde julio de 1988 hasta octubre de 2018. Como metodología, utilizaron el 
+    algoritmo PheCAP para fenotipado, usando dentro de este los métodos SAFE (para la selección de características) y LASSO (para la clasificación principal a partir de las características seleccionadas por SAFE). Además, aplicaron herramientas de Procesamiento de Lenguaje Natural (NLP) para extraer datos clínicos de textos libres escritos por médicos (datos no estructurados). En específico, usaron los algoritmos NICE (desarrollada por los propios investigadores) y EXTEND (para extraer datos numéricos específicos, como el índice de masa corporal (IMC)). Y para predecir la supervivencia de los pacientes, usaron algoritmos de regresión de Cox penalizada y penalización MCP para seleccionar solo las variables más importantes para predecir la supervivencia global a 1, 2, 3, 4 y 5 años. Como resultados, el algoritmo identificó a 42069 pacientes con cáncer de pulmón, logrando un valor predictivo positivo (VPP) del 94.4\% y un AUROC de 0.927. Y el modelo pronóstico de supervivencia (Cox) obtuvo un AUROC de 0.828 (para la predicción a 1 año) y 0.812 (para la predicción a 5 años). Finalmente, este estudio demostró que los EHR proporcionan una alta fidelidad para extraer información compleja y predecir resultados a largo plazo (\cite{article9}).
+
+    \item \textbf{Modelo de predicción de datos clínicos para identificar pacientes con cáncer de páncreas en etapa temprana:} El objetivo de este estudio fue evaluar un modelo de aprendizaje automático para identificar pacientes con cáncer de páncreas en etapas tempranas (ESPC) basándose exclusivamente en datos clínicos rutinarios alojados en registros médicos electrónicos (EHR). Para ello, se extrajeron datos de la base de datos Optum (de Estados Unidos), la cual contiene registros de pacientes diagnósticos entre 2009 y 2017, en donde 3322 tenían cáncer de páncreas en etapa temprana (ESPC), definidos por haber recibido cirugía pancreática mayor y 25908 tenían cáncer de páncreas en etapa tardía (LSPC). Como metodología, se construyó y optimizó un modelo predictivo utilizando XGBoost y se ajustaron los hiperparámetros del modelo mediante Grid Search y validación cruzada de 5 pliegues. Como resultado, el modelo XGBoost logró distinguir los casos con un AUC de 0.84. Además, el algoritmo demostró la capacidad de haber identificado al 58\% de los casos de cáncer de páncreas diagnosticados en etapa tardía (LSPC) hasta 24 meses antes del diagnóstico clínico formal, con un 60\% de sensibilidad, lo que resalta el potencial del aprendizaje automático para el diagnóstico temprano y la reducción de la mortalidad en neoplasias agresivas como el cáncer de páncreas (\cite{article10}).
+    \item \textbf{Un modelo multicéntrico de bosque aleatorio para la predicción eficaz del pronóstico en una red de investigación clínica colaborativa:} El objetivo de este estudio fue proponer un modelo de aprendizaje automático basado en Random Forest (RF) multicéntrico para la predicción de pronósticos (supervivencia a 5 años) en pacientes con cáncer colorrectal (CRC), que permita la minería de datos clínicos federados a partir de bases de datos particionadas horizontalmente, garantizando la privacidad de los pacientes sin necesidad de compartir datos crudos y sensibles. Para ello, utilizaron registros provenientes de la base de datos SEER (de Estados Unidos) y datos de hospital SAHZU (de China). Como metodología, el estudio desarrolló un enfoque de mejora de datos basado en Redes Generativas Antagónicas con privacidad diferencial (DPGAN) para generar datos sintéticos locales. Posteriormente, se evaluaron los modelos bajo diferentes niveles de heterogeneidad institucional y se comparó el modelo de Random Forest multicéntrico contra uno entrenado de forma centralizada y otros clasificadores clásicos (como regresión logística, SVM y redes neuronales). Adicionalmente, se comparó con un modelo de estadificación TNM como línea base clínica, se implementó un método de ranking de importancia de variables basado en la impureza de Gini y se utilizaron métricas de evaluación como AUC (ROC), exactitud, sensibilidad, especificidad y AUPRC. De resultados, el modelo de Random Forest multicéntrico obtuvo un mejor rendimiento (AUC de 0.875) en la validación cruzada interna (con los datos SEER) y en la externa (con un AUC de 0.852, con los datos de SAHZU), teniendo un rendimiento superior al de la regresión logística (AUC de 0.835) y al modelo de estadificación TNM (AUC de 0.771). Finalmente, el procedimiento de selección de características demostró ser efectivo para simplificar el modelo sin perder exactitud, concluyendo que este enfoque ofrece una técnica práctica y segura para construir modelos pronósticos robustos en redes de investigación oncológica colaborativas (\cite{article11}).
+    \item \textbf{Un marco de aprendizaje automático explicable para la predicción de la duración de la estancia hospitalaria en pacientes con cáncer de pulmón:} El objetivo de este estudio fue desarrollar un marco de trabajo de aprendizaje automático explicable para predecir el tiempo de estancia hospitalaria (LOS) de pacientes con cáncer de pulmón ingresados en la unidad de cuidados intensivos (UCI), abordando el desafío del desbalance de clases en los registros de salud electrónicos (EHR). Para ello, se analizó la base de datos pública Medical Information Mart for Intensive Care (MIMIC-III), proveniente de pacientes adultos que estuvieron en la UCI del hospital Beth Israel Deaconess Medical Center (BIDMC) en Massachusetts, Estados Unidos, entre 2001 y 2012. Como metodología, se estructuró el problema predictivo como una clasificación binaria (estancia corta versus estancia larga) y se entrenaron modelos como Random Forest (RF), XGBoost y regresión logística. Para optimizar el entrenamiento, se aplicaron métodos de selección de variables (significancia clínica y eliminación recursiva de características, RFE) y se evaluaron 6 técnicas de balanceo de clases, incluyendo sobremuestreo (SMOTE, ADASYN), submuestreo (ENN, TomekLinks) y combinados (SMOTE-ENN, SMOTETomek). Para la evaluación de los modelos se utilizó validación cruzada de 10 iteraciones (10-fold cross-validation) y métricas de sensibilidad, especificidad, AUC e Index Balanced Accuracy (IBA). Por último, se aplicó SHAP para la interpretabilidad clínica de las predicciones. Como resultado, el clasificador de Random Forest demostró un rendimiento superior y resistente a variaciones en la selección de características. Las técnicas de sobremuestreo obtuvieron los mejores resultados predictivos, donde ADASYN y SMOTE alcanzaron un Área Bajo la Curva (AUC) de 100\% y 98\%, respectivamente. Y el análisis SHAP identificó que las características más influyentes para predecir la estancia fueron la temperatura, la admisión por emergencia, la glucosa, plaquetas y frecuencia respiratoria, concluyendo que la integración del algoritmo SMOTE con Random Forest y SHAP constituye una herramienta valiosa para apoyar a gestores de camas en la optimización de los recursos de la UCI (\cite{article16}). 
+\end{itemize}
+
+%%% INSERTAR TABLA RESUMEN
+
+%%%% VER SI LAS TRADUCCIONES DE LOS TITULOS ESTÁN BIEN
+
+
+\subsection{Caracterización de cohortes oncológicas mediante análisis epidemiológico y estadística descriptiva}
+
+La segunda corriente corresponde a la caracterización epidemiológica y estadística descriptiva tradicional, que, mediante medidas de tendencia central, dispersión y distribuciones de frecuencia, permitió identificar grupos de riesgo en cohortes chilenas, como mayor incidencia de cáncer de pulmón en hombres fumadores (\cite{scielo1}), el predominio de fallecimientos por cáncer oral y orofaríngeo en hombres mayores de 75 años (\cite{scielo2}), mayor incidencia de cáncer de tiroides en mujeres (\cite{scielo3}) y un aumento del 109\% en muertes por cáncer entre 1986 y 2016, proyectándose como una potencial causa de muerte en Chile (\cite{scielo4}). Sin embargo, estos estudios se limitan a análisis descriptivos de centros médicos específicos y no modelan interacciones complejas (no lineales) entre variables (como la variabilidad en estancias hospitalarias y costos de atención) (\cite{Wodchis2016}). Además, presentan sesgos ambientales, como la exposición a leña en la zona sur (Temuco) (\cite{scielo1}). 
+
+Por ende, la brecha identificada radica en la ausencia de metodologías que integren los registros oncológicos GRD con técnicas de aprendizaje automático supervisado explicable, capaces de transformar esta información en conocimiento accionable mediante perfiles que revelen los factores influyentes en las predicciones. 
+
+
+En específico, para esta corriente se tienen los siguientes estudios:
+
+\begin{itemize}
+    \item \textbf{Perfil clínico, demográfico y anatomopatológico de pacientes con cáncer pulmonar en el Hospital de Temuco (2019-2023):} El objetivo de este estudio consistió en caracterizar un perfil clínico y demográfico de pacientes adultos con diagnóstico de cáncer pulmonar confirmado en el hospital regional de Temuco entre 2019 y 2023 y analizar su asociación con factores de riesgo locales (como tabaquismo y exposición a biomasa), síntomas al diagnóstico y presencia de mutaciones moleculares. Para ello, se analizó una cohorte retrospectiva extraída de fichas clínicas de 220 pacientes del Hospital Hernán Henríquez Aravena (Temuco), mayores de 15 años, con confirmación histológica (biopsia) de cáncer pulmonar, entre octubre de 2019 y junio de 2023. Como metodología, el diseño de este estudio fue observacional y descriptivo, donde se usó estadística descriptiva y se realizó un análisis exploratorio de datos, calculando medidas de tendencia central (promedio, mediana) y dispersión (desviación estándar) para variables numéricas (como la edad) y para las variables categóricas (como sexo o etapa), se usaron distribuciones de frecuencia absoluta y relativa (porcentajes). En específico, se evaluaron variables biosociodemográficas, clínicas (escala ECOG, etapa TNM), tipos de biopsia y estudios de patología molecular (EGFR, ALK y PDL-1). Como resultado, de los 220 pacientes confirmados con cáncer de pulmón, se obtuvo un perfil de 55.3\% hombres con una edad promedio de 68 años (con una desviación estándar de 9.5 años), donde el 67.7\% tenía antecedentes de tabaquismo y un 29.5\% presentaba exposición a biomasa (leña). Además, se evidenció un diagnóstico alarmantemente tardío, con un 81.9\% de los casos detectados en etapas avanzadas (III-IV), siendo el adenocarcinoma el subtipo principal (63.9\%). Finalmente, se encontró una asociación significativa entre la expresión de PDL-1 y la exposición a biomasa, concluyendo que existe una necesidad urgente de implementar métodos de screening local (pruebas para detectar enfermedades o anomalías) para pacientes asintomáticos de alto riesgo \cite{scielo1}.
+    \item \textbf{Mortalidad por cáncer oral y orofaríngeo en Chile entre los años 1955 al 2021:} El objetivo de este estudio fue determinar y analizar la variación histórica y la tendencia de las tasas de mortalidad por cáncer oral y orofaríngeo en la población chilena a lo largo de un periodo de 66 años (entre 1955 y 2021). Para ello, se utilizaron los registros oficiales de defunción del Instituto Nacional de Estadísticas (INE) y del Departamento de Estadísticas e Información en Salud (DEIS). Para ello, se calcularon las tasas brutas de mortalidad por 100000 habitantes y se estratificaron los hallazgos por género. En específico, este estudio fue cuantitativo, descriptivo y observacional, donde se ajustaron las tasas de mortalidad por edad (estandarizadas a la población mundial de la OMS) para hacer comparables los datos en el tiempo, y se utilizó regresión Joinpoint, la cual identifica matemáticamente puntos de quiebre donde la tendencia cambia significativamente de dirección, calculando el porcentaje de cambio anual (APC) para cada tramo: en donde si es positivo, la mortalidad aumentó en ese período; si es negativo, disminuyó. Además, se usaron intervalos de confianza del 95\% para asegurar que las tendencias observadas no son producto del azar; es decir, si el estudio se repitiera 100 veces, en 95 de ellas el resultado estaría dentro de ese rango. Como resultado, de un total de 9345 muertes analizadas en el período estudiado, las tasas brutas de mortalidad oscilaron entre 0.92 y 1.53 por cada 100000 habitantes, evidenciando una clara tendencia al alza a nivel nacional, especialmente desde el año 2011. Además, la tasa de mortalidad se concentró fuertemente en el grupo de 75 años o más, y aunque los hombres presentan una tasa de mortalidad mayor (1,64) en comparación con las mujeres (0,67), la brecha histórica de género ha disminuido. Finalmente este estudio valida que las variables edad y sexo son predictores críticos para la mortalidad por cáncer oral y orofaríngeo, y se concluye que a pesar de la leve reducción nacional en el consumo de tabaco, la mortalidad sigue aumentando, lo que evidencia la falta de políticas públicas efectivas para la detección y diagnóstico temprano de estas patologías específicas \cite{scielo2}.
+    \item \textbf{Comportamiento del cáncer de tiroides en la Unidad de Cirugía Adulto del Hospital Clínico Herminda Martín de Chillán. Período 2017 al 2019:} El objetivo de este estudio fue describir el comportamiento clínico, demográfico e histopatológico del cáncer de tiroides en pacientes de la Región de Ñuble sometidos a resolución quirúrgica en la unidad de cirugía adulto. Para ello, se analizaron los registros clínicos de 124 pacientes operados por patología tiroidea en el Hospital Clínico Herminda Martín de Chillán, entre 2017 y 2019, de los cuales 58 fueron confirmados con patología maligna. Como metodología, se tabuló la correspondencia diagnóstica del sistema citológico de Bethesda, el tipo de resección (tiroidectomía) y parámetros de extensión tumoral, para ello se revisaron fichas clínicas, protocolos operatorios y biopsias de pacientes operados por patología tiroidea, calculando frecuencias relativas (porcentajes) para las variables cualitativas (como tipo de cirugía y sexo) y promedios para las variables cuantitativas (como edad y tiempo de espera). Como resultado, de los 124 pacientes operados, 58 presentaban cáncer (46.8\%), predominando las mujeres (86.2\%) y una edad promedio de 47.5 años. El diagnóstico más frecuente fue el carcinoma papilar (93.1\%) y el procedimiento más frecuente fue la tiroidectomía total (74,1\%), que implica la extirpación completa de la glándula tiroides. Además, clínicamente se reportó un 98\% de asociación simultánea entre la presencia de cáncer y cuadros de tiroiditis y se midieron los tiempos de espera quirúrgica, encontrándose un promedio de 147 días para pacientes con cáncer. Finalmente, este estudio destaca que más de la mitad de los tumores femeninos medían más de 1cm y el 36\% ya presentaban invasión extratiroidea al momento de la cirugía, variables de extensión que los autores relacionan críticamente con los prolongados tiempos de espera en la red pública de salud. Cabe destacar que, estos resultados son válidos para describir la realidad local del hospital, ya que se trató de un estudio censal de la unidad, considerando a todos los pacientes operados en el período, sin error de muestreo \cite{scielo3}.
+    \item \textbf{Cáncer en Chile y en el mundo: una mirada actual y su futuro escenario epidemiológico:} El objetivo de este estudio fue evaluar el escenario epidemiológico contemporáneo del cáncer a nivel mundial y realizar una proyección del impacto de esta enfermedad en la población chilena para orientar la planificación sanitaria. Para ello, se hizo una revisión narrativa de la literatura fundamentada en datos oficiales de agencias internacionales (como la OMS, GLOBOCAN, IARC) e instituciones nacionales (como el MINSAL, DEIS y encuestas nacionales de salud), analizando el incremento histórico de mortalidad y morbilidad entre 1986 y 2018, a través de la recopilación de estadísticas de incidencia, mortalidad y factores de riesgo asociados a la oncología, con el fin de sintetizar indicadores precalculados provenientes de fuentes secundarias validadas. Como resultado, en 2018 se diagnosticaron 53365 nuevos casos de cáncer en Chile y la mortalidad por neoplasias aumentó un 109\% entre 1986 y 2016, proyectándose como una potencial causa de muerte en Chile. Se identificó que Los cánceres más frecuentes fueron próstata, colorrectal, mama, estómago y pulmón, y se confirmó que, al momento del estudio (2020), el cáncer estaba desplazando a las enfermedades cardiovasculares como primera causa de muerte, siendo ya la principal causa en cinco regiones del país: Arica y Parinacota, Antofagasta, Coquimbo (mencionada como La Serena en la investigación), Los Lagos y Aysén. Por otro lado, las proyecciones estimaron un incremento del 77.6\% en nuevos diagnósticos para 2040 y se consideró que cerca del 40\% de los diagnósticos oncológicos están asociados a factores de riesgo modificables, concluyendo que es imperativo implementar un rediseño de las políticas de salud pública enfocado en el fomento de estilos de vida saludables, control de obesidad y la detección temprana de enfermedades o factores de riesgo. Cabe destacar que la validez del estudio se sustenta en la autoridad y confiabilidad de las fuentes citadas (\cite{scielo4}). 
+
+\end{itemize}
+
+% INSERTAR TABLA RESUMEN
+
+
+
+
+
+
+
+
+
+\section{Primera parte}
+\label{sec:primera}
+Participación y fuerte apoyo del DIINF a la organización del World Computer Congress de la IFIP (International Federation for Information Processing). La principal organización apolítica multinacional en Tecnologías de Información, Comunicaciones y Ciencias, reconocida por las naciones unidas entre otros organismos de carácter mundial Figura \ref{fig:ejemplo}.
+
+\begin{figure}[!ht]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[scale=0.6]{images/Ejemplo.png}
+	\caption[Ejemplo de figura.]{Ejemplo de figura.\\Fuente: Elaboraci\'on propia, 2012.}
+	\label{fig:ejemplo}
+\end{figure}
+
+\section{Segunda parte}
+\label{sec:segunda}
+
+El año 2007 el Departamento apoyó la creación de la Asociación Gremial de Ingenieros Informáticos UTE-USACH, formada el 9 de Agosto de 2007. Esta asociación ha posibilitado mantener el vínculo necesario del Departamento con el medio y a su vez con sus egresados la Tabla \ref{tab:ejemplo}.
+
+\begin{table}[!ht]
+	\begin{center}
+		\caption{Tabla de ejemplo.}
+		\begin{tabular}{| c | c |}
+			\hline
+			A & B \\ \hline
+			1 & 4 \\
+			2 & 5 \\
+			3 & 6 \\\hline
+		\end{tabular}
+		\label{tab:ejemplo}
+	\end{center}
+	\begin{center}
+		Fuente: \cite{MeriaudeauS15}.
+	\end{center}
+\end{table}
+
+\section{Tercera parte}
+\label{sec:tercera}
+Actualmente el Departamento cuenta con 14 académicos jornada completa y tres investigadores asociados, de los cuales un 95\% tiene grado de Doctor. Se están ejecutando más de una decena de proyectos de investigación, en diferentes áreas. Además la productividad científica se expresa en más de 25 publicaciones en revistas indexadas en los últimos 5 años.
+
+\begin{algorithm}[!ht]
+	\caption{Algoritmo de ejemplo.}
+	\label{alg:ejemplo}
+	\begin{algorithmic}[1]
+	\REQUIRE Entrada de ejemplo.
+	\ENSURE Salida de ejemplo.	
+	
+	\IF {esto est\'a bien}
+		\STATE hacer algo
+	\ELSE
+		\STATE hacer otra cosa
+	\ENDIF
+	
+	\RETURN Retornar ejemplo
+	
+	\end{algorithmic}
+\end{algorithm}
+
+\section{Cuarta parte}
+\label{sec:cuarta}
+Desde el año 1972, con la creación de la carrera de Ingeniería de Ejecución en Computación e Informática, la UdeSantiago comenzó un proceso  de formación de un cuerpo académico de excelencia, que se ha ido involucrando en proyectos cada vez más ambiciosos, en zonas de frontera tecnológica en diversas áreas aplicativas de la informática la Ecuación \ref{eq:ejemplo}.
+
+\begin{equation}
+	A = B + C
+\label{eq:ejemplo}
+\end{equation}

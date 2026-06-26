@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: tesis-usach.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+A level-1 auxiliary file: preliminares/cubierta.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+A level-1 auxiliary file: preliminares/abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: apa-good.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: bibliografia.bib
+Warning--entry type for "uc2025" isn't style-file defined
+--line 13 of file bibliografia.bib
+Warning--entry type for "Metamodelo2024" isn't style-file defined
+--line 32 of file bibliografia.bib
+Warning--entry type for "Sigesa2019" isn't style-file defined
+--line 40 of file bibliografia.bib
+Warning--I didn't find a database entry for "wirth2000crisp"
+Warning--missing institution in minsal2024_procedimientos
+You've used 47 entries,
+            2804 wiz_defined-function locations,
+            855 strings with 16578 characters,
+and the built_in function-call counts, 27718 in all, are:
+= -- 2131
+> -- 1434
+< -- 29
++ -- 554
+- -- 493
+* -- 2144
+:= -- 4512
+add.period$ -- 143
+call.type$ -- 47
+change.case$ -- 410
+chr.to.int$ -- 45
+cite$ -- 48
+duplicate$ -- 1961
+empty$ -- 1844
+format.name$ -- 601
+if$ -- 5254
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 450
+newline$ -- 259
+num.names$ -- 190
+pop$ -- 852
+preamble$ -- 1
+purify$ -- 345
+quote$ -- 0
+skip$ -- 673
+stack$ -- 0
+substring$ -- 1000
+swap$ -- 1070
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 414
+warning$ -- 1
+while$ -- 179
+width$ -- 0
+write$ -- 625
+(There were 5 warnings)
