@@ -10,73 +10,75 @@ Resultados y análisis.
 
 \subsection{Resultados del análisis de los archivos brutos de GRD}
 
-Durante la auditoría estructural sobre los archivos planos y anuales de GRD descargados desde la plataforma de datos abiertos, se obtuvo la siguiente codificación de caracteres para cada archivo, la presencia de anomalías de dimensionalidad en filas específicas (filas con más columnas que el resto) y modificaciones en las variables identificadoras de los pacientes. Estos resultados se resumen en la Tabla \ref{tab:auditoria_inicial_grd}:
+Durante la auditoría estructural de los archivos planos anuales de GRD descargados desde la plataforma de datos abiertos, se determinó la codificación de caracteres de cada archivo, la presencia de anomalías de dimensionalidad en filas específicas (filas con un mayor número de columnas que el resto) y las modificaciones en las variables identificadoras de los pacientes. Estos resultados se resumen en la Tabla \ref{tab:auditoria_inicial_grd}:
 
 \begin{table}[htbp]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.2}
-\caption{Resultados de la auditoría técnica y estructural de los archivos brutos GRD (2019-2024).}
+\caption{Resultados de la auditoría estructural de los archivos brutos GRD (2019--2024).}
 \label{tab:auditoria_inicial_grd}
 \begin{tabular}{|c|c|c|c|l|}
 \hline
-\parbox[t]{1cm}{\textbf{Período}} & 
-\parbox[t]{2.3cm}{\textbf{Tamaño físico\\(Bytes)}} & 
-\parbox[t]{2.0cm}{\textbf{Codificación\\aprobada}} & 
-\parbox[t]{2.5cm}{\textbf{Volumen Total\\(Filas / columnas)}} & 
+\parbox[t]{1cm}{\textbf{Período}} &
+\parbox[t]{2.3cm}{\textbf{Tamaño físico\\(Bytes)}} &
+\parbox[t]{2.0cm}{\textbf{Codificación\\aprobada}} &
+\parbox[t]{2.5cm}{\textbf{Volumen total\\(Filas / columnas)}} &
 \parbox[t]{5.2cm}{\textbf{Hallazgos y observaciones\\estructurales}} \\ \hline
 
-\parbox[t]{1cm}{2019} & 
-\parbox[t]{2.3cm}{572.538.020} & 
-\parbox[t]{2.0cm}{\texttt{utf-8}} & 
-\parbox[t]{2.5cm}{1.151.475 / 129} & 
-\parbox[t]{5.2cm}{Estructura íntegra sin presencia de filas defectuosas. Preserva identificador histórico \texttt{CIP\_ENCRIPTADO}.} \\ \hline
+\parbox[t]{1cm}{2019} &
+\parbox[t]{2.3cm}{572.538.020} &
+\parbox[t]{2.0cm}{\texttt{utf-8} (confianza: 0.99)} &
+\parbox[t]{2.5cm}{1.151.475 / 129} &
+\parbox[t]{5.2cm}{No se detectaron filas defectuosas. Se preservó el identificador histórico \texttt{CIP\_ENCRIPTADO}.} \\ \hline
 
-\parbox[t]{1cm}{2020} & 
-\parbox[t]{2.3cm}{397.026.707} & 
-\parbox[t]{2.0cm}{\texttt{utf-8}} & 
-\parbox[t]{2.5cm}{781.912 / 129} & 
-\parbox[t]{5.2cm}{Disminución del volumen total debido probablemente al impacto sanitario pandémico. Hay consistencia del esquema de columnas.} \\ \hline
+\parbox[t]{1cm}{2020} &
+\parbox[t]{2.3cm}{397.026.707} &
+\parbox[t]{2.0cm}{\texttt{utf-8} (confianza: 0.99)} &
+\parbox[t]{2.5cm}{781.912 / 129} &
+\parbox[t]{5.2cm}{Disminución del volumen de registros, probablemente debido al impacto sanitario de la pandemia. Se mantuvo la consistencia del esquema de columnas.} \\ \hline
 
-\parbox[t]{1cm}{2021} & 
-\parbox[t]{2.3cm}{428.657.825} & 
-\parbox[t]{2.0cm}{\texttt{utf-8-sig}} & 
-\parbox[t]{2.5cm}{816.909 / 129} & 
-\parbox[t]{5.2cm}{Inclusión programática de la marca de orden de bytes (BOM) al inicio del archivo. Hubo ingesta limpia sin pérdida.} \\ \hline
+\parbox[t]{1cm}{2021} &
+\parbox[t]{2.3cm}{428.657.825} &
+\parbox[t]{2.0cm}{\texttt{utf-8-sig} (confianza: 1)} &
+\parbox[t]{2.5cm}{816.909 / 129} &
+\parbox[t]{5.2cm}{Se incorporó la marca de orden de bytes (BOM) al inicio del archivo. La lectura se realizó sin pérdida de información.} \\ \hline
 
-\parbox[t]{1cm}{2022} & 
-\parbox[t]{2.3cm}{960.774.530} & 
-\parbox[t]{2.0cm}{\texttt{utf-16}} & 
-\parbox[t]{2.5cm}{932.840 / 129} & 
-\parbox[t]{5.2cm}{Migración sistémica a codificación de 16 bits. Hubo una detección de una anomalía posicional (línea 120.127 con 130 columnas, en vez de 129), corregida en preprocesamiento.} \\ \hline
+\parbox[t]{1cm}{2022} &
+\parbox[t]{2.3cm}{960.774.530} &
+\parbox[t]{2.0cm}{\texttt{utf-16} (confianza: 1)} &
+\parbox[t]{2.5cm}{932.840 / 129} &
+\parbox[t]{5.2cm}{Migración de la codificación a \texttt{utf-16}. Además, se detectó una anomalía posicional en la línea 120.127, con 130 columnas en lugar de 129, la cual fue corregida durante el preprocesamiento.} \\ \hline
 
-\parbox[t]{1cm}{2023} & 
-\parbox[t]{2.3cm}{1.075.450.968} & 
-\parbox[t]{2.0cm}{\texttt{utf-16}} & 
-\parbox[t]{2.5cm}{1.039.587 / 129} & 
-\parbox[t]{5.2cm}{Incremento del volumen de registros por sobre el millón de egresos. Obtuvo un esquema libre de problemas de delimitación.} \\ \hline
+\parbox[t]{1cm}{2023} &
+\parbox[t]{2.3cm}{1.075.450.968} &
+\parbox[t]{2.0cm}{\texttt{utf-16} (confianza: 1)} &
+\parbox[t]{2.5cm}{1.039.587 / 129} &
+\parbox[t]{5.2cm}{Incremento del volumen de registros, superando el millón de egresos. No se detectaron problemas de delimitación en el archivo.} \\ \hline
 
-\parbox[t]{1cm}{2024} & 
-\parbox[t]{2.3cm}{566.268.922} & 
-\parbox[t]{2.0cm}{\texttt{latin1}} & 
-\parbox[t]{2.5cm}{1.085.813 / 129} & 
-\parbox[t]{5.2cm}{Error crítico del analizador heurístico de codificación (\texttt{hp-roman8}, con confianza 0.01). Estabilizado mediante decodificación manual \texttt{latin1}. Y hubo una modificación del identificador del paciente a \texttt{ID\_BENEFICIARIO} (en el resto de años se le asignaba la variable \texttt{CIP\_ENCRIPTADO}).} \\ \hline
+\parbox[t]{1cm}{2024} &
+\parbox[t]{2.3cm}{566.268.922} &
+\parbox[t]{2.0cm}{\texttt{latin1} (\texttt{ISO-8859-1}) (confianza: 0.73)} &
+\parbox[t]{2.5cm}{1.085.813 / 129} &
+\parbox[t]{5.2cm}{La detección automática obtuvo una confianza de 0.73 para la codificación \texttt{ISO-8859-1}. La lectura se estabilizó mediante decodificación manual con \texttt{latin1}. Además, el identificador del paciente cambió de \texttt{CIP\_ENCRIPTADO} a \texttt{ID\_BENEFICIARIO}.} \\ \hline
+
 \end{tabular}
 \end{table}
 
-El análisis comparativo determinó que todas las columnas mantuvieron una equivalencia funcional a lo largo de los 6 años analizados y no cambiaron sus nombres, con excepción del cambio nominal del identificador del paciente en 2024 (que cambió de \texttt{CIP\_ENCRIPTADO} a \texttt{ID\_BENEFICIARIO}). Esta inconsistencia fue mitigada en la etapa de clasificación oncológica para evitar la pérdida de continuidad en el análisis temporal. 
+El análisis comparativo determinó que todas las columnas mantuvieron una equivalencia funcional a lo largo de los seis años analizados y conservaron sus nombres, con excepción del identificador del paciente en 2024, que cambió de \texttt{CIP\_ENCRIPTADO} a \texttt{ID\_BENEFICIARIO}. Sin embargo, esta inconsistencia fue mitigada durante la etapa de clasificación oncológica para preservar la continuidad del análisis temporal.
 
-Cabe destacar que los años 2019 y 2024 presentaron mayor cantidad de episodios (filas) que en los años intermedios, por otro lado, en los años 2020 y 2021 se observó una disminución del volumen de registros, probablemente debido al impacto sanitario de la pandemia de COVID-19.
+Respecto de la codificación de caracteres, el archivo correspondiente a 2024 presentó una confianza inferior a 0.99 en la detección automática. Por este motivo, se evaluó su lectura utilizando distintas codificaciones, entre ellas \texttt{utf-8}, \texttt{utf-16}, \texttt{cp1252} y \texttt{latin1}. Posteriormente, se realizó un conteo de caracteres especiales (como Ñ, ñ y vocales acentuadas) bajo cada alternativa para verificar que dichos caracteres se preservaran correctamente. Finalmente, aunque el detector automático identificó la codificación como \texttt{ISO-8859-1}, se optó por utilizar \texttt{latin1}, dado que ambas son equivalentes en Python, ya que mapean los bytes del 0 al 255 a los mismos caracteres. Además, \texttt{latin1} constituye la codificación más utilizada en scripts de Python para este tipo de archivos, lo que favorece la compatibilidad y garantiza la correcta preservación de caracteres acentuados y de la letra ñ.
 
+Cabe destacar que los años 2019 y 2024 presentaron un mayor número de episodios (filas) que los años intermedios. Por otro lado, durante 2020 y 2021 se observó una disminución del volumen de registros, probablemente como consecuencia del impacto sanitario asociado a la pandemia de COVID-19.
 
 \subsection{Distribución oncológica y control de la cohorte}
 
-Tras la el filtrado inicial y clasificación de diagnósticos, el proceso de limpieza y unificación permitió retener un total de $5.808.455$ episodios clínicos válidos. Al aplicar el algoritmo de clasificación basado en el Capítulo II de la CIE-10 (C00-C97), se detectaron $498.618$ episodios que presentaron al menos un diagnóstico oncológico activo durante su estadía hospitalaria, tanto en su diagnóstico principal (\texttt{DIAGNOSTICO1}) como secundario (\texttt{DIAGNOSTICO2-35}).
+Tras el filtrado inicial y la clasificación de diagnósticos, el proceso de limpieza y unificación permitió retener un total de $5.808.455$ episodios clínicos válidos. Al aplicar el algoritmo de clasificación basado en el Capítulo II de la CIE-10 (C00-C97), se detectaron $498.618$ episodios que presentaban al menos un diagnóstico oncológico activo durante su estadía hospitalaria, ya fuera en el diagnóstico principal (\texttt{DIAGNOSTICO1}) o en alguno de los diagnósticos secundarios (\texttt{DIAGNOSTICO2-35}).
 
-Respecto a los episodios oncológicos identificados, se observaron diferencias entre los motivos de ingreso directo (diagnóstico principal) y las comorbilidades oncológicas (diagnósticos secundarios). En específico, el análisis reveló que el 4,68\% de los episodios de ingreso tenían un diagnóstico oncológico principal ($272.093$ instancias), mientras que un 3,90\% presentaban cáncer como diagnóstico secundario ($226.525$ instancias). En su conjunto, la cohorte oncológica representó el 8,58\% de todos los egresos hospitalarios de la red pública en el período estudiado, conformando un grupo de control (\texttt{SIN\_CANCER}) masivo de $5.309.837$ episodios (91,42\%).
+Respecto de los episodios oncológicos identificados, se observaron diferencias entre los motivos de ingreso directo (diagnóstico principal) y las comorbilidades oncológicas (diagnósticos secundarios). En particular, el análisis reveló que el 4,68\% de los episodios hospitalarios presentaban un diagnóstico oncológico principal ($272.093$ instancias), mientras que el 3,90\% correspondían a cáncer como diagnóstico secundario ($226.525$ instancias). En conjunto, la cohorte oncológica representó el 8,58\% de todos los egresos del período, mientras que el grupo de control (\texttt{SIN\_CANCER}) estuvo conformado por $5.309.837$ episodios (91,42\%).
 
-Como se ve en la tabla \ref{tab:distribucion_anual_cohorte}, en 2024 hubo un mayor número de episodios oncológicos respecto al resto de años, con un total de $55.111$ episodios con cáncer como diagnóstico principal y $44.042$ episodios con cáncer como diagnóstico secundario, representando a un 9,14\% de los episodios hospitalarios de ese año, alineandose con la tendencia de proyección del cáncer indicada en antecedentes. En contraste, el año 2020 presentó la menor cantidad de episodios oncológicos, con $35.294$ episodios con cáncer como diagnóstico principal y $29.632$ episodios con cáncer como diagnóstico secundario, representando a un 8,30\% de los episodios hospitalarios de ese año, probablemente debido al impacto sanitario de la pandemia de COVID-19.
+Como se observa en la Tabla \ref{tab:distribucion_anual_cohorte}, el año 2024 presentó el mayor número de episodios oncológicos respecto del resto de los años analizados, con un total de $55.111$ episodios con cáncer como diagnóstico principal y $44.042$ como diagnóstico secundario. En conjunto, estos representaron el 9,14\% de los episodios hospitalarios de ese año, alineándose con la tendencia creciente de la carga oncológica descrita en los antecedentes de esta investigación. En contraste, el año 2020 registró la menor cantidad de episodios oncológicos, con $35.294$ episodios con cáncer como diagnóstico principal y $29.632$ como diagnóstico secundario, equivalentes al 8,30\% de los episodios hospitalarios del período, probablemente como consecuencia del impacto sanitario asociado a la pandemia de COVID-19.
 
 \begin{table}[htbp]
 \centering
@@ -103,57 +105,50 @@ Como se ve en la tabla \ref{tab:distribucion_anual_cohorte}, en 2024 hubo un may
 \parbox[t]{1.5cm}{\centering 2023} & \parbox[t]{1.8cm}{\raggedleft 51.784} & \parbox[t]{1.5cm}{\raggedleft 4,98\%} & \parbox[t]{1.8cm}{\raggedleft 38.931} & \parbox[t]{1.5cm}{\raggedleft 3,74\%} & \parbox[t]{2.0cm}{\raggedleft 948.872} & \parbox[t]{1.5cm}{\raggedleft 91,27\%} & \parbox[t]{1.8cm}{\raggedleft 1.039.587} \\ \hline
 \parbox[t]{1.5cm}{\centering 2024} & \parbox[t]{1.8cm}{\raggedleft 55.111} & \parbox[t]{1.5cm}{\raggedleft 5,08\%} & \parbox[t]{1.8cm}{\raggedleft 44.042} & \parbox[t]{1.5cm}{\raggedleft 4,06\%} & \parbox[t]{2.0cm}{\raggedleft 986.660} & \parbox[t]{1.5cm}{\raggedleft 90,87\%} & \parbox[t]{1.8cm}{\raggedleft 1.085.813} \\ \hline
 \rowcolor{gray!20}
-\parbox[t]{1.5cm}{\centering\textbf{TOTAL GENERAL}} & \parbox[t]{1.8cm}{\raggedleft\textbf{272.093}} & \parbox[t]{1.5cm}{\raggedleft\textbf{4,68\%}} & \parbox[t]{1.8cm}{\raggedleft\textbf{226.525}} & \parbox[t]{1.5cm}{\raggedleft\textbf{3,90\%}} & \parbox[t]{2.0cm}{\raggedleft\textbf{5.309.837}} & \parbox[t]{1.5cm}{\raggedleft\textbf{91,42\%}} & \parbox[t]{1.8cm}{\raggedleft\textbf{5.808.455}} \\ \hline
+\parbox[t]{1.5cm}{\centering\textbf{TOTAL}} & \parbox[t]{1.8cm}{\raggedleft\textbf{272.093}} & \parbox[t]{1.5cm}{\raggedleft\textbf{4,68\%}} & \parbox[t]{1.8cm}{\raggedleft\textbf{226.525}} & \parbox[t]{1.5cm}{\raggedleft\textbf{3,90\%}} & \parbox[t]{2.0cm}{\raggedleft\textbf{5.309.837}} & \parbox[t]{1.5cm}{\raggedleft\textbf{91,42\%}} & \parbox[t]{1.8cm}{\raggedleft\textbf{5.808.455}} \\ \hline
 \end{tabular}
 \end{table}
 
-Por otro lado, la Figura \ref{fig:proporcion_total} muestra la distribución de los diagnósticos oncológicos en la población general, demostrando que la mayoría de episodios oncológicos se presentaron como diagnóstico principal (4,68\%) en comparación con los diagnósticos secundarios (3,90\%). Esto sugiere que el cáncer es a menudo la razón primaria de hospitalización, aunque también es común que los pacientes ingresen por otras urgencias y tengan cáncer como comorbilidad. En conjunto, la cohorte oncológica representó el 8,58\% de todos los egresos hospitalarios, lo que resalta la significativa carga que el cáncer impone sobre el sistema de salud pública chileno. Además, como se tenía previsto, la mayor cantidad de episodios corresponden a pacientes sin diagnóstico oncológico (grupo de control, \texttt{SIN\_CANCER}), representando el 91,42\% de los episodios hospitalarios. Este grupo masivo de control es fundamental para evitar sesgos de selección y para permitir comparaciones robustas entre pacientes oncológicos y no oncológicos en las fases posteriores del análisis, especialmente al evaluar factores de riesgo asociados al cáncer.
+Por otro lado, la Figura \ref{fig:proporcion_total} muestra la distribución de los diagnósticos oncológicos en la población general, evidenciando que la mayoría de los episodios oncológicos correspondieron a diagnósticos principales (4,68\%), en comparación con los diagnósticos secundarios (3,90\%). Este resultado sugiere que el cáncer constituye con frecuencia la causa principal de hospitalización, aunque también es habitual que los pacientes ingresen por otras patologías y presenten cáncer como comorbilidad. En conjunto, la cohorte oncológica representó el 8,58\% de todos los egresos hospitalarios, lo que evidencia la importante carga asistencial que el cáncer impone sobre el sistema público de salud chileno. Asimismo, tal como se esperaba, la mayor proporción de episodios correspondió a pacientes sin diagnóstico oncológico (grupo de control, \texttt{SIN\_CANCER}), representando el 91,42\% de los episodios hospitalarios. La incorporación de este grupo de control de gran tamaño resulta fundamental para minimizar sesgos de selección y permitir comparaciones robustas entre pacientes oncológicos y no oncológicos en las etapas posteriores del análisis, especialmente en la evaluación de factores de riesgo asociados al cáncer.
 
 \begin{figure}[htbp]
     \centering
 	\captionsetup{justification=centering}
-    \includegraphics[width=0.6\textwidth]{images/proporcion_total_pacientes.png}
+    \includegraphics[width=0.5\textwidth]{images/proporcion_total_pacientes.png}
     \caption{Proporción total de pacientes y desglose de diagnósticos oncológicos (2019-2024).
     \\Fuente: Elaboraci\'on propia, 2026.}
     \label{fig:proporcion_total}
 \end{figure}
 
-Finalmente, se realizó un gráfico de barra para visualizar la distribución de cada tipo de cáncer según la codificación CIE-10 (Figura \ref{fig:barras_categorias}), en donde se observa que la mayoría de los episodios oncológicos se concentraron en cáncer de órganos digestivos (C15-C26) con $133.249$ episodios, seguidos por neoplasias de tejidos linfoide, hematopoyético y relacionados (C81-C96) con $85.492$ episodios, cáncer de mama (C50) con $59.990$ episodios y tumores en órganos genitales femeninos (C51-C58) con $42.030$ episodios.En donde, esta distribución confirma la alta demanda de recursos especializados que estas localizaciones específicas exigen dentro del sistema hospitalario chileno, lo que tiene implicaciones directas para la planificación de servicios oncológicos y la asignación de recursos.
+Finalmente, se elaboró un gráfico de barras para visualizar la distribución de cada tipo de cáncer según la clasificación CIE-10 (Figura \ref{fig:barras_categorias}), en donde se observa que la mayor cantidad de episodios oncológicos se concentró en los cánceres de órganos digestivos (C15-C26), con $133.249$ episodios, seguidos por las neoplasias de tejidos linfoide, hematopoyético y relacionados (C81-C96), con $85.492$ episodios, el cáncer de mama (C50), con $59.990$ episodios, y los tumores de órganos genitales femeninos (C51-C58), con $42.030$ episodios. Por ende, esta distribución confirma la elevada demanda de recursos que estas localizaciones anatómicas generan dentro del sistema hospitalario chileno, lo que tiene implicaciones directas para la planificación de los servicios oncológicos y la asignación de recursos sanitarios.
 
 \begin{figure}[htbp]
     \centering
 	\captionsetup{justification=centering}
-    \includegraphics[width=1\textwidth]{images/barras_total_pacientes.png}
+    \includegraphics[width=0.8\textwidth]{images/barras_total_pacientes.png}
     \caption{Distribución de episodios según categoría CIE-10 frente al grupo de control.
     \\Fuente: Elaboraci\'on propia, 2026.}
     \label{fig:barras_categorias}
 \end{figure}
 
+\subsection{Cardinalidad y juicio sobre las variables identificadoras para la fase de modelado}
 
-\section{Análisis de variables demográficas, clínicas y hospitalarias}
+Tras analizar la cardinalidad y la distribución de cada variable identificadora en los registros GRD, se consolidó la Tabla \ref{tab:cardinalidad_identificadores}, la cual presenta el volumen de identificadores únicos para pacientes, hospitales y médicos. En ella se observa que todos los identificadores presentan una alta cardinalidad, destacando el identificador de pacientes (\texttt{CIP\_ENCRIPTADO}), que registró entre 98.379 y 165.128 pacientes únicos durante el período analizado. Asimismo, se identificaron entre 65 y 72 hospitales únicos por año y más de 9.476 médicos distintos en cada período.
 
-\subsection{Análisis de variables identificadoras}
+Respecto al análisis de reingresos de pacientes, presentado en la Tabla \ref{tab:reingresos_pacientes}, se observa que durante los años 2019 y 2020 la frecuencia máxima estuvo dominada artificialmente por la etiqueta \texttt{SIN INFORMACIÓN}, registrando $8.307$ y $1.893$ episodios, respectivamente. Este hallazgo evidencia una limitación en la codificación de pacientes de la base de datos de origen, ya que el sistema agrupó bajo una misma cadena de texto (\texttt{SIN INFORMACIÓN}) todos aquellos egresos hospitalarios cuyos datos de identificación civil no pudieron ser encriptados o resultaron ilegibles en el nodo central. Por otra parte, a partir del año 2021 destacó el identificador anónimo \texttt{95162030}, el cual registró la mayor cantidad de hospitalizaciones durante tres períodos consecutivos, con un mínimo de 294 reingresos en 2021 y un máximo de 523 episodios en 2022.
 
-Para esta fase, se analizó la cardinalidad y distribución de cada variable identificadora presente en el registro hospitalario GRD, en donde la Tabla \ref{tab:cardinalidad_identificadores} expone el volumen de identificadores únicos para los pacientes, hospitales y médicos. En esta tabla se puede observar que todos los identificadores presentan un número alto de cardinalidad, en especial la cantidad de pacientes únicos (\texttt{CIP\_ENCRIPTADO}) que cuenta con más de 98.000 pacientes únicos en 2020. Por otro lado, hay entre 65 y 72 hospitales únicos durante el período analizado y más de 9.400 médicos únicos en cada año.
+En relación con los hospitales, la Tabla \ref{tab:concentracion_hospitales} evidencia que, aunque la cantidad de establecimientos hospitalarios aumentó de 65 en 2019 a 72 en 2024, la distribución de la carga asistencial fue marcadamente asimétrica. De forma consistente durante el período analizado, los cinco establecimientos de mayor complejidad concentraron entre el 16,5\% y el 18,6\% del total de egresos hospitalarios de la red pública nacional. Entre ellos, el establecimiento identificado con el código \texttt{114101} lideró sistemáticamente este indicador de volumen asistencial, correspondiente al Complejo Hospitalario Dr. Sótero del Río, ubicado en la comuna de Puente Alto, Santiago.
 
-Respecto al análisis de reingresos de pacientes, registrados en la Tabla \ref{tab:reingresos_pacientes}, se observa que en los años 2019 y 2020, la frecuencia máxima es dominada de forma artificial por la etiqueta \texttt{SIN INFORMACIÓN}, registrando $8.307$ y $1.893$ episodios respectivamente, sin embargo, este hallazgo evidencia un defecto de la codificación de pacientes en la base de datos de origen, ya que el sistema agrupó por defecto bajo una misma cadena de texto (\texttt{SIN INFORMACIÓN}) a todos aquellos egresos hospitalarios cuyos datos de identificación civil no pudieron ser encriptados o resultaron ilegibles en el nodo central. Por otro lado, a partir del año 2021, se destacó el identificador anónimo \texttt{95162030}, el cual obtuvo la mayor cantidad de registros hospitalarios durante tres períodos consecutivos, registrando un mínimo de 294 reingresos en 2021 y un máximo de 523 episodios durante 2022. 
+Además del hospital \texttt{114101}, entre los establecimientos con mayor frecuencia de registros se encontraron los hospitales codificados como \texttt{106100} (Hospital Carlos Van Buren, Valparaíso), \texttt{118100} (Hospital Clínico Regional Dr. Guillermo Grant Benavente, Concepción), \texttt{109100} (Complejo Hospitalario San José, Santiago, Independencia), \texttt{121109} (Hospital Dr. Hernán Henríquez Aravena, Temuco), \texttt{113100} (Hospital Barros Luco Trudeau, Santiago, San Miguel), \texttt{116105} (Hospital Dr. César Garavagno Burotto, Talca), \texttt{120101} (Complejo Asistencial Dr. Víctor Ríos Ruiz, Los Ángeles) y \texttt{124105} (Hospital de Puerto Montt). Cabe mencionar que estas codificaciones se encuentran especificadas en las tablas maestras GRD disponibles en el visor de datos abiertos de FONASA (\cite{fonasa_visor_grd}).
 
-En relación a los hospitales, en la Tabla \ref{tab:concentracion_hospitales} se evidencia que, a pesar de que la cantidad de recintos hospitalarios creció de 65 (en 2019) a 72 (en 2024), la distribución de la carga asistencial fue marcadamente asimétrica. De forma consistente durante el periodo evaluado, los cinco recintos de mayor envergadura absorbieron entre el 16,5\% y el 18,6\% de la totalidad de los egresos hospitalarios de la red nacional, siendo el hospital codificado como \texttt{114101} el centro que lideró invariablemente este indicador de volumen asistencial (correspondiente al hospital Complejo Hospitalario Dr. Sótero del Río, de Santiago, Puente Alto).
+En base a la cardinalidad y la distribución de frecuencias de cada identificador, se adoptaron las siguientes decisiones metodológicas respecto de su utilización en la fase de modelado:
 
-Además del hospital \texttt{114101}, dentro de los recintos más frecuentes se encontraron los hospitales codificados como \texttt{106100} (Hospital Carlos Van Buren, Valparaíso), \texttt{118100} (Hospital Clínico Regional Dr. Guillermo Grant Benavente, Concepción), \texttt{109100} (Complejo Hospitalario San José, Santiago, Independencia), \texttt{121109} (Hospital Dr. Hernán Henríquez Aravena, Temuco), \texttt{113100} (Hospital Barros Luco Trudeau, Santiago, San Miguel), \texttt{116105} (Hospital Dr. César Garavagno Burotto, Talca), \texttt{120101} (Complejo Asistencial Dr. Víctor Ríos Ruiz, Los Ángeles) y \texttt{124105} (Hospital de Puerto Montt). Cabe mencionar que estas codificaciones están específicadas en las tablas maestras GRD obtenidas en el tablero de datos abiertos (\cite{fonasa_visor_grd}).
-
-En base a las cardinalidades y frecuencias de cada identificador, se tomó la siguiente decisión para cada variable identificadora:
-\begin{itemize}
-    \item \textbf{Identificador de paciente (\texttt{CIP\_ENCRIPTADO} o \texttt{ID\_BENEFICIARIO}) (variable demográfica):} Se descartó su uso para la fase de modelado, ya que el código identificador encriptado de cada paciente no posee relación clínica ni operativa con su criticidad. Ya que se registró la existencia de pacientes con volúmenes de ingreso sospechosos o humanamente imposibles (como 8.307 episodios en 2019 para el registro \texttt{SIN INFORMACIÓN}, o 523 episodios para el ID \texttt{95162030} en 2022). Esto demuestra que la variable está probablemente contaminada con identificadores o códigos institucionales por defecto para pacientes sin registro, por lo cual, si se aplica transformaciones como One-Hot Encoding a una variable con miles de categorías crearía un conjunto de datos propenso al sobreajuste (\textit{overfitting}), afectando el rendimiento de los selectores de característica, además, cada episodio será evaluado como una instancia independiente según su contexto clínico. 
-    \item \textbf{Identificador de hospital (\texttt{COD\_HOSPITAL}) (variable hospitalaria):} Se descartó su uso para la fase de modelado, ya que tiene una dimensionalidad muy alta, al tener entre 65 y 72 categorías distintas por año. Además, esta variable está anidada jerárquicamente dentro de la variable \texttt{SERVICIO\_SALUD} (que agrupa por macrozonas geográficas y tiene menor cardinalidad), entonces mantener ambas variables generaría colinealidad. Además, el propósito central de este estudio es apoyar la planificación sanitaria y gestión de recursos a nivel macro (redes de salud), dirigidos a instituciones como FONASA y MINSAL, por lo que el análisis a nivel de hospital individual escapa al alcance epidemiológico de la caracterización.
-    \item \textbf{Identificador del médico de la primera intervención (\texttt{MEDICOINTERV1\_ENCRIPTADO}) (variable hospitalaria):} Se descartó su uso para la fase de modelado, ya que registra hasta 11.164 valores únicos por año, lo que generaría una matriz dispersa que penalizaría a los algoritmos de selección de características, por lo que el uso de este identificador es inviable metodológicamente. Además, el objetivo de este estudio es caracterizar, por ejemplo, qué procedimientos se hicieron, no quién los hizo.
-    \item \textbf{Identificador del médico de alta (\texttt{MEDICOALTA\_ENCRIPTADO}) (variable hospitalaria):} Se descartó su uso para la fase de modelado, ya que registra una cardinalidad extrema de hasta 17.743 valores únicos por año, lo que generaría una matriz dispersa que penalizaría a los algoritmos de selección de características, por lo que el uso de este identificador es inviable metodológicamente. En otras palabras, transformar esta variable es computacionalmente ineficiente y desviaría al modelo de su objetivo principal, el cual es descubrir perfiles clínicos, demográficos y hospitalarios a nivel de red hospitalaria.
-\end{itemize}
-
-% Por otro lado, la Tabla \ref{tab:concentracion_hospitales} evidencia que, a pesar de que la cantidad de recintos hospitalarios emisores de datos GRD creció de 65 (en 2019) a 72 (en 2024), la distribución de la carga asistencial fue marcadamente asimétrica. De forma consistente durante el sexenio evaluado, los cinco recintos de mayor envergadura absorbieron entre el 16,5\% y el 18,6\% de la totalidad de los egresos hospitalarios de la red nacional, siendo el hospital codificado como \texttt{114101} el centro que lideró invariablemente este indicador de volumen asistencial.
-
-
-% La existencia de un único código capaz de generar cientos de hospitalizaciones anuales dentro de una cohorte oncológica confirma que ciertos subgrupos de pacientes experimentan trayectorias asistenciales hiper-fragmentadas (como tratamientos seriados de quimioterapia, complicaciones agudas sucesivas o cuidados paliativos recurrentes). Este fenómeno valida la decisión de diseño de ingeniería de características tomada en este estudio, consistente en tratar cada hospitalización como un ``episodio operativo discreto e independiente'', ya que intentar modelar estas instancias vinculadas de forma tradicional habría provocado que un puñado de pacientes crónicos monopolizara el aprendizaje de los algoritmos supervisados, destruyendo la capacidad del modelo para generalizar el riesgo en la población oncológica general.
+\begin{enumerate}
+    \item \textbf{Identificador de paciente (\texttt{CIP\_ENCRIPTADO} o \texttt{ID\_BENEFICIARIO}) (variable demográfica):} Se \textbf{descartó} su utilización en la fase de modelado, ya que el identificador encriptado de cada paciente no presenta una relación clínica ni operativa con su nivel de criticidad. Además, se identificaron pacientes con volúmenes de hospitalización sospechosamente elevados o humanamente improbables, como los 523 episodios correspondientes al identificador \texttt{95162030} en 2022. Esto sugiere que la variable incorpora identificadores institucionales o códigos por defecto utilizados para pacientes sin registro. En consecuencia, la aplicación de transformaciones como \textit{One-Hot Encoding} sobre una variable con miles de categorías generaría un conjunto de datos altamente dimensional y propenso al sobreajuste (\textit{overfitting}), afectando negativamente el desempeño de los algoritmos de selección de características. Asimismo, cada episodio se evaluó como una instancia independiente según su contexto clínico.
+    \item \textbf{Identificador de hospital (\texttt{COD\_HOSPITAL}) (variable hospitalaria):} Se \textbf{descartó} su utilización en la fase de modelado debido a su elevada cardinalidad (entre 65 y 72 categorías por año). Además, esta variable se encuentra jerárquicamente contenida dentro de la variable \texttt{SERVICIO\_SALUD}, la cual agrupa los establecimientos según macrozonas geográficas y presenta una menor cardinalidad. Por lo tanto, mantener ambas variables incorporaría información redundante al modelo. Adicionalmente, el objetivo principal de este estudio consiste en apoyar la planificación sanitaria y la gestión de recursos a nivel macro, orientadas a organismos como FONASA y el MINSAL. En este contexto, un análisis centrado en hospitales individuales excede el alcance epidemiológico de la caracterización propuesta.
+    \item \textbf{Identificador del médico de la primera intervención (\texttt{MEDICOINTERV1\_ENCRIPTADO}) (variable hospitalaria):} Se \textbf{descartó} su utilización en la fase de modelado, ya que registra hasta 11.164 valores únicos por año, lo que generaría una matriz altamente dispersa y penalizaría el desempeño de los algoritmos de selección de características. Por esta razón, su incorporación resulta metodológicamente inviable. Además, el objetivo del estudio consiste en caracterizar aspectos clínicos y asistenciales, tales como los procedimientos realizados, y no identificar a los profesionales que los ejecutaron.
+    \item \textbf{Identificador del médico de alta (\texttt{MEDICOALTA\_ENCRIPTADO}) (variable hospitalaria):} Se \textbf{descartó} su utilización en la fase de modelado debido a su cardinalidad extremadamente alta, alcanzando hasta 17.743 valores únicos por año. Esto generaría una matriz dispersa que afectaría negativamente el desempeño de los algoritmos de selección de características, haciendo inviable su incorporación desde un punto de vista metodológico. En términos prácticos, la transformación de esta variable sería computacionalmente ineficiente y desviaría al modelo de su objetivo principal, que consiste en identificar perfiles clínicos, demográficos y hospitalarios a nivel de la red pública de salud.
+\end{enumerate}
 
 \begin{table}[htbp]
 \centering
@@ -172,8 +167,8 @@ En base a las cardinalidades y frecuencias de cada identificador, se tomó la si
 \parbox[t]{1.8cm}{\centering\textbf{2023}} & 
 \parbox[t]{1.8cm}{\centering\textbf{2024}} \\ \hline
 
-\parbox[t]{2.5cm}{\raggedright\texttt{CIP\_ENCRIPTADO}\\\textit{(Pacientes únicos repetidos)}} & \parbox[t]{1.8cm}{\raggedleft 165.128} & \parbox[t]{1.8cm}{\raggedleft 98.379} & \parbox[t]{1.8cm}{\raggedleft 108.689} & \parbox[t]{1.8cm}{\raggedleft 129.107} & \parbox[t]{1.8cm}{\raggedleft 151.694} & \parbox[t]{1.8cm}{\raggedleft 161.533} \\ \hline
-\parbox[t]{2.5cm}{\raggedright\texttt{COD\_HOSPITAL}\\\textit{(Hospitales emisores)}} & \parbox[t]{1.8cm}{\raggedleft 65} & \parbox[t]{1.8cm}{\raggedleft 65} & \parbox[t]{1.8cm}{\raggedleft 65} & \parbox[t]{1.8cm}{\raggedleft 68} & \parbox[t]{1.8cm}{\raggedleft 72} & \parbox[t]{1.8cm}{\raggedleft 72} \\ \hline
+\parbox[t]{2.5cm}{\raggedright\texttt{CIP\_ENCRIPTADO}\\\textit{(Pacientes únicos repetidos)}} & \parbox[t]{1.8cm}{\raggedleft 165.128} & \parbox[t]{1.8cm}{\raggedleft 98.379} & \parbox[t]{1.8cm}{\raggedleft 108.690} & \parbox[t]{1.8cm}{\raggedleft 129.107} & \parbox[t]{1.8cm}{\raggedleft 151.694} & \parbox[t]{1.8cm}{\raggedleft 161.533} \\ \hline
+\parbox[t]{2.5cm}{\raggedright\texttt{COD\_HOSPITAL}\\\textit{(Hospitales emisores)}} & \parbox[t]{1.8cm}{\raggedleft 65} & \parbox[t]{1.8cm}{\raggedleft 65} & \parbox[t]{1.8cm}{\raggedleft 65} & \parbox[t]{1.8cm}{\raggedleft 65} & \parbox[t]{1.8cm}{\raggedleft 68} & \parbox[t]{1.8cm}{\raggedleft 72} \\ \hline
 \parbox[t]{2.5cm}{\raggedright\texttt{MEDICOINTERV1}\\\textit{(Médicos tratantes)}} & \parbox[t]{1.8cm}{\raggedleft 9.617} & \parbox[t]{1.8cm}{\raggedleft 10.388} & \parbox[t]{1.8cm}{\raggedleft 9.476} & \parbox[t]{1.8cm}{\raggedleft 10.198} & \parbox[t]{1.8cm}{\raggedleft 10.569} & \parbox[t]{1.8cm}{\raggedleft 11.164} \\ \hline
 \parbox[t]{2.5cm}{\raggedright\texttt{MEDICOALTA}\\\textit{(Médicos de egreso)}} & \parbox[t]{1.8cm}{\raggedleft 14.104} & \parbox[t]{1.8cm}{\raggedleft 16.051} & \parbox[t]{1.8cm}{\raggedleft 15.500} & \parbox[t]{1.8cm}{\raggedleft 15.720} & \parbox[t]{1.8cm}{\raggedleft 16.479} & \parbox[t]{1.8cm}{\raggedleft 17.743} \\ \hline
 \end{tabular}
@@ -184,7 +179,7 @@ En base a las cardinalidades y frecuencias de cada identificador, se tomó la si
 \scriptsize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.2}
-\caption{Casos críticos de reingreso hospitalario: Identificadores con máxima frecuencia anual de episodios (2019-2024).}
+\caption{Casos críticos de reingreso hospitalario (2019-2024).}
 \label{tab:reingresos_pacientes}
 \begin{tabular}{|c|l|l|}
 \hline
@@ -247,42 +242,25 @@ En base a las cardinalidades y frecuencias de cada identificador, se tomó la si
 \end{tabular}
 \end{table}
 
-% \subsection{Análisis de cardinalidad y riesgo de fuga de datos (\textit{Data Leakage})}
+\subsection{Juicio sobre las de variables temporales para la fase de modelado}
 
-% En la Tabla \ref{tab:cardinalidad_identificadores} se expone el volumen de identificadores únicos para los principales actores del proceso hospitalario (pacientes, hospitales y médicos). El análisis de los pacientes únicos (`CIP_ENCRIPTADO`) reveló una alta prevalencia de readmisiones en el sistema. A modo de ejemplo, se detectaron casos extremos donde un solo identificador acumuló más de 8.000 episodios en 2019, o pacientes con más de 500 readmisiones en 2022. Esta anomalía estadística obligó a establecer que, metodológicamente, la unidad de análisis de los modelos predictivos sería el "episodio clínico" y no el "paciente", evitando así que las trayectorias atípicas hiperfrecuentes sesgaran el aprendizaje algorítmico.
+El análisis de las variables de tipo fecha constituyó un paso crítico para evaluar la coherencia cronológica de los registros asistenciales y asegurar la correcta construcción posterior de atributos derivados (como la edad y los días de estancia hospitalaria). Los indicadores de formato, cantidad de valores nulos, registros inválidos y rangos temporales identificados se presentan en la Tabla \ref{tab:auditoria_fechas_grd}.
 
-% Por otro lado, la Tabla \ref{tab:concentracion_hospitales} evidencia que, a pesar de que la cantidad de recintos hospitalarios emisores de datos GRD creció de 65 (en 2019) a 72 (en 2024), la distribución de la carga asistencial fue marcadamente asimétrica. De forma consistente durante el sexenio evaluado, los cinco recintos de mayor envergadura absorbieron entre el 16,5\% y el 18,6\% de la totalidad de los egresos hospitalarios de la red nacional, siendo el hospital codificado como \texttt{114101} el centro que lideró invariablemente este indicador de volumen asistencial.
+En esta auditoría se detectó que las fechas de nacimiento e ingreso presentaron una tasa mínima de valores nulos (0\%), lo que demuestra que constituyen campos obligatorios validados por los sistemas informáticos hospitalarios de admisión de la red pública. Sin embargo, se confirmó una alteración en el formato de registro del año 2023, en el cual se adoptó el estándar \texttt{dd-mm-yyyy}, en contraste con el formato ISO \texttt{yyyy-mm-dd} utilizado de manera homogénea en el resto de los años. Por otra parte, las fechas de traslado exhibieron un volumen creciente de valores nulos, que osciló entre el 82,77\% y el 99,98\%. Esto sugiere que el traslado interno entre múltiples servicios especializados (como la unidad de tratamiento intermedio (UTI), la unidad de cuidados intensivos (UCI) o cirugía) refleja directamente la inestabilidad o severidad del paciente y ocurre únicamente en una fracción minoritaria de los ingresos asistenciales. En consecuencia, la mayor parte de la población concentró su estancia en un único servicio base, por lo que la mayoría de las fechas de traslado presentan cerca de un 100 \% de valores nulos.
 
-% Finalmente, el análisis exploratorio determinó la exclusión definitiva de las variables identificadoras de los profesionales de la salud (`MEDICOINTERV1` y `MEDICOALTA`). Tal como se refleja en la Tabla \ref{tab:cardinalidad_identificadores}, la cardinalidad de estas columnas osciló anualmente entre los 9.400 y los 17.700 médicos únicos. Retener estas variables en el conjunto de datos de entrenamiento no solo habría introducido ruido estadístico producto de la alta dispersión, sino que habría generado un riesgo crítico de \textit{Data Leakage}, obligando a los algoritmos de IA a inferir el riesgo clínico de un paciente memorizando la identidad del especialista a cargo, distorsionando así la capacidad de generalización del modelo.
+Otro hallazgo crítico se asoció a la fecha de procedimiento, la cual presentó una elevada tasa de valores nulos y registros corruptos, que alcanzó casi la totalidad de los episodios ($5.808.446$), coexistiendo con formatos irreconocibles fuera del año 2019. Por otro lado, respecto de la fecha de intervención, se detectó una elevada tasa de valores nulos (49\%, correspondientes a $2.873.826$ registros) y un total de $19.684$ registros inválidos, con una distorsión temporal que se extendió de manera inconsistente hasta el año 2090. Esto evidencia errores sistemáticos de digitación por parte de los operadores de la red de salud al ingresar las fechas de las intervenciones en los sistemas locales.
 
-
-\subsection{Análisis de variables temporales}
-
-El análisis de las variables de tipo fecha constituyó un paso crítico para evaluar la coherencia cronológica de los registros asistenciales y asegurar la correcta construcción posterior de atributos derivados (como la edad y los días de estancia hospitalaria). Los indicadores de formato, cantidad de valores nulos, registros inválidos y rangos temporales identificados se indican en la Tabla \ref{tab:auditoria_fechas_grd}. 
-
-En esta auditoría se detectó que las fechas de nacimiento e ingreso  presentaron una tasa mínima de valores nulos (0\%), lo que demuestra que constituyen campos obligatorios validados por los sistemas informáticos hospitalarios de admisión de la red pública. Sin embargo, se confirmó una alteración en el formato de registro exclusivo para el año 2023, el cual adoptó el estándar \texttt{dd-mm-yyyy} frente al formato ISO \texttt{yyyy-mm-dd} utilizado de manera homogénea en el resto de los años. Por otra parte, las fechas de traslado exhibieron un volumen incremental de valores nulos que osciló entre el 82,77\% y el 99,98\%, esto sugiere que el traslado interno entre múltiples servicios especializados (como unidad de tratamiento intermedio (UTI), unidad de cuidados intesivos (UCI) o cirugía) es un reflejo directo de la inestabilidad o severidad del paciente, ocurriendo únicamente en una fracción minoritaria de los ingresos asistenciales, mientras que la gran mayoría de la población concentró su estadía en un único servicio base (por ende, la mayoría de fechas de traslado tienden a tener cerca de un 100\% de valores nulos).
-
-Otro hallazgo crítico se asoció a la fecha de procedimiento, la cual presentó una gran tasa de valores nulos y registros corruptos que alcanzaron casi el total de episodios ($5.808.446$), coexistiendo con formatos irreconocibles fuera del año 2019. Por otro lado, respecto a la fecha de intervención, se detectó una gran tasa de valores nulos (49\% correspondientes a $2.873.826$ registros) y un volumen de registros inválidos de $19.684$ filas corruptas, con una distorsión temporal que se extendió de manera inconsistente hasta el año 2090, lo que evidencia errores sistemáticos de digitación por parte de los operadores de la red de salud al ingresar las fechas de las intervenciones en los sistemas locales.
+Es fundamental destacar que la totalidad de las características analizadas, con excepción de \texttt{FECHAPROCEDIMIENTO1}, registró un rango válido de meses estrictamente acotado entre 1 y 12, así como un rango de días comprendido entre 1 y 31. Esto confirmó que la estructura granular de los datos temporales era matemáticamente válida, legitimando posteriormente el cálculo de variables derivadas, como la edad y los días de estancia hospitalaria.
 
 Finalmente, se tomaron las siguientes decisiones para cada variable temporal:
-\begin{itemize}
-    \item \textbf{Fecha de nacimiento (\texttt{FECHA\_NACIMIENTO}) (variable demográfica) y fecha de Ingreso (\texttt{FECHA\_INGRESO}) (variable hospitalaria):} Estas variables se descartaron en su formato crudo, pero se destinaron para generar la variable derivada de edad al ingreso, ya que ambas presentan 0\% de valores nulos reales en toda la cohorte, y a pesar de detectarse un quiebre de formato sistémico de la fecha en 2023 (cambio de formato \texttt{yyyy-mm-dd} a \texttt{dd-mm-yyyy}), se puede resolver exitosamente mediante un parseo robusto para calcular la variable derivada. Además, aunque los algoritmos basados en árboles (como Random Forest y XGBoost) no procesan objetos de tipo fecha (\textit{datetime}) de forma nativa, la diferencia matemática entre ambas fechas puede generar un determinante demográfico de riesgo crítico en oncología, el cual correspondería a la edad del paciente al ingreso hospitalario. 
-    \item \textbf{Fechas de traslado (\texttt{FECHATRASLADO1} hasta \texttt{FECHATRASLADO9}) (variables hospitalarias):} Se descartaron completamente al presentar un déficit de datos masivos, en otras palabras, estas fechas no aportan valor predictivo directo, ya que la primera fecha de traslado (\texttt{FECHATRASLADO1}) posee un 82,77\% de valores nulos, escalando rápidamente hasta más de un 99\% de valores nulos a partir de la cuarta fecha. Además, mantener las fechas crudas y nulas solo introduciría matrices vacías que no aportan a la capacidad de generalización de los modelos. Sin embargo, se usará más adelante una variable categórica alineada a las fechas de traslado (conocida como \texttt{SERVICIO\_TRASLADO}) para generar la variable derivada \texttt{CANTIDAD\_TRASLADOS}, la cual sí puede aportar valor predictivo al capturar la cantidad de traslados intrahospitalarios que experimentó cada episodio, lo que es un indicador directo de inestabilidad clínica.
-    \item \textbf{Fecha de alta (\texttt{FECHAALTA}) (variable hospitalaria):} Se descartó su uso en formato crudo, pero se destinará para generar la variable derivada de días de estancia hospitalaria, ya que esta fecha no es un descriptor del perfil del paciente por sí sola, pero al calcular la diferencia entre \texttt{FECHAALTA} y \texttt{FECHA\_INGRESO}, se puede obtener la variable derivada de \texttt{DIAS\_ESTADIA}, la cual potencialmente es uno de los indicadores más influyentes en el consumo de recursos y severidad hospitalaria, siendo esencial para la caracterización de grupos oncológicos. Además, la calidad de las fechas de alta es excelente, con una tasa cercana de 0\% de nulos reales, sujeto al mismo quiebre de formato en 2023 que la fecha de ingreso, la cual también tiene un 0\% de valores nulos.
-    \item \textbf{Fecha de procedimiento (\texttt{FECHAPROCEDIMIENTO1}) (variable hospitalaria):} Se descartó completamente para el modelado, ya que esta columna está vacía e inválida en todos los archivos anuales analizados (2019-2024), por lo que carece de cualquier utilidad matemática o analítica.
-    \item \textbf{Fecha de intervención (\texttt{FECHAINTERV1}) (variable hospitalaria):} Se descartó completamente su uso, ya que poseen una gran tasa de nulos del 49\% (probablemente correspondiente al porcentaje de pacientes que no requirieron intervención quirúrgica) y además, poseen un alto nivel de corrupción al presentar outliers e inconsistencias lógicas severas, como registros del año 2090 en admisiones que ocurrieron en 2023 o fechas de intervención registradas como 1902 en 2022. Por ende, el alto nivel de corrupción y la baja densidad de esta columna introducirían ruido excesivo en los modelos.
+\begin{enumerate}
+    \item \textbf{Fecha de nacimiento (\texttt{FECHA\_NACIMIENTO}) (variable demográfica) y fecha de ingreso (\texttt{FECHA\_INGRESO}) (variable hospitalaria):} Estas variables se \textbf{descartaron} en su formato original, pero se destinaron a la generación de la variable \textbf{derivada} \texttt{EDAD\_INGRESO}, ya que ambas presentan un 0\% de valores nulos reales en toda la cohorte. Además, aunque se detectó un quiebre sistémico en el formato de las fechas durante 2023 (cambio de \texttt{yyyy-mm-dd} a \texttt{dd-mm-yyyy}), este se puede resolver mediante un proceso de parseo robusto. Asimismo, si bien los algoritmos basados en árboles (como Random Forest y XGBoost) no procesan de forma nativa variables de tipo fecha (\textit{datetime}), la diferencia matemática entre ambas fechas permite calcular la \textbf{edad} del paciente al ingreso hospitalario, un determinante demográfico potencialmente relevante para la evaluación del riesgo crítico en oncología.
+    \item \textbf{Fechas de traslado (\texttt{FECHATRASLADO1} hasta \texttt{FECHATRASLADO9}) (variables hospitalarias):} Estas variables se \textbf{descartaron} completamente debido a su elevado nivel de datos faltantes. En otras palabras, las fechas de traslado no aportan valor predictivo directo, ya que la primera fecha de traslado (\texttt{FECHATRASLADO1}) presenta un 82,77 \% de valores nulos, proporción que aumenta rápidamente hasta superar el 99 \% a partir de la cuarta fecha. Además, mantener estas variables en su formato original solo introduciría columnas prácticamente vacías, sin aportar capacidad de generalización a los modelos. Por ende, posteriormente se utilizará una variable categórica asociada a los traslados (\texttt{SERVICIO\_TRASLADO}) para generar la variable derivada \texttt{CANTIDAD\_TRASLADOS}, la cual sí puede aportar valor predictivo al capturar el número de traslados intrahospitalarios experimentados en cada episodio, constituyendo un indicador directo de inestabilidad clínica.
+    \item \textbf{Fecha de alta (\texttt{FECHAALTA}) (variable hospitalaria):} Se \textbf{descartó} su uso en formato original, pero se utilizará para generar la variable \textbf{derivada} \texttt{DIAS\_ESTADIA}. Si bien esta fecha, por sí sola, no describe el perfil del paciente, la diferencia entre \texttt{FECHAALTA} y \texttt{FECHA\_INGRESO} permite estimar la duración de la estancia hospitalaria. Esta variable constituye potencialmente uno de los indicadores más influyentes en el consumo de recursos y en la severidad hospitalaria, por lo que resulta esencial para la caracterización de grupos oncológicos. Además, la calidad de los datos es excelente, con una tasa cercana al 0\% de valores nulos reales. No obstante, esta variable se encuentra sujeta al mismo quiebre de formato detectado en 2023 para la fecha de ingreso.
+    \item \textbf{Fecha de procedimiento (\texttt{FECHAPROCEDIMIENTO1}) (variable hospitalaria):} Se \textbf{descartó} completamente para la fase de modelado, ya que esta columna se encuentra vacía o inválida en todos los archivos anuales analizados (2019--2024), por lo que carece de utilidad analítica y predictiva. 
+    \item \textbf{Fecha de intervención (\texttt{FECHAINTERV1}) (variable hospitalaria):} Se \textbf{descartó} completamente su uso, ya que presenta una elevada tasa de valores nulos (49\%), probablemente asociada al porcentaje de pacientes que no requirieron intervención quirúrgica. Adicionalmente, esta variable exhibe un alto nivel de corrupción de datos, evidenciado por la presencia de valores atípicos e inconsistencias lógicas severas, como registros correspondientes al año 2090 en admisiones ocurridas en 2023 o fechas de intervención registradas en 1902 para episodios de 2022. Por consiguiente, la combinación de una baja densidad de datos y un alto nivel de corrupción introduciría ruido excesivo en los modelos.
+\end{enumerate}
 
-\end{itemize}
-
-
-
-%Un hallazgo crítico derivado de esta auditoría fue la invalidez estructural absoluta detectada en la característica \texttt{FECHAPROCEDIMIENTO1}. Esta variable presentó una tasa de nulos y registros corruptos de prácticamente el 100\% ($n=5.808.446$), coexistiendo con formatos irreconocibles fuera del año 2019. Esta degradación del dato impidió su utilización matemática y justificó su exclusión radical durante la fase de ingeniería de características. 
-% De manera similar, la variable \texttt{FECHAINTERV1} exhibió deficiencias graves de completitud (49,48\% de valores ausentes) y acumuló el mayor volumen de registros inválidos del sistema con $19.684$ filas corruptas. El análisis de rango de esta columna reveló una distorsión temporal que se extendió de manera anacrónica hasta el año 2090. Este fenómeno evidencia errores sistemáticos de digitación por parte de los operadores de la red de salud al ingresar manualmente las fechas de las intervenciones quirúrgicas en los sistemas locales. 
-
-% Los resultados de la auditoría temporal revelaron un comportamiento diferenciado entre los campos obligatorios del núcleo administrativo y las variables operativas secundarias. En primer lugar, tanto \texttt{FECHA\_NACIMIENTO} como \texttt{FECHA\_INGRESO} presentaron una tasa de valores ausentes de 0,00\%, lo que demuestra que constituyen campos mandatorios validados por los sistemas informáticos hospitalarios en el nodo de admisión de la red pública. Sin embargo, en concordancia con los hallazgos de bajo nivel descritos en el marco metodológico, se confirmó una alteración en el formato de registro exclusivo para el año 2023, el cual adoptó el estándar \texttt{dd-mm-yyyy} frente al formato ISO \texttt{yyyy-mm-dd} utilizado de manera homogénea en el resto de los años del sexenio.
-% Por otra parte, las variables de traslados intrahospitalarios (\texttt{FECHATRASLADO1} a \texttt{FECHATRASLADO9}) exhibieron un volumen incremental de valores ausentes que osciló entre el 82,77\% y el 99,98\%. Lejos de representar un defecto de calidad, este comportamiento posee una estricta coherencia operativa y clínica: el traslado interno entre múltiples servicios especializados (como tránsitos sucesivos entre medicina interna, unidades de cuidados críticos u oncología médica) es un reflejo directo de la inestabilidad o severidad del paciente, ocurriendo únicamente en una fracción minoritaria de los ingresos asistenciales, mientras que la vasta mayoría de la población concentró su estadía en un único servicio base.
-
-Es fundamental destacar que, la totalidad de las características analizadas (a excepción de \texttt{FECHAPROCEDIMIENTO1}) registraron un rango válido de meses estrictamente acotado entre 1 y 12, y un rango de días contenido entre 1 y 31. Lo que confirmó que la estructura granular de los datos temporales era matemáticamente válida, lo que legitimó el cálculo con exactitud de las variables derivadas como edad y días de estancia.
 
 \begin{table}[htbp]
 \centering
@@ -299,7 +277,7 @@ Es fundamental destacar que, la totalidad de las características analizadas (a 
 \parbox[t]{1.3cm}{\centering\textbf{Registros\\inválidos}} & 
 \parbox[t]{1.8cm}{\centering\textbf{Rango de\\años}} \\ \hline
 
-\parbox[t]{2.8cm}{\texttt{FECHA\_NACIMIENTO}} & \parbox[t]{3.6cm}{\centering \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 0 (0,00\%)} & \parbox[t]{1.3cm}{\raggedleft 21} & \parbox[t]{1.8cm}{\centering 1900-2024} \\ \hline
+\parbox[t]{2.8cm}{\texttt{FECHA\_NACIMIENTO}} & \parbox[t]{3.6cm}{\centering \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 0 (0,00\%)} & \parbox[t]{1.3cm}{\raggedleft 21} & \parbox[t]{1.8cm}{\centering 1894-2024} \\ \hline
 \parbox[t]{2.8cm}{\texttt{FECHA\_INGRESO}} & \parbox[t]{3.6cm}{\centering \texttt{dd-mm-yyyy} (2023) / \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 0 (0,00\%)} & \parbox[t]{1.3cm}{\raggedleft 70} & \parbox[t]{1.8cm}{\centering 2011-2024} \\ \hline
 \parbox[t]{2.8cm}{\texttt{FECHATRASLADO1}} & \parbox[t]{3.6cm}{\centering \texttt{dd-mm-yyyy} (2023) / \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 4.807.468 (82,77\%)} & \parbox[t]{1.3cm}{\raggedleft 18} & \parbox[t]{1.8cm}{\centering 2011-2024} \\ \hline
 \parbox[t]{2.8cm}{\texttt{FECHATRASLADO2}} & \parbox[t]{3.6cm}{\centering \texttt{dd-mm-yyyy} (2023) / \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 5.475.101 (94,26\%)} & \parbox[t]{1.3cm}{\raggedleft 9} & \parbox[t]{1.8cm}{\centering 2011-2024} \\ \hline
@@ -312,25 +290,21 @@ Es fundamental destacar que, la totalidad de las características analizadas (a 
 \parbox[t]{2.8cm}{\texttt{FECHATRASLADO9}} & \parbox[t]{3.6cm}{\centering \texttt{dd-mm-yyyy} (2023) / \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 5.807.482 (99,98\%)} & \parbox[t]{1.3cm}{\raggedleft 0} & \parbox[t]{1.8cm}{\centering 2014-2024} \\ \hline
 \parbox[t]{2.8cm}{\texttt{FECHAALTA}} & \parbox[t]{3.6cm}{\centering \texttt{dd-mm-yyyy} (2023) / \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 18 (0,00\%)} & \parbox[t]{1.3cm}{\raggedleft 0} & \parbox[t]{1.8cm}{\centering 2019-2024} \\ \hline
 \parbox[t]{2.8cm}{\texttt{FECHAPROCEDIMIENTO1}} & \parbox[t]{3.6cm}{\centering \texttt{yyyymmdd} (2019) / Desconocido} & \parbox[t]{2.2cm}{\raggedleft 5.808.446 (100,0\%)} & \parbox[t]{1.3cm}{\raggedleft 9} & \parbox[t]{1.8cm}{\centering Inválido} \\ \hline
-\parbox[t]{2.8cm}{\texttt{FECHAINTERV1}} & \parbox[t]{3.6cm}{\centering \texttt{dd-mm-yyyy} (2023) / \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 2.873.826 (49,48\%)} & \parbox[t]{1.3cm}{\raggedleft 19.684} & \parbox[t]{1.8cm}{\centering 1911-2090} \\ \hline
+\parbox[t]{2.8cm}{\texttt{FECHAINTERV1}} & \parbox[t]{3.6cm}{\centering \texttt{dd-mm-yyyy} (2023) / \texttt{yyyy-mm-dd}} & \parbox[t]{2.2cm}{\raggedleft 2.873.826 (49,48\%)} & \parbox[t]{1.3cm}{\raggedleft 19.684} & \parbox[t]{1.8cm}{\centering 1902-2090} \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection{Análisis de variables categóricas}
+\subsection{Cardinalidad de las variables categóricas objetivo (targets)}
 
-La caracterización de los episodios hospitalarios exige evaluar cómo se distribuyen las variables que los algoritmos de aprendizaje automático procesarán como atributos de entrada o variables objetivo (en el caso de la mortalidad y severidad). En este contexto, se realizó un análisis de frecuencia para cada variable categórica, con el objetivo de identificar la presencia de categorías mayoritarias o minoritarias que podrían influir en el rendimiento de los modelos predictivos y detectar posibles errores de codificación o grandes volúmenes de datos faltantes que podrían requerir estrategias de imputación o exclusión. Además, el análisis contrastó la distribución de las categorías a lo largo del período 2019--2024 tanto para la cohorte oncológica como para la cohorte control.
+Dentro de las variables categóricas objetivo se encuentran las variables de mortalidad hospitalaria (originalmente denominada \texttt{TIPOALTA}) y de severidad (originalmente denominada \texttt{IR\_29301\_SEVERIDAD}).
 
-\subsubsection{Variables categóricas objetivo (targets)}
+En primer lugar, dentro de los datos GRD se encuentran dos variables que describen la \textbf{mortalidad} hospitalaria: \texttt{IR\_29301\_MORTALIDAD} y \texttt{TIPOALTA}. Sin embargo, la primera corresponde a un índice sintético calculado por el sistema de codificación GRD, por lo que resulta redundante conservarla para la fase de modelado, ya que la variable \texttt{TIPOALTA} constituye un descriptor categórico directo de la condición de alta del paciente e incluye una categoría específica para la muerte hospitalaria. Es decir, esta variable representa la realidad (\textit{ground truth}) del desenlace clínico del paciente. De esta forma, el modelo aprenderá a partir del desenlace clínico observado (mortalidad real), en lugar de utilizar un índice de riesgo calculado por el sistema de codificación.
 
-Dentro de las variables categóricas objetivo, se encuentran las variables de mortalidad hospitalaria (originalmente denominada \texttt{TIPOALTA}) y de severidad (originalmente denominada \texttt{IR\_29301\_SEVERIDAD}). 
+Como se mencionó, la variable \texttt{TIPOALTA} representa la verdad fundamental (\textit{ground truth}) del desenlace clínico de cada paciente (mortalidad). En el análisis de frecuencias presentado en la Tabla \ref{tab:frecuencia_tipo_alta} se puede observar que la tasa de mortalidad de los pacientes oncológicos duplicó y, en ocasiones, triplicó la tasa de mortalidad de la cohorte control. En específico, para los pacientes con cáncer, la cantidad de episodios con desenlace de muerte hospitalaria osciló entre el 5,4\% y el 6,9\%, mientras que, para el grupo control, la tasa de mortalidad se mantuvo entre el 2,3\% y el 3,7\%.
 
-En primer lugar, dentro de los datos GRD se encuentran dos variables que describen la \textbf{mortalidad} hospitalaria: \texttt{IR\_29301\_MORTALIDAD} y \texttt{TIPOALTA}. Sin embargo, la primera es un índice sintético calculado por el sistema de codificación de GRD, siendo redudante retenerlo para el modelado, ya que la variable \texttt{TIPOALTA} es un descriptor categórico directo de la condición de alta del paciente, el cual incluye una categoría específica para la muerte hospitalaria, es decir, es la variable objetivo real y definitiva del desenlace del paciente. De esta forma, se ponderarían los factores de riesgo desde las condiciones clínicas reales del paciente (mortalidad real), en lugar de generar perfiles a través de un índice de predicción o de riesgo calculado por el sistema de codificación. 
+Es de particular interés destacar la tasa de defunciones durante la pandemia de COVID-19 en los años 2020 y 2021, cuando la mortalidad oncológica alcanzó sus máximos históricos (6,9\% y 6,5\%, respectivamente), a pesar de que el volumen absoluto de decesos (4.462 y 4.423) fue menor que en años previos. Este fenómeno estadístico probablemente se deba a la contracción severa de los ingresos hospitalarios durante la pandemia, lo que concentró las admisiones exclusivamente en pacientes con neoplasias en estado crítico o terminal. Además, mientras que la mortalidad del grupo control regresó a sus valores prepandémicos de referencia en 2022 y 2023 (2,6\% y 2,3\%, respectivamente), la mortalidad oncológica se mantuvo elevada, por encima del 5,9\%, hasta 2024, lo que resulta consistente con las proyecciones de mortalidad para la población con cáncer.
 
-Como se mencionó, la variable \texttt{TIPOALTA} representa la verdad fundamental (Ground Truth) del desenlace clínico de cada paciente (mortalidad). En el análisis de frecuencias de la Tabla \ref{tab:frecuencia_tipo_alta}, se puede observar que la tasa de mortalidad de los pacientes oncológicos duplicó, y en ocasiones triplicó, la tasa de mortalidad de la cohorte control. En específico, para pacientes con cáncer la cantidad de episodios con desenlace de muerte hospitalaria osciló entre el 5,4\% y 6,9\%, mientras que para el grupo control latasa de mortalidad se mantuvo entre el 2,3\% y 3,7\%.
-
-Es de particular interés destacar la tasa de desfunción durante la pandemia de COVID-19 en los años 2020 y 2021, donde la mortalidad oncológica alcanzó sus picos máximos históricos (6,9\% y 6,5\%, respectivamente), a pesar de que el volumen absoluto de decesos (4.462 y 4.423) fue menor que en años previos. Este fenómeno estadístico probablemente se deba a la contracción severa de ingresos hospitalarios durante la pandemia, lo que concentró las admisiones estrictamente en pacientes con neoplasias en estado crítico o terminal. Además, mientras que la mortalidad del grupo control regresó a sus valores de línea base pre pandémicos en 2022 y 2023 (2,6\% y 2,3\%, respectivamente), la mortalidad oncológica se mantuvo elevada por encima de 5,9\% hasta 2024, lo que coincide con las proyecciones de desfunciones para la población con cáncer. 
-
-Cabe mencionar que, para los algoritmos de aprendizaje automático, la variable \texttt{TIPOALTA} en conjunto de sus 11 categorías (domicilio, fallecido, hospitalización domiciliaria, derivación de otro hospital del servicio, alta voluntaria, derivación de otro hospital de la red nacional, derivación a otros centros (cárcel), fuga del paciente, derivación institución privada (compra de servicios), derivación institución privada (voluntario), no identificada), se binarizará en una variable dicotómica (\texttt{MORTALIDAD}) con las clases \texttt{Fallecido} (1) y \texttt{Vivo} (0), donde esta clase agrupará los episodios con desenlace de alta voluntaria, domicilio, derivaciones, entre otros, exceptuando las categorías marginales sin información (no identificada y desconocido), las cuales serán eliminadas al tener una distribución cercana al 0\% (100 casos en total durante todos los años).
+Cabe mencionar que, la variable \texttt{TIPOALTA}, que originalmente contiene 11 categorías (domicilio, fallecido, hospitalización domiciliaria, derivación de otro hospital del servicio, alta voluntaria, derivación de otro hospital de la red nacional, derivación a otros centros (cárcel), fuga del paciente, derivación a institución privada (compra de servicios), derivación a institución privada (voluntario) y no identificada), se binarizará en una variable dicotómica (\texttt{MORTALIDAD}) con las clases \texttt{Fallecido} (1) y \texttt{Vivo} (0). En donde la clase negativa agrupará los episodios con desenlace de alta voluntaria, domicilio, derivaciones, entre otros, exceptuando las categorías marginales sin información (\texttt{NO IDENTIFICADA} y \texttt{DESCONOCIDO}), las cuales serán eliminadas debido a su frecuencia prácticamente nula (100 casos en total durante todo el período analizado).
 
 \begin{table}[htbp]
 \centering
@@ -341,7 +315,7 @@ Cabe mencionar que, para los algoritmos de aprendizaje automático, la variable 
 \label{tab:frecuencia_tipo_alta}
 \begin{tabular}{|l|c|c|c|c|c|c|c|}
 \hline
-\parbox[t]{3.0cm}{\textbf{Condición al Egreso\\(Tipo de Alta)}} & 
+\parbox[t]{2.0cm}{\textbf{Condición al Egreso\\(Tipo de Alta)}} & 
 \parbox[t]{1.6cm}{\centering\textbf{Cohorte}} & 
 \parbox[t]{1.6cm}{\centering\textbf{2019}} & 
 \parbox[t]{1.6cm}{\centering\textbf{2020}} & 
@@ -351,74 +325,74 @@ Cabe mencionar que, para los algoritmos de aprendizaje automático, la variable 
 \parbox[t]{1.6cm}{\centering\textbf{2024}} \\ \hline
 
 % DOMICILIO
-\parbox[t]{3.0cm}{\textbf{Domicilio}} 
+\parbox[t]{2.0cm}{\textbf{Domicilio}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 88.008 (90,0\%)} & \parbox[t]{1.6cm}{\raggedleft 56.334 (86,8\%)} & \parbox[t]{1.6cm}{\raggedleft 58.867 (86,7\%)} & \parbox[t]{1.6cm}{\raggedleft 67.703 (86,7\%)} & \parbox[t]{1.6cm}{\raggedleft 78.385 (86,4\%)} & \parbox[t]{1.6cm}{\raggedleft 84.680 (85,4\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 964.012 (91,5\%)} & \parbox[t]{1.6cm}{\raggedleft 638.565 (89,1\%)} & \parbox[t]{1.6cm}{\raggedleft 657.403 (87,8\%)} & \parbox[t]{1.6cm}{\raggedleft 770.531 (90,1\%)} & \parbox[t]{1.6cm}{\raggedleft 857.820 (90,4\%)} & \parbox[t]{1.6cm}{\raggedleft 883.172 (89,5\%)} \\ \hline
 
 % FALLECIDO
-\parbox[t]{3.0cm}{\textbf{Fallecido}} 
+\parbox[t]{2.0cm}{\textbf{Fallecido}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 5.321 (5,4\%)} & \parbox[t]{1.6cm}{\raggedleft 4.462 (6,9\%)} & \parbox[t]{1.6cm}{\raggedleft 4.423 (6,5\%)} & \parbox[t]{1.6cm}{\raggedleft 4.850 (6,2\%)} & \parbox[t]{1.6cm}{\raggedleft 5.314 (5,9\%)} & \parbox[t]{1.6cm}{\raggedleft 6.009 (6,1\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 24.263 (2,3\%)} & \parbox[t]{1.6cm}{\raggedleft 25.480 (3,6\%)} & \parbox[t]{1.6cm}{\raggedleft 27.542 (3,7\%)} & \parbox[t]{1.6cm}{\raggedleft 22.529 (2,6\%)} & \parbox[t]{1.6cm}{\raggedleft 19.822 (2,1\%)} & \parbox[t]{1.6cm}{\raggedleft 20.673 (2,1\%)} \\ \hline
 
 % HOSPITALIZACION DOMICILIARIA
-\parbox[t]{3.0cm}{\textbf{Hosp. Domiciliaria}} 
+\parbox[t]{2.0cm}{\textbf{Hosp. Domiciliaria}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 1.319 (1,3\%)} & \parbox[t]{1.6cm}{\raggedleft 1.471 (2,3\%)} & \parbox[t]{1.6cm}{\raggedleft 2.110 (3,1\%)} & \parbox[t]{1.6cm}{\raggedleft 2.741 (3,5\%)} & \parbox[t]{1.6cm}{\raggedleft 3.531 (3,9\%)} & \parbox[t]{1.6cm}{\raggedleft 4.473 (4,5\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 11.668 (1,1\%)} & \parbox[t]{1.6cm}{\raggedleft 12.600 (1,8\%)} & \parbox[t]{1.6cm}{\raggedleft 20.293 (2,7\%)} & \parbox[t]{1.6cm}{\raggedleft 20.667 (2,4\%)} & \parbox[t]{1.6cm}{\raggedleft 25.767 (2,7\%)} & \parbox[t]{1.6cm}{\raggedleft 32.259 (3,3\%)} \\ \hline
 
 % DERIVACION OTRO HOSPITAL DEL SERVICIO
-\parbox[t]{3.0cm}{\textbf{Deriv. Hosp. Servicio}} 
+\parbox[t]{2.0cm}{\textbf{Deriv. Hosp. Servicio}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 1.631 (1,7\%)} & \parbox[t]{1.6cm}{\raggedleft 1.198 (1,8\%)} & \parbox[t]{1.6cm}{\raggedleft 1.069 (1,6\%)} & \parbox[t]{1.6cm}{\raggedleft 1.242 (1,6\%)} & \parbox[t]{1.6cm}{\raggedleft 1.671 (1,8\%)} & \parbox[t]{1.6cm}{\raggedleft 2.147 (2,2\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 23.575 (2,2\%)} & \parbox[t]{1.6cm}{\raggedleft 16.641 (2,3\%)} & \parbox[t]{1.6cm}{\raggedleft 17.252 (2,3\%)} & \parbox[t]{1.6cm}{\raggedleft 15.246 (1,8\%)} & \parbox[t]{1.6cm}{\raggedleft 18.834 (2,0\%)} & \parbox[t]{1.6cm}{\raggedleft 22.776 (2,3\%)} \\ \hline
 
 % ALTA VOLUNTARIA
-\parbox[t]{3.0cm}{\textbf{Alta Voluntaria}} 
+\parbox[t]{2.0cm}{\textbf{Alta Voluntaria}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 526 (0,5\%)} & \parbox[t]{1.6cm}{\raggedleft 498 (0,8\%)} & \parbox[t]{1.6cm}{\raggedleft 569 (0,8\%)} & \parbox[t]{1.6cm}{\raggedleft 646 (0,8\%)} & \parbox[t]{1.6cm}{\raggedleft 710 (0,8\%)} & \parbox[t]{1.6cm}{\raggedleft 652 (0,7\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 9.437 (0,9\%)} & \parbox[t]{1.6cm}{\raggedleft 7.071 (1,0\%)} & \parbox[t]{1.6cm}{\raggedleft 8.490 (1,1\%)} & \parbox[t]{1.6cm}{\raggedleft 10.075 (1,2\%)} & \parbox[t]{1.6cm}{\raggedleft 9.607 (1,0\%)} & \parbox[t]{1.6cm}{\raggedleft 9.999 (1,0\%)} \\ \hline
 
 % DERIVACION RED NACIONAL
-\parbox[t]{3.0cm}{\textbf{Deriv. Red Nacional}} 
+\parbox[t]{2.0cm}{\textbf{Deriv. Red Nacional}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 659 (0,7\%)} & \parbox[t]{1.6cm}{\raggedleft 584 (0,9\%)} & \parbox[t]{1.6cm}{\raggedleft 541 (0,8\%)} & \parbox[t]{1.6cm}{\raggedleft 560 (0,7\%)} & \parbox[t]{1.6cm}{\raggedleft 688 (0,8\%)} & \parbox[t]{1.6cm}{\raggedleft 755 (0,8\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 7.756 (0,7\%)} & \parbox[t]{1.6cm}{\raggedleft 6.287 (0,9\%)} & \parbox[t]{1.6cm}{\raggedleft 6.653 (0,9\%)} & \parbox[t]{1.6cm}{\raggedleft 5.979 (0,7\%)} & \parbox[t]{1.6cm}{\raggedleft 6.784 (0,7\%)} & \parbox[t]{1.6cm}{\raggedleft 7.183 (0,7\%)} \\ \hline
 
 % DERIVACION OTROS CENTROS
-\parbox[t]{3.0cm}{\textbf{Deriv. Otros Centros (cárcel)}} 
+\parbox[t]{2.0cm}{\textbf{Deriv. Otros Centros (cárcel)}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 76 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 171 (0,3\%)} & \parbox[t]{1.6cm}{\raggedleft 135 (0,2\%)} & \parbox[t]{1.6cm}{\raggedleft 116 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 143 (0,2\%)} & \parbox[t]{1.6cm}{\raggedleft 139 (0,1\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 2.904 (0,3\%)} & \parbox[t]{1.6cm}{\raggedleft 4.225 (0,6\%)} & \parbox[t]{1.6cm}{\raggedleft 3.903 (0,5\%)} & \parbox[t]{1.6cm}{\raggedleft 3.269 (0,4\%)} & \parbox[t]{1.6cm}{\raggedleft 3.354 (0,4\%)} & \parbox[t]{1.6cm}{\raggedleft 3.606 (0,4\%)} \\ \hline
 
 % DERIVACION PRIVADA (COMPRA)
-\parbox[t]{3.0cm}{\textbf{Deriv. Inst. Privada\\(Compra Serv.)}} 
+\parbox[t]{2.0cm}{\textbf{Deriv. Inst. Privada\\(Compra Serv.)}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 144 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 97 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 112 (0,2\%)} & \parbox[t]{1.6cm}{\raggedleft 91 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 142 (0,2\%)} & \parbox[t]{1.6cm}{\raggedleft 167 (0,2\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 4.267 (0,4\%)} & \parbox[t]{1.6cm}{\raggedleft 2.333 (0,3\%)} & \parbox[t]{1.6cm}{\raggedleft 3.576 (0,5\%)} & \parbox[t]{1.6cm}{\raggedleft 2.282 (0,3\%)} & \parbox[t]{1.6cm}{\raggedleft 2.744 (0,3\%)} & \parbox[t]{1.6cm}{\raggedleft 2.698 (0,3\%)} \\ \hline
 
 % FUGA DEL PACIENTE
-\parbox[t]{3.0cm}{\textbf{Fuga del Paciente}} 
+\parbox[t]{2.0cm}{\textbf{Fuga del Paciente}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 75 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 60 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 49 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 69 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 77 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 79 (0,1\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 4.066 (0,4\%)} & \parbox[t]{1.6cm}{\raggedleft 2.659 (0,4\%)} & \parbox[t]{1.6cm}{\raggedleft 2.544 (0,3\%)} & \parbox[t]{1.6cm}{\raggedleft 3.115 (0,4\%)} & \parbox[t]{1.6cm}{\raggedleft 3.147 (0,3\%)} & \parbox[t]{1.6cm}{\raggedleft 3.220 (0,3\%)} \\ \hline
 
 % DERIVACION PRIVADA (VOLUNTARIO)
-\parbox[t]{3.0cm}{\textbf{Deriv. Inst. Privada\\(Voluntario)}} 
+\parbox[t]{2.0cm}{\textbf{Deriv. Inst. Privada\\(Voluntario)}} 
 & \parbox[t]{1.6cm}{\centering Oncológica} & \parbox[t]{1.6cm}{\raggedleft 65 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 50 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 51 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 51 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 54 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 52 (0,1\%)} \\ 
-\parbox[t]{3.0cm}{} 
+\parbox[t]{2.0cm}{} 
 & \parbox[t]{1.6cm}{\centering Control} & \parbox[t]{1.6cm}{\raggedleft 1.549 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 1.102 (0,2\%)} & \parbox[t]{1.6cm}{\raggedleft 1.327 (0,2\%)} & \parbox[t]{1.6cm}{\raggedleft 1.075 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 993 (0,1\%)} & \parbox[t]{1.6cm}{\raggedleft 1.074 (0,1\%)} \\ \hline
 \end{tabular}
 \end{table}
 
-En segundo lugar, la variable de \textbf{severidad} hospitalaria (\texttt{IR\_29301\_SEVERIDAD}) es calculada por el agrupador IR-GRD a partir del diagnóstico principal, diagnósticos secundarios, procedimientos y características clínicas del episodio, expresándose en 4 niveles ordinales: 0 (sin gravedad), 1 (menor), 2 (moderada) y 3 (mayor).
+En segundo lugar, la variable de \textbf{severidad} hospitalaria (\texttt{IR\_29301\_SEVERIDAD}) es calculada por el agrupador IR-GRD a partir del diagnóstico principal, los diagnósticos secundarios, los procedimientos y otras características clínicas del episodio, expresándose en cuatro niveles ordinales: 0 (sin gravedad), 1 (menor), 2 (moderada) y 3 (mayor).
 
-Como se puede observar en la Tabla \ref{tab:frecuencia_severidad}, esta variable contiene una cardinalidad baja de 4 categorías, además, posee una distribución de valores nulos y desconocidos cercana al 0\% (89 casos en total entre todos los años), lo que la convierte en una variable objetivo de alta calidad para el modelado, por lo cual se decidió retener como variable ordinal sin necesidad de binarizarla ni transformarla. 
+Como se puede observar en la Tabla \ref{tab:frecuencia_severidad}, esta variable presenta una cardinalidad baja de cuatro categorías. Además, posee una proporción de valores nulos y desconocidos cercana al 0\% (89 casos en total durante todo el período analizado), lo que la convierte en una variable objetivo de alta calidad para el modelado. Por ello, se decidió conservarla como una variable ordinal, sin necesidad de binarizarla ni transformarla.
 
-Especificamente, en el análisis de frecuencias se puede observar que, mientras que en la cohorte de control la mayor proporción de ingresos recae históricamente sobre la severidad menor de nivel 1 (alcanzando hasta un 50,5\% en 2019), el paciente oncológico demanda niveles de complejidad clínica más elevados, con una mayor proporción de ingresos en los niveles de severidad moderada (nivel 2) y mayor (nivel 3), alcanzando hasta un 31,4\% y 20,2\% respectivamente en 2019. En otras palabras, los datos evidencian que los episodios de cáncer están fuertemente dirigidos hacia la derecha de la escala de severidad clínica, ya que la severidad de nivel 2 (moderada) actúa como la moda estadística de esta cohorte.
+Específicamente, en el análisis de frecuencias se observa que, mientras en la cohorte control la mayor proporción de ingresos recae históricamente en la severidad menor (nivel 1), alcanzando hasta un 50,5\% en 2019, los pacientes oncológicos demandan niveles de complejidad clínica más elevados, con una mayor proporción de ingresos en los niveles de severidad moderada (nivel 2) y mayor (nivel 3), alcanzando hasta un 31,4\% y un 20,2\%, respectivamente, en 2019. En otras palabras, los datos evidencian que los episodios de cáncer se concentran hacia los niveles superiores de la escala de severidad clínica, ya que la severidad de nivel 2 (moderada) constituye la categoría modal de esta cohorte.
 
-Respecto al comportamiento de la severidad mayor (nivel 3) en la cohorte oncológica, se puede observar que, sufrió una escalada crítica a partir de 2020, saltando de un 20,2\% en 2019 a representar casi un tercio de las hospitalizaciones (30,5\%) al cierre de 2024. Este desplazamiento progresivo hacia los estratos de mayor gravedad podría indicar que las camas de la red oncológica están siendo ocupadas por pacientes con cuadros clínicos cada vez más deteriorados.
+Respecto del comportamiento de la severidad mayor (nivel 3) en la cohorte oncológica, se puede observar que sufrió una escalada progresiva a partir de 2020, pasando de un 20,2\% en 2019 a representar casi un tercio de las hospitalizaciones (30,5\%) al cierre de 2024. Este desplazamiento hacia los estratos de mayor gravedad podría indicar que las camas de la red oncológica están siendo ocupadas por pacientes con cuadros clínicos cada vez más deteriorados.
 
 \begin{table}[htbp]
 \centering
@@ -464,6 +438,26 @@ Respecto al comportamiento de la severidad mayor (nivel 3) en la cohorte oncoló
 
 \end{tabular}
 \end{table}
+
+En resumen, se tomaron las siguientes decisiones para cada variable categórica objetivo:
+\begin{enumerate}
+    \item \textbf{Mortalidad (\texttt{TIPOALTA}):} Se decidió \textbf{binarizar} la variable en un desenlace dicotómico que indique si el paciente falleció (1) o no (0), descartando las categorías marginales sin información (\texttt{NO IDENTIFICADA} y \texttt{DESCONOCIDO}).
+    \item \textbf{Severidad (\texttt{IR\_29301\_SEVERIDAD}):} Se decidió \textbf{mantener} la variable como ordinal, sin necesidad de binarizarla ni transformarla, ya que presenta una cardinalidad baja de cuatro categorías y una proporción de valores nulos y desconocidos cercana al 0\%, los cuales serán imputados directamente.
+\end{enumerate}
+
+\subsection{Cardinalidad y juicio sobre las de variables categóricas para la fase de modelado}
+
+
+\section{Análisis de variables demográficas, clínicas y hospitalarias}
+
+\subsection{Análisis de variables identificadoras}
+
+
+\subsection{Análisis de variables categóricas}
+
+
+\subsubsection{Variables categóricas objetivo (targets)}
+
 
 \subsubsection{Variables categóricas de entrada}
 

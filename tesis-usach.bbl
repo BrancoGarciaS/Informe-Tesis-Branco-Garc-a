@@ -1,4 +1,4 @@
-\begin{thebibliography}{47}
+\begin{thebibliography}{48}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -11,6 +11,13 @@ Alsinglawi, B., Alshari, O., Alorjani, M., Mubin, O., Alnajjar, F., Novoa, M.,
 \newblock An explainable machine learning framework for lung cancer hospital
   length of stay prediction.
 \newblock {\em Scientific Reports\/}, {\em 12\/}(1).
+
+\bibitem[{{Biblioteca del Congreso Nacional de Chile}(1999)}]{ley19628}
+{Biblioteca del Congreso Nacional de Chile} (1999).
+\newblock Ley n.° 19.628 sobre protección de la vida privada.
+\newblock Publicada en el Diario Oficial el 28 de agosto de 1999. Última
+  modificación legal vigente. Gobierno de Chile.
+\newline\urlprefix\url{https://www.bcn.cl/leychile/navegar?idNorma=141599}
 
 \bibitem[{Chen et~al.(2021)Chen, Cherry, Nalawade, Qiao, Kumar, Lowy, Simpson,
   \& Murphy}]{article10}

@@ -17,45 +17,45 @@ Warning--entry type for "Sigesa2019" isn't style-file defined
 --line 40 of file bibliografia.bib
 Warning--I didn't find a database entry for "wirth2000crisp"
 Warning--missing institution in minsal2024_procedimientos
-You've used 47 entries,
+You've used 48 entries,
             2804 wiz_defined-function locations,
-            855 strings with 16578 characters,
-and the built_in function-call counts, 27718 in all, are:
-= -- 2131
-> -- 1434
-< -- 29
-+ -- 554
-- -- 493
-* -- 2144
-:= -- 4512
-add.period$ -- 143
-call.type$ -- 47
-change.case$ -- 410
-chr.to.int$ -- 45
-cite$ -- 48
-duplicate$ -- 1961
-empty$ -- 1844
-format.name$ -- 601
-if$ -- 5254
+            861 strings with 16845 characters,
+and the built_in function-call counts, 28083 in all, are:
+= -- 2165
+> -- 1444
+< -- 30
++ -- 558
+- -- 496
+* -- 2163
+:= -- 4578
+add.period$ -- 146
+call.type$ -- 48
+change.case$ -- 417
+chr.to.int$ -- 46
+cite$ -- 49
+duplicate$ -- 1988
+empty$ -- 1869
+format.name$ -- 605
+if$ -- 5323
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 450
-newline$ -- 259
-num.names$ -- 190
-pop$ -- 852
+missing$ -- 455
+newline$ -- 265
+num.names$ -- 194
+pop$ -- 862
 preamble$ -- 1
-purify$ -- 345
+purify$ -- 350
 quote$ -- 0
-skip$ -- 673
+skip$ -- 685
 stack$ -- 0
-substring$ -- 1000
-swap$ -- 1070
+substring$ -- 1013
+swap$ -- 1080
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 414
+type$ -- 423
 warning$ -- 1
-while$ -- 179
+while$ -- 182
 width$ -- 0
-write$ -- 625
+write$ -- 638
 (There were 5 warnings)

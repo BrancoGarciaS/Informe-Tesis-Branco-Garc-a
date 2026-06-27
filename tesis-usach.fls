@@ -456,6 +456,13 @@ INPUT chapters\3-Metodología.tex
 INPUT C:\Users\Carloto\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\helvetic\phvbo8t.tfm
 INPUT C:\Users\Carloto\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\helvetic\phvbo8t.vf
 INPUT C:\Users\Carloto\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\helvetic\phvbo8r.tfm
+INPUT .\images\clasificacion_cohorte.png
+INPUT .\images\clasificacion_cohorte.png
+INPUT .\images\clasificacion_cohorte.png
+INPUT .\images\clasificacion_cohorte.png
+INPUT .\images\clasificacion_cohorte.png
+INPUT .\images\clasificacion_cohorte.png
+INPUT .\images\clasificacion_cohorte.png
 INPUT .\chapters\4-Resultados y análisis.tex
 INPUT .\chapters\4-Resultados y análisis.tex
 INPUT .\chapters\4-Resultados y análisis.tex

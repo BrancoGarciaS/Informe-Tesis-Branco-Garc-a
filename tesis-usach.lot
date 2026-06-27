@@ -13,41 +13,45 @@
 \contentsline {table}{\numberline {2.2}{\ignorespaces Resumen de estudios sobre caracterización de cohortes oncológicas mediante análisis epidemiológico y estadística descriptiva.}}{50}{table.caption.17}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Resultados de la auditoría técnica y estructural de los archivos brutos GRD (2019-2024).}}{66}{table.caption.18}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Distribución anual de episodios hospitalarios: Cohorte oncológica versus grupo de control (2019-2024).}}{68}{table.caption.19}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Cardinalidad de variables identificadoras en el registro hospitalario GRD (2019-2024).}}{72}{table.caption.22}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Casos críticos de reingreso hospitalario: Identificadores con máxima frecuencia anual de episodios (2019-2024).}}{72}{table.caption.23}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Concentración de episodios asistenciales en los 5 establecimientos de salud de mayor volumen (2019-2024).}}{72}{table.caption.24}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Auditoría de consistencia, formato y cobertura de variables temporales (2019-2024).}}{75}{table.caption.25}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Distribución anual de la condición al egreso (Tipo de Alta, sin procesar): Cohorte oncológica vs. grupo control (2019-2024).}}{77}{table.caption.26}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Distribución porcentual de los niveles de severidad: Cohorte oncológica vs. grupo control (2019-2024).}}{78}{table.caption.27}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Estadística descriptiva anual del Peso Relativo GRD: Población Total (2019-2024).}}{90}{table.caption.28}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Estadística descriptiva anual del Peso Relativo GRD: Cohorte Oncológica (2019-2024).}}{91}{table.caption.29}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces Estadística descriptiva anual del Peso Relativo GRD: Grupo Control (2019-2024).}}{91}{table.caption.30}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces Distribución de clases del Consumo de Recursos tras la discretización global (2019-2024).}}{92}{table.caption.32}%
-\contentsline {table}{\numberline {4.13}{\ignorespaces Distribución anual de los niveles de Consumo de Recursos (Terciles) por cohorte (2019-2024).}}{93}{table.caption.33}%
-\contentsline {table}{\numberline {4.14}{\ignorespaces Auditoría de completitud y estadísticos descriptivos globales de variables neonatales (2019-2024).}}{93}{table.caption.34}%
-\contentsline {table}{\numberline {4.15}{\ignorespaces Auditoría de pérdida de datos por depuración de variables objetivo (2019-2024).}}{94}{table.caption.35}%
-\contentsline {table}{\numberline {4.16}{\ignorespaces Frecuencias definitivas del target Mortalidad por cohorte (2019-2024).}}{94}{table.caption.36}%
-\contentsline {table}{\numberline {4.17}{\ignorespaces Frecuencias definitivas del target Severidad (Niveles 0 al 3) por cohorte (2019-2024).}}{95}{table.caption.37}%
-\contentsline {table}{\numberline {4.18}{\ignorespaces Frecuencias definitivas del target Consumo de Recursos (Terciles 0 al 2) por cohorte.}}{95}{table.caption.38}%
-\contentsline {table}{\numberline {4.19}{\ignorespaces Resumen de reducción de cardinalidad y depuración anual de nulos por variable categórica.}}{96}{table.caption.39}%
-\contentsline {table}{\numberline {4.20}{\ignorespaces Impacto de la exclusión de nulos en \texttt {SEXO} sobre las variables objetivo.}}{100}{table.caption.40}%
-\contentsline {table}{\numberline {4.21}{\ignorespaces Impacto de la exclusión de nulos en \texttt {ETNIA} (\texttt {ES\_PUEBLO\_ORIGINARIO}).}}{101}{table.caption.41}%
-\contentsline {table}{\numberline {4.22}{\ignorespaces Impacto de la exclusión de nulos en \texttt {PROVINCIA} (\texttt {REGION\_RESIDENCIA}).}}{101}{table.caption.42}%
-\contentsline {table}{\numberline {4.23}{\ignorespaces Impacto de la exclusión de nulos en \texttt {NACIONALIDAD} (\texttt {ES\_EXTRANJERO}).}}{101}{table.caption.43}%
-\contentsline {table}{\numberline {4.24}{\ignorespaces Impacto de la exclusión de nulos en \texttt {PREVISION} (\texttt {TIPO\_PREVISION}).}}{101}{table.caption.44}%
-\contentsline {table}{\numberline {4.25}{\ignorespaces Impacto de la exclusión de nulos en \texttt {SERVICIO\_SALUD} (\texttt {TIPO\_SERVICIO\_SALUD}).}}{102}{table.caption.45}%
-\contentsline {table}{\numberline {4.26}{\ignorespaces Impacto de la exclusión de nulos en \texttt {TIPO\_PROCEDENCIA}.}}{102}{table.caption.46}%
-\contentsline {table}{\numberline {4.27}{\ignorespaces Impacto de la exclusión de nulos en \texttt {TIPO\_INGRESO}.}}{102}{table.caption.47}%
-\contentsline {table}{\numberline {4.28}{\ignorespaces Impacto de la exclusión de nulos en \texttt {ESPECIALIDAD\_MEDICA}.}}{102}{table.caption.48}%
-\contentsline {table}{\numberline {4.29}{\ignorespaces Impacto de la exclusión de nulos en \texttt {TIPO\_ACTIVIDAD}.}}{103}{table.caption.49}%
-\contentsline {table}{\numberline {4.30}{\ignorespaces Impacto de la exclusión de nulos en \texttt {SERVICIOINGRESO}.}}{103}{table.caption.50}%
-\contentsline {table}{\numberline {4.31}{\ignorespaces Impacto de la exclusión de nulos en \texttt {PROCEDIMIENTO1} (\texttt {TIPO\_PROCEDIMIENTO}).}}{103}{table.caption.51}%
-\contentsline {table}{\numberline {4.32}{\ignorespaces Proporción anual de episodios médicos versus quirúrgicos (2019-2024).}}{104}{table.caption.52}%
-\contentsline {table}{\numberline {4.33}{\ignorespaces Distribución anual exhaustiva de la variable derivada Comorbilidad Principal (2019-2024).}}{105}{table.caption.53}%
-\contentsline {table}{\numberline {4.34}{\ignorespaces Estadística descriptiva de las variables numéricas derivadas (resumen 2019 vs 2024).}}{106}{table.caption.54}%
-\contentsline {table}{\numberline {4.35}{\ignorespaces Auditoría de eliminación de episodios con anomalías cronológicas (Edades y Estadías negativas).}}{107}{table.caption.55}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Resultados de la auditoría estructural de los archivos brutos GRD (2019--2024).}}{67}{table.caption.19}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Distribución anual de episodios hospitalarios: Cohorte oncológica versus grupo de control (2019-2024).}}{69}{table.caption.20}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Cardinalidad de variables identificadoras en el registro hospitalario GRD (2019-2024).}}{73}{table.caption.23}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Casos críticos de reingreso hospitalario (2019-2024).}}{73}{table.caption.24}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Concentración de episodios asistenciales en los 5 establecimientos de salud de mayor volumen (2019-2024).}}{73}{table.caption.25}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Auditoría de consistencia, formato y cobertura de variables temporales (2019-2024).}}{76}{table.caption.26}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Distribución anual del tipo de alta para la cohorte total.}}{77}{table.caption.27}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Distribución anual del tipo de alta para la cohorte oncológica.}}{78}{table.caption.28}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Distribución anual del tipo de alta para la cohorte control.}}{78}{table.caption.29}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Distribución anual de severidad (IR\_29301\_SEVERIDAD) para la cohorte total.}}{79}{table.caption.30}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Distribución anual de severidad (IR\_29301\_SEVERIDAD) para la cohorte oncológica.}}{79}{table.caption.31}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Distribución anual de severidad (IR\_29301\_SEVERIDAD) para la cohorte control.}}{80}{table.caption.32}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Estadística descriptiva anual del Peso Relativo GRD: Población Total (2019-2024).}}{93}{table.caption.33}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Estadística descriptiva anual del Peso Relativo GRD: Cohorte Oncológica (2019-2024).}}{93}{table.caption.34}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces Estadística descriptiva anual del Peso Relativo GRD: Grupo Control (2019-2024).}}{93}{table.caption.35}%
+\contentsline {table}{\numberline {4.16}{\ignorespaces Distribución de clases del Consumo de Recursos tras la discretización global (2019-2024).}}{94}{table.caption.37}%
+\contentsline {table}{\numberline {4.17}{\ignorespaces Distribución anual de los niveles de Consumo de Recursos (Terciles) por cohorte (2019-2024).}}{95}{table.caption.38}%
+\contentsline {table}{\numberline {4.18}{\ignorespaces Auditoría de completitud y estadísticos descriptivos globales de variables neonatales (2019-2024).}}{96}{table.caption.39}%
+\contentsline {table}{\numberline {4.19}{\ignorespaces Auditoría de pérdida de datos por depuración de variables objetivo (2019-2024).}}{96}{table.caption.40}%
+\contentsline {table}{\numberline {4.20}{\ignorespaces Frecuencias definitivas del target Mortalidad por cohorte (2019-2024).}}{97}{table.caption.41}%
+\contentsline {table}{\numberline {4.21}{\ignorespaces Frecuencias definitivas del target Severidad (Niveles 0 al 3) por cohorte (2019-2024).}}{97}{table.caption.42}%
+\contentsline {table}{\numberline {4.22}{\ignorespaces Frecuencias definitivas del target Consumo de Recursos (Terciles 0 al 2) por cohorte.}}{97}{table.caption.43}%
+\contentsline {table}{\numberline {4.23}{\ignorespaces Resumen de reducción de cardinalidad y depuración anual de nulos por variable categórica.}}{99}{table.caption.44}%
+\contentsline {table}{\numberline {4.24}{\ignorespaces Impacto de la exclusión de nulos en \texttt {SEXO} sobre las variables objetivo.}}{103}{table.caption.45}%
+\contentsline {table}{\numberline {4.25}{\ignorespaces Impacto de la exclusión de nulos en \texttt {ETNIA} (\texttt {ES\_PUEBLO\_ORIGINARIO}).}}{103}{table.caption.46}%
+\contentsline {table}{\numberline {4.26}{\ignorespaces Impacto de la exclusión de nulos en \texttt {PROVINCIA} (\texttt {REGION\_RESIDENCIA}).}}{103}{table.caption.47}%
+\contentsline {table}{\numberline {4.27}{\ignorespaces Impacto de la exclusión de nulos en \texttt {NACIONALIDAD} (\texttt {ES\_EXTRANJERO}).}}{104}{table.caption.48}%
+\contentsline {table}{\numberline {4.28}{\ignorespaces Impacto de la exclusión de nulos en \texttt {PREVISION} (\texttt {TIPO\_PREVISION}).}}{104}{table.caption.49}%
+\contentsline {table}{\numberline {4.29}{\ignorespaces Impacto de la exclusión de nulos en \texttt {SERVICIO\_SALUD} (\texttt {TIPO\_SERVICIO\_SALUD}).}}{104}{table.caption.50}%
+\contentsline {table}{\numberline {4.30}{\ignorespaces Impacto de la exclusión de nulos en \texttt {TIPO\_PROCEDENCIA}.}}{104}{table.caption.51}%
+\contentsline {table}{\numberline {4.31}{\ignorespaces Impacto de la exclusión de nulos en \texttt {TIPO\_INGRESO}.}}{105}{table.caption.52}%
+\contentsline {table}{\numberline {4.32}{\ignorespaces Impacto de la exclusión de nulos en \texttt {ESPECIALIDAD\_MEDICA}.}}{105}{table.caption.53}%
+\contentsline {table}{\numberline {4.33}{\ignorespaces Impacto de la exclusión de nulos en \texttt {TIPO\_ACTIVIDAD}.}}{105}{table.caption.54}%
+\contentsline {table}{\numberline {4.34}{\ignorespaces Impacto de la exclusión de nulos en \texttt {SERVICIOINGRESO}.}}{105}{table.caption.55}%
+\contentsline {table}{\numberline {4.35}{\ignorespaces Impacto de la exclusión de nulos en \texttt {PROCEDIMIENTO1} (\texttt {TIPO\_PROCEDIMIENTO}).}}{106}{table.caption.56}%
+\contentsline {table}{\numberline {4.36}{\ignorespaces Proporción anual de episodios médicos versus quirúrgicos (2019-2024).}}{106}{table.caption.57}%
+\contentsline {table}{\numberline {4.37}{\ignorespaces Distribución anual exhaustiva de la variable derivada Comorbilidad Principal (2019-2024).}}{107}{table.caption.58}%
+\contentsline {table}{\numberline {4.38}{\ignorespaces Estadística descriptiva de las variables numéricas derivadas (resumen 2019 vs 2024).}}{108}{table.caption.59}%
+\contentsline {table}{\numberline {4.39}{\ignorespaces Auditoría de eliminación de episodios con anomalías cronológicas (Edades y Estadías negativas).}}{109}{table.caption.60}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.11)  21 JUN 2026 03:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.11)  27 JUN 2026 01:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -859,7 +859,7 @@ babelbib extension \btxifchangecaseon added to \extrasenglish
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<./images/LogoUsach.png, id=331, 317.988pt x 357.0138pt>
+<./images/LogoUsach.png, id=343, 317.988pt x 357.0138pt>
 File: ./images/LogoUsach.png Graphic file (type png)
 <use ./images/LogoUsach.png>
 Package pdftex.def Info: ./images/LogoUsach.png  used on input line 21.
@@ -886,7 +886,7 @@ LaTeX Font Info:    Trying to load font information for TS1+phv on input line 26
  (C:\Users\Carloto\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
-<images/licences/cc_by.png, id=341, 88.33pt x 31.11626pt>
+<images/licences/cc_by.png, id=353, 88.33pt x 31.11626pt>
 File: images/licences/cc_by.png Graphic file (type png)
 <use images/licences/cc_by.png>
 Package pdftex.def Info: images/licences/cc_by.png  used on input line 26.
@@ -939,12 +939,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 \tf@toc=\write7
 \openout7 = `tesis-usach.toc'.
 
- [6] (tesis-usach.lot
-Underfull \hbox (badness 1831) in paragraph at lines 19--19
- [][] \T1/phv/m/n/10 Tabla [][][]Casos críticos de reingreso hospitalario: Identificadores con máxima 
- []
-
-[7
+ [6] (tesis-usach.lot [7
 
 ])
 \tf@lot=\write8
@@ -1241,7 +1236,7 @@ Overfull \hbox (31.43918pt too wide) in paragraph at lines 252--272
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
 (Font)              Font shape `T1/phv/b/sl' tried instead on input line 296.
  [15]
-<images/figura1_seminario.png, id=779, 579.66562pt x 579.66562pt>
+<images/figura1_seminario.png, id=803, 579.66562pt x 579.66562pt>
 File: images/figura1_seminario.png Graphic file (type png)
 <use images/figura1_seminario.png>
 Package pdftex.def Info: images/figura1_seminario.png  used on input line 309.
@@ -1901,47 +1896,73 @@ Underfull \hbox (badness 1275) in paragraph at lines 13--14
 
 [52
 
-] [53] [54]
-Underfull \hbox (badness 1303) in paragraph at lines 70--71
+] [53]
+Underfull \hbox (badness 1975) in paragraph at lines 49--50
+\T1/phv/m/n/10 cáncer en el diagnóstico principal, se implementó un escaneo iterativo sobre las
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 49--50
+\T1/phv/m/n/10 34 columnas de diagnósticos secundarios (\T1/cmtt/m/n/10 DIAGNOSTICO2 \T1/phv/m/n/10 a \T1/cmtt/m/n/10 DIAGNOSTICO35\T1/phv/m/n/10 ). Si el
+ []
+
+[54]
+<images/clasificacion_cohorte.png, id=1278, 783.92876pt x 673.51625pt>
+File: images/clasificacion_cohorte.png Graphic file (type png)
+<use images/clasificacion_cohorte.png>
+Package pdftex.def Info: images/clasificacion_cohorte.png  used on input line 59.
+(pdftex.def)             Requested size: 429.3521pt x 368.88326pt.
+ [55 <./images/clasificacion_cohorte.png>] [56]
+Underfull \hbox (badness 1303) in paragraph at lines 91--92
 []\T1/phv/m/n/10 Dada la naturaleza de los registros GRD, gran parte de sus características
  []
 
-[55] [56]
-Underfull \hbox (badness 3240) in paragraph at lines 103--104
+
+Underfull \hbox (badness 1033) in paragraph at lines 93--94
+[]\T1/phv/m/n/10 En específico, este análisis permitió determinar qué variables categóricas se
+ []
+
+
+Underfull \hbox (badness 1997) in paragraph at lines 95--96
+\T1/phv/m/n/10 y la homologación semántica de categorías para fusionar respuestas equivalentes (por
+ []
+
+[57]
+Underfull \hbox (badness 3240) in paragraph at lines 110--111
 []\T1/phv/b/n/10 Nivel de sev-eri-dad (Clasi-fi-cación mul-ti-clase or-di-nal): \T1/phv/m/n/10 Se pro-cesó la vari-able
  []
 
 
-Underfull \hbox (badness 1248) in paragraph at lines 103--104
+Underfull \hbox (badness 1248) in paragraph at lines 110--111
 \T1/cmtt/m/n/10 IR_29301_SEVERIDAD\T1/phv/m/n/10 , fil-trando los códi-gos de-scono-ci-dos y es-tandarizando la es-cala
  []
 
-[57]
-Underfull \hbox (badness 1442) in paragraph at lines 110--111
+[58]
+Underfull \hbox (badness 1442) in paragraph at lines 117--118
 []\T1/phv/m/n/10 Antes de someter las variables explicativas (\T1/phv/m/sl/10 features\T1/phv/m/n/10 ) categóricas al modelo
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 112--113
+Underfull \hbox (badness 1442) in paragraph at lines 119--120
 []\T1/phv/m/n/10 En lugar de aplicar codificación \T1/phv/m/sl/10 One-Hot \T1/phv/m/n/10 indiscriminada (lo que multiplicaría
  []
 
-[58]
-Underfull \hbox (badness 2469) in paragraph at lines 121--122
+[59]
+Underfull \hbox (badness 2469) in paragraph at lines 128--129
 []\T1/phv/b/n/10 Carga de en-fer-medad (Co-mor-bil-i-dades): \T1/phv/m/n/10 La lit-er-atura epi-demi-ológ-ica de-mues-tra
  []
 
-[59] [60] [61]
-Underfull \hbox (badness 1688) in paragraph at lines 161--162
+[60] [61] [62]
+Underfull \hbox (badness 1688) in paragraph at lines 168--169
 []\T1/phv/b/n/10 Regresión Logística con regularización: \T1/phv/m/n/10 Utilizado como modelo base (\T1/phv/m/sl/10 baseline\T1/phv/m/n/10 )
  []
 
-[62] [63]
-Underfull \hbox (badness 1533) in paragraph at lines 191--192
+[63] [64]
+Underfull \hbox (badness 1533) in paragraph at lines 198--199
 []\T1/phv/b/n/10 Área Bajo la Curva de Precisión-Exhaustividad (AUPRC): \T1/phv/m/n/10 En contextos de alto
  []
 
-) (chapters/4-Resultados y anÃ¡lisis.tex [64] [65]
+) (chapters/4-Resultados y anÃ¡lisis.tex [65] [66]
 Cap\'itulo 4.
 
 Overfull \hbox (1.091pt too wide) in paragraph at lines 24--24
@@ -1949,60 +1970,108 @@ Overfull \hbox (1.091pt too wide) in paragraph at lines 24--24
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 34--34
-[]\T1/phv/m/n/8 Estructura ín-te-gra sin pres-en-cia de fi-
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+[]\T1/cmtt/m/n/8 utf-8 \T1/phv/m/n/8 (con-fi-
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 40--40
-[]\T1/phv/m/n/8 Disminución del vol-u-men to-tal de-bido
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]\T1/phv/m/n/8 No se de-tec-taron fi-las de-fec-tu-osas.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--40
-\T1/phv/m/n/8 prob-a-ble-mente al im-pacto san-i-tario
+Underfull \hbox (badness 4328) in paragraph at lines 34--34
+\T1/phv/m/n/8 Se pre-servó el iden-ti-fi-cador histórico
  []
 
 
-Underfull \hbox (badness 1097) in paragraph at lines 40--40
-\T1/phv/m/n/8 pandémico. Hay con-sis-ten-cia del es-
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]\T1/cmtt/m/n/8 utf-8 \T1/phv/m/n/8 (con-fi-
  []
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 68--69
+Underfull \hbox (badness 1533) in paragraph at lines 40--40
+[]\T1/phv/m/n/8 Disminución del vol-u-men de reg-istros,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]\T1/cmtt/m/n/8 utf-8-sig
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--50
+[]\T1/cmtt/m/n/8 utf-16 \T1/phv/m/n/8 (con-fi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+[]\T1/cmtt/m/n/8 utf-16 \T1/phv/m/n/8 (con-fi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+[]\T1/cmtt/m/n/8 latin1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+\T1/phv/m/n/8 (\T1/cmtt/m/n/8 ISO-8859-1\T1/phv/m/n/8 )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+\T1/phv/m/n/8 (con-fi-anza:
+ []
+
+
+Underfull \hbox (badness 5036) in paragraph at lines 64--64
+[]\T1/phv/m/n/8 La de-tec-ción au-tomática ob-tuvo una
+ []
+
+
+Underfull \hbox (badness 4582) in paragraph at lines 64--64
+\T1/cmtt/m/n/8 ISO-8859-1\T1/phv/m/n/8 . La lec-tura se es-ta-bi-
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 64--64
+\T1/cmtt/m/n/8 latin1\T1/phv/m/n/8 . Además, el iden-ti-fi-cador del
+ []
+
+
+Underfull \hbox (badness 1635) in paragraph at lines 69--70
 []\T1/phv/m/n/10 El análisis comparativo determinó que todas las columnas mantuvieron una
  []
 
-
-Underfull \hbox (badness 1635) in paragraph at lines 68--69
-\T1/phv/m/n/10 con excepción del cambio nominal del identificador del paciente en 2024 (que cambió
- []
-
-[66
+[67
 
 ]
-Overfull \hbox (3.51497pt too wide) in paragraph at lines 88--108
+Underfull \hbox (badness 1147) in paragraph at lines 71--72
+\T1/phv/m/n/10 bajo cada alternativa para verificar que dichos caracteres se preservaran correctamente.
+ []
+
+[68]
+Overfull \hbox (3.51497pt too wide) in paragraph at lines 90--110
  [][] 
  []
 
-[67]
-<images/proporcion_total_pacientes.png, id=1321, 625.33624pt x 692.5875pt>
+<images/proporcion_total_pacientes.png, id=1356, 625.33624pt x 692.5875pt>
 File: images/proporcion_total_pacientes.png Graphic file (type png)
 <use images/proporcion_total_pacientes.png>
-Package pdftex.def Info: images/proporcion_total_pacientes.png  used on input line 115.
-(pdftex.def)             Requested size: 257.61388pt x 285.32599pt.
- [68 <./images/proporcion_total_pacientes.png>]
-<images/barras_total_pacientes.png, id=1327, 1394.20876pt x 993.7125pt>
+Package pdftex.def Info: images/proporcion_total_pacientes.png  used on input line 117.
+(pdftex.def)             Requested size: 214.67604pt x 237.75932pt.
+<images/barras_total_pacientes.png, id=1358, 1394.20876pt x 993.7125pt>
 File: images/barras_total_pacientes.png Graphic file (type png)
 <use images/barras_total_pacientes.png>
-Package pdftex.def Info: images/barras_total_pacientes.png  used on input line 126.
-(pdftex.def)             Requested size: 429.3521pt x 306.01587pt.
- [69 <./images/barras_total_pacientes.png>] [70]
+Package pdftex.def Info: images/barras_total_pacientes.png  used on input line 128.
+(pdftex.def)             Requested size: 343.48299pt x 244.8036pt.
+[69] [70 <./images/proporcion_total_pacientes.png> <./images/barras_total_pacientes.png>]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 147.
-
-Underfull \hbox (badness 1127) in paragraph at lines 147--148
-\T1/phv/m/n/10 o códigos por defecto utilizados para pacientes sin registro. En consecuencia, la
+ [71]
+Underfull \hbox (badness 1127) in paragraph at lines 148--149
+[]\T1/phv/b/n/10 Identificador de hospital (\T1/cmtt/m/n/10 COD_HOSPITAL\T1/phv/b/n/10 ) (variable hospitalaria): \T1/phv/m/n/10 Se \T1/phv/b/n/10 descartó \T1/phv/m/n/10 su
  []
 
 
@@ -2010,259 +2079,269 @@ Underfull \hbox (badness 1189) in paragraph at lines 149--150
 []\T1/phv/b/n/10 Identificador del médico de la primera intervención (\T1/cmtt/m/n/10 MEDICOINTERV1_ENCRIPTADO\T1/phv/b/n/10 )
  []
 
-
-Underfull \hbox (badness 1052) in paragraph at lines 150--151
-\T1/phv/m/n/10 prácticos, la transformación de esta variable sería computacionalmente ineficiente y
- []
-
-[71]
+[72]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 175.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 170.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <7> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 192.
- [72] [73]
-Underfull \hbox (badness 1082) in paragraph at lines 270--271
-\T1/phv/m/n/10 Estas variables se descartaron completamente debido a su elevado nivel de datos
- []
-
-
-Underfull \hbox (badness 1320) in paragraph at lines 270--271
-\T1/phv/m/n/10 fecha. Además, mantener estas variables en su formato original solo introduciría
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 187.
+ [73]
+Underfull \hbox (badness 1147) in paragraph at lines 258--259
+\T1/phv/m/n/10 nulos, proporción que aumenta rápidamente hasta superar el 99 % a partir de la
  []
 
 [74]
-Underfull \hbox (badness 1205) in paragraph at lines 325--326
-[]\T1/phv/m/n/10 Dentro de las variables categóricas objetivo, se encuentran las variables de
+Underfull \hbox (badness 1552) in paragraph at lines 299--300
+[]\T1/phv/m/n/10 Dentro de las variables categóricas objetivo se encuentran las variables de
  []
 
 [75] [76]
-Overfull \hbox (26.27818pt too wide) in paragraph at lines 342--413
+Overfull \hbox (2.44276pt too wide) in paragraph at lines 317--340
  [][] 
  []
 
-[77]
-Underfull \hbox (badness 10000) in paragraph at lines 442--442
-[]\T1/phv/b/n/7 Nivel 0 (Sin
- []
 
-
-Overfull \hbox (12.0518pt too wide) in paragraph at lines 430--466
+Overfull \hbox (2.44276pt too wide) in paragraph at lines 349--372
  [][] 
  []
 
-[78] [79] [80]
-Underfull \hbox (badness 1412) in paragraph at lines 482--483
+
+Overfull \hbox (2.44276pt too wide) in paragraph at lines 381--404
+ [][] 
+ []
+
+[77] [78]
+Underfull \hbox (badness 1038) in paragraph at lines 412--413
+[]\T1/phv/m/n/10 Respecto del comportamiento de la severidad mayor (nivel 3) en la cohorte
+ []
+
+
+Overfull \hbox (2.44276pt too wide) in paragraph at lines 422--438
+ [][] 
+ []
+
+
+Overfull \hbox (2.44276pt too wide) in paragraph at lines 447--463
+ [][] 
+ []
+
+
+Overfull \hbox (2.44276pt too wide) in paragraph at lines 472--488
+ [][] 
+ []
+
+[79] [80] [81] [82] [83]
+Underfull \hbox (badness 1412) in paragraph at lines 526--527
 \T1/phv/m/n/10 (por ejemplo, se renombran categorías como \T1/cmtt/m/n/10 CIRUGIA TORAX \T1/phv/m/n/10 a \T1/cmtt/m/n/10 CIRUGIA DE TORAX\T1/phv/m/n/10 ).
  []
 
-[81] [82] [83]
-Underfull \hbox (badness 1048) in paragraph at lines 489--490
+[84] [85] [86]
+Underfull \hbox (badness 1048) in paragraph at lines 533--534
 \T1/phv/m/n/10 (para indicar si el diagnóstico oncológico aparece en el primer diagnóstico, en los
  []
 
-[84] [85] [86] [87]
-Underfull \hbox (badness 6188) in paragraph at lines 505--506
+[87] [88] [89]
+Underfull \hbox (badness 6188) in paragraph at lines 549--550
 []\T1/phv/m/n/10 Dentro de los datos GRD, se en-cuen-tra la vari-able numérica con-tinua
  []
 
-
-Underfull \hbox (badness 1137) in paragraph at lines 507--508
+[90]
+Underfull \hbox (badness 1137) in paragraph at lines 551--552
 []\T1/phv/m/n/10 En primer lugar, la auditoría certificó una calidad excepcional en el registro
  []
 
-[88] [89]
-Overfull \hbox (0.89107pt too wide) in paragraph at lines 549--549
+[91] [92]
+Overfull \hbox (0.89107pt too wide) in paragraph at lines 593--593
  []\T1/phv/b/n/7 GLOBAL 
  []
 
 
-Overfull \hbox (10.80536pt too wide) in paragraph at lines 528--551
+Overfull \hbox (10.80536pt too wide) in paragraph at lines 572--595
  [][] 
  []
 
 
-Overfull \hbox (0.89107pt too wide) in paragraph at lines 581--581
+Overfull \hbox (0.89107pt too wide) in paragraph at lines 625--625
  []\T1/phv/b/n/7 GLOBAL 
  []
 
 
-Overfull \hbox (10.80536pt too wide) in paragraph at lines 560--583
+Overfull \hbox (10.80536pt too wide) in paragraph at lines 604--627
  [][] 
  []
 
 
-Overfull \hbox (0.89107pt too wide) in paragraph at lines 613--613
+Overfull \hbox (0.89107pt too wide) in paragraph at lines 657--657
  []\T1/phv/b/n/7 GLOBAL 
  []
 
 
-Overfull \hbox (10.80536pt too wide) in paragraph at lines 592--615
+Overfull \hbox (10.80536pt too wide) in paragraph at lines 636--659
  [][] 
  []
 
-<images/boxplot_global.png, id=1452, 370.0224pt x 270.2898pt>
+<images/boxplot_global.png, id=1510, 370.0224pt x 270.2898pt>
 File: images/boxplot_global.png Graphic file (type png)
 <use images/boxplot_global.png>
-Package pdftex.def Info: images/boxplot_global.png  used on input line 624.
+Package pdftex.def Info: images/boxplot_global.png  used on input line 668.
 (pdftex.def)             Requested size: 137.39581pt x 100.36447pt.
-<images/boxplot_oncologico.png, id=1453, 379.4175pt x 270.2898pt>
+<images/boxplot_oncologico.png, id=1511, 379.4175pt x 270.2898pt>
 File: images/boxplot_oncologico.png Graphic file (type png)
 <use images/boxplot_oncologico.png>
-Package pdftex.def Info: images/boxplot_oncologico.png  used on input line 630.
+Package pdftex.def Info: images/boxplot_oncologico.png  used on input line 674.
 (pdftex.def)             Requested size: 137.39581pt x 97.87752pt.
-<images/boxplot_control.png, id=1454, 370.0224pt x 270.2898pt>
+<images/boxplot_control.png, id=1512, 370.0224pt x 270.2898pt>
 File: images/boxplot_control.png Graphic file (type png)
 <use images/boxplot_control.png>
-Package pdftex.def Info: images/boxplot_control.png  used on input line 636.
+Package pdftex.def Info: images/boxplot_control.png  used on input line 680.
 (pdftex.def)             Requested size: 137.39581pt x 100.36447pt.
-[90] [91 <./images/boxplot_global.png> <./images/boxplot_oncologico.png> <./images/boxplot_control.png>]
-Underfull \hbox (badness 2165) in paragraph at lines 684--684
+[93] [94 <./images/boxplot_global.png> <./images/boxplot_oncologico.png> <./images/boxplot_control.png>]
+Underfull \hbox (badness 2165) in paragraph at lines 728--728
 []\T1/phv/b/n/7 Nivel de Con-
  []
 
 
-Overfull \hbox (41.57503pt too wide) in paragraph at lines 682--717
+Overfull \hbox (41.57503pt too wide) in paragraph at lines 726--761
  [][] 
  []
 
-[92] [93]
+[95]
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 772.
- [94] [95]
-Overfull \hbox (1.48885pt too wide) in paragraph at lines 918--918
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 816.
+ [96] [97]
+Overfull \hbox (1.48885pt too wide) in paragraph at lines 962--962
  []\T1/phv/m/n/7 20.590
  []
 
 
-Overfull \hbox (4.85002pt too wide) in paragraph at lines 902--928
+Overfull \hbox (4.85002pt too wide) in paragraph at lines 946--972
  [][] 
  []
 
-[96]
+[98]
 
-LaTeX Warning: Reference `tab:impacto_tipo_procedencia' on page 97 undefined on input line 936.
-
-
-LaTeX Warning: Reference `tab:impacto_tipo_ingreso' on page 97 undefined on input line 936.
+LaTeX Warning: Reference `tab:impacto_tipo_procedencia' on page 99 undefined on input line 980.
 
 
-LaTeX Warning: Reference `tab:impacto_especialidad_medica' on page 97 undefined on input line 936.
+LaTeX Warning: Reference `tab:impacto_tipo_ingreso' on page 99 undefined on input line 980.
 
 
-LaTeX Warning: Reference `tab:impacto_tipo_actividad' on page 97 undefined on input line 936.
+LaTeX Warning: Reference `tab:impacto_especialidad_medica' on page 99 undefined on input line 980.
 
-[97]
-Underfull \hbox (badness 1178) in paragraph at lines 943--944
+
+LaTeX Warning: Reference `tab:impacto_tipo_actividad' on page 99 undefined on input line 980.
+
+[99]
+Underfull \hbox (badness 1178) in paragraph at lines 987--988
 []\T1/phv/b/n/10 Nacionalidad (es extranjero): \T1/phv/m/n/10 la binarización de esta variable permitió reducir su
  []
 
-[98]
-Underfull \hbox (badness 1253) in paragraph at lines 949--950
+[100] [101]
+Underfull \hbox (badness 1253) in paragraph at lines 993--994
 \T1/phv/m/n/10 y ambulatorio CMA), lo que permitió resolver la desaparición de categorías (como
  []
 
-[99] [100] [101] [102] [103]
+[102] [103] [104] [105]
 
-LaTeX Warning: Reference `tab:frecuencia_comorbilidad' on page 104 undefined on input line 1317.
+LaTeX Warning: Reference `tab:frecuencia_comorbilidad' on page 106 undefined on input line 1361.
 
-[104] [105]) (chapters/5-Conclusiones.tex [106] [107]
+[106] [107]) (chapters/5-Conclusiones.tex [108] [109]
 Cap\'itulo 5.
-) [108
+) [110
 
-] (finales/Glosario.tex) [109
+] (finales/Glosario.tex) [111
 
 
 ] (tesis-usach.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 50--56
+Underfull \hbox (badness 10000) in paragraph at lines 57--63
 []\T1/phv/m/n/10 Delgado, F. (2016).  \T1/phv/m/sl/10 Piñera es el pres-i-den-cia-ble con más ex-posi-ción en la
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--56
+Underfull \hbox (badness 10000) in paragraph at lines 57--63
 \T1/phv/m/sl/10 prensa según in-ves-ti-gación Us-ach \T1/phv/m/n/10 .  Re-cu-per-ado el Martes 29 de Julio de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--56
+Underfull \hbox (badness 10000) in paragraph at lines 57--63
 \T1/phv/m/n/10 2016, de [][]$\T1/cmtt/m/n/10 http : / / www . biobiochile . cl / noticias / nacional / politica / 2016 / 06 / 20 /
  []
 
 
-Overfull \hbox (0.7942pt too wide) in paragraph at lines 50--56
+Overfull \hbox (0.7942pt too wide) in paragraph at lines 57--63
 \T1/cmtt/m/n/10 pinera-[]es-[]el-[]presidenciable-[]con-[]mas-[]exposicion-[]en-[]la-[]prensa-[]segun-[]investigacion$[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--64
+Underfull \hbox (badness 10000) in paragraph at lines 66--71
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / repositoriodeis . minsal . cl / ContenidoSitioWeb2020 / uploads / 2018 / 07 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--70
+Underfull \hbox (badness 10000) in paragraph at lines 73--77
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / projecteuclid . org / journals / annals-[]of-[]statistics / volume-[]7 / issue-[]1 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--77
+Underfull \hbox (badness 10000) in paragraph at lines 79--84
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / www . senado . cl / site / presupuesto / 2023 / cumplimiento / Glosas % 202023 / 16 %
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--83
+Underfull \hbox (badness 10000) in paragraph at lines 86--90
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / public . tableau . com / views / PropuestaTableroGRD / PropuestaTableroGRD ?
  []
 
-[110
+[112
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 144--151
+Underfull \hbox (badness 10000) in paragraph at lines 151--158
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / papers . nips . cc / paper _ files / paper / 2017 / hash /
  []
 
 
-Overfull \hbox (36.65956pt too wide) in paragraph at lines 173--176
+Overfull \hbox (36.65956pt too wide) in paragraph at lines 180--183
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / www . metamodelo . cl / 2024 / 01 / 30 / mecanismo-[]de-[]pago-[]por-[]grd-[]explicado-[]en-[]facil/$[][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--182
+Underfull \hbox (badness 10000) in paragraph at lines 185--189
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / www . iccp-[]portal . org / sites / default / files / plans /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--190
+Underfull \hbox (badness 10000) in paragraph at lines 192--197
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / www . salud . gob . sv / wp-[]content / uploads / 2024 / 11 /
  []
 
 
-Overfull \hbox (101.01985pt too wide) in paragraph at lines 185--190
+Overfull \hbox (101.01985pt too wide) in paragraph at lines 192--197
 \T1/cmtt/m/n/10 clasificacion-[]internacional-[]de-[]procedimientos-[]CIE-[]9MC-[]version-[]2024-[]lista-[]tabular-[]el-[]salvador-[]2024 .
  []
 
-[111]
-Overfull \hbox (254.35701pt too wide) in paragraph at lines 198--203
+[113]
+Overfull \hbox (254.35701pt too wide) in paragraph at lines 205--210
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / www . oecd . org / es / publications / 2024 / 11 / tackling-[]the-[]impact-[]of-[]cancer-[]on-[]health-[]the-[]economy-[]and-[]society-[]country-[]notes _
  []
 
 
-Overfull \hbox (501.29805pt too wide) in paragraph at lines 236--242
+Overfull \hbox (501.29805pt too wide) in paragraph at lines 243--249
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / biologia . uc . cl / una-[]fotografia-[]sobre-[]el-[]cancer-[]en-[]chile-[]articulo-[]presenta-[]la-[]realidad-[]de-[]esta-[]enfermedad-[]en-[]la-[]ultima-[]decada-[]y-[]los-[]desafios-[]para-[]su-[]investigacion/$[][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 306--312
+[114]
+Underfull \hbox (badness 10000) in paragraph at lines 313--319
 \T1/phv/m/n/10 URL [][]$\T1/cmtt/m/n/10 https : / / revista-[]socampar . com / images / articulos / ArticulosSeparadosNum18 /
  []
 
-[112]) [113] (finales/Anexo-1.tex
+) [115] (finales/Anexo-1.tex
 pdfTeX warning (ext4): destination with the same identifier (name{chapter.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter{TÃ­tulo del anexo ejemplo}
                                        
 Anexo A.
-) [114
+) [116
 
 
 ] (finales/Apendice-1.tex
@@ -2276,7 +2355,7 @@ Ap\'endice A.
 
 Package natbib Warning: There were undefined citations.
 
-[115
+[117
 
 
 ] (tesis-usach.aux (preliminares/cubierta.aux) (preliminares/abstract.aux))
@@ -2289,20 +2368,20 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `tesis-usach.out' has not changed.
-(rerunfilecheck)             Checksum: 715DF889B3033ADD937E5FD7EFBEDC7F;24452.
+(rerunfilecheck)             Checksum: 567A866B47FEC7F07A7C618614FC42E0;26111.
  ) 
 Here is how much of TeX's memory you used:
- 21924 strings out of 474485
- 350034 string characters out of 5742789
+ 21964 strings out of 474485
+ 350812 string characters out of 5742789
  2059542 words of memory out of 5000000
- 43366 multiletter control sequences out of 15000+600000
+ 43384 multiletter control sequences out of 15000+600000
  616149 words of font info for 114 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,117p,3015b,1263s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,117p,3004b,1263s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Carloto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi525\ectt0800.pk> <C:\Users\Carloto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\Carloto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\Carloto\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvbo8a.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/Carloto/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on tesis-usach.pdf (127 pages, 1050451 bytes).
+Output written on tesis-usach.pdf (129 pages, 1121172 bytes).
 PDF statistics:
- 1998 PDF objects out of 2073 (max. 8388607)
- 382 named destinations out of 1000 (max. 500000)
- 705 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2057 PDF objects out of 2073 (max. 8388607)
+ 404 named destinations out of 1000 (max. 500000)
+ 734 words of extra memory for PDF output out of 10000 (max. 10000000)
 
