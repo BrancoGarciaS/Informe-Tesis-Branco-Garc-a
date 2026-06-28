@@ -493,9 +493,196 @@ En resumen, se tomaron las siguientes decisiones para cada variable categórica 
     \item \textbf{Severidad (\texttt{IR\_29301\_SEVERIDAD}):} Se decidió \textbf{mantener} la variable como ordinal, sin necesidad de binarizarla ni transformarla, ya que presenta una cardinalidad baja de cuatro categorías y una proporción de valores nulos y desconocidos cercana al 0\%, los cuales serán imputados directamente.
 \end{enumerate}
 
-
-
 \subsection{Juicio sobre las de variables categóricas de entrada para la fase de modelado}
+
+AAAAAAAAAAAAAAAAA
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.4}
+\caption{Características y decisión de preprocesamiento de las variables categóricas para la fase de modelado.}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\parbox[t]{2.6cm}{\centering\textbf{Variable}} &
+\parbox[t]{1.5cm}{\centering\textbf{Tipo}} &
+\parbox[t]{1cm}{\centering\textbf{Cardina-\\lidad}} &
+\parbox[t]{4.4cm}{\centering\textbf{Categorías}} &
+\parbox[t]{1.4cm}{\centering\textbf{Nulos}} &
+\parbox[t]{3cm}{\centering\textbf{Decisión}} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{SEXO}} &
+\parbox[t]{1.5cm}{\centering Demográfica} &
+\parbox[t]{1cm}{\centering 2} &
+\parbox[t]{4.4cm}{\raggedright Mujer, Hombre} &
+\parbox[t]{1.4cm}{\centering 559\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Retener} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{ETNIA}} &
+\parbox[t]{1.5cm}{\centering Demográfica} &
+\parbox[t]{1cm}{\centering 12} &
+\parbox[t]{4.4cm}{\raggedright Ninguno, Otro, Mapuche, Aymara, Pascuense, Diaguita, Kawésqar, Quechua, Yagán, Colla, Lickanantay \ldots} &
+\parbox[t]{1.4cm}{\centering 19\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Binarizar (pueblo originario)} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{PROVINCIA}} &
+\parbox[t]{1.5cm}{\centering Demográfica} &
+\parbox[t]{1cm}{\centering 57} &
+\parbox[t]{4.4cm}{\raggedright Santiago, Concepción, Cautín, Cordillera, Valparaíso, Elqui, Biobío \ldots} &
+\parbox[t]{1.4cm}{\centering 2.208\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar (regiones)} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{COMUNA}} &
+\parbox[t]{1.5cm}{\centering Demográfica} &
+\parbox[t]{1cm}{\centering 346} &
+\parbox[t]{4.4cm}{\raggedright Puente Alto, La Florida, Maipú, Valparaíso, Arica, Antofagasta \ldots} &
+\parbox[t]{1.4cm}{\centering 1.261\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{NACIONALIDAD}} &
+\parbox[t]{1.5cm}{\centering Demográfica} &
+\parbox[t]{1cm}{\centering 214} &
+\parbox[t]{4.4cm}{\raggedright Chile, Venezuela, Perú, Bolivia, Haití, Colombia, Ecuador \ldots} &
+\parbox[t]{1.4cm}{\centering 23.677\\(0,4\%)} &
+\parbox[t]{3cm}{\raggedright Binarizar (extranjero)} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{PREVISION}} &
+\parbox[t]{1.5cm}{\centering Demográfica} &
+\parbox[t]{1cm}{\centering 14} &
+\parbox[t]{4.4cm}{\raggedright FONASA institucional (MAI A, B, C y D), FONASA libre elección B (\texttt{FMLE\_B}), C (\texttt{FMLE\_C}) y D (\texttt{FMLE\_D}), ISAPRE, Particular, DIPRECA, CAPREDENA, Caja de Previsión FFAA (SISA) \ldots} &
+\parbox[t]{1.4cm}{\centering 142\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{SERVICIO\_SALUD}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 31} &
+\parbox[t]{4.4cm}{\raggedright Metropolitano Suroriente, Del Maule, Metropolitano Occidente, Metropolitano Sur, Metropolitano Central \ldots} &
+\parbox[t]{1.4cm}{\centering 1.399\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar (macrozonas)} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{TIPO\_PROCEDENCIA}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 19} &
+\parbox[t]{4.4cm}{\raggedright Servicio de emergencia (domicilio), Centro de especialidades, Otros hospitales de la red, APS urgencia, CESFAM \ldots} &
+\parbox[t]{1.4cm}{\centering 3.111\\(0,1\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{TIPO\_INGRESO}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 5} &
+\parbox[t]{4.4cm}{\raggedright Urgencia, Programada, Obstétrica, No identificada, No programada} &
+\parbox[t]{1.4cm}{\centering 145\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{ESPECIALIDAD\_MEDICA}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 102} &
+\parbox[t]{4.4cm}{\raggedright Obstetricia y ginecología, Cirugía general, Medicina interna, Traumatología y ortopedia \ldots} &
+\parbox[t]{1.4cm}{\centering 54\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{TIPO\_ACTIVIDAD}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 5} &
+\parbox[t]{4.4cm}{\raggedright Hospitalización, Cirugía mayor ambulatoria (CMA), Hospitalización en urgencia, Hospitalización diurna \ldots} &
+\parbox[t]{1.4cm}{\centering 18\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{SERVICIOINGRESO}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 92} &
+\parbox[t]{4.4cm}{\raggedright Cirugía, Unidad de recuperación de pabellones, Medicina, Obstetricia, Pediatría, Oncología \ldots} &
+\parbox[t]{1.4cm}{\centering 27.843\\(0,5\%)} &
+\parbox[t]{3cm}{\raggedright Agrupar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{SERVICIOTRASLADO1-9}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 97 a 66} &
+\parbox[t]{4.4cm}{\raggedright Medicina, Unidad de tratamiento intermedio adulto, Cirugía \ldots} &
+\parbox[t]{1.4cm}{\centering Desde 4.807.469\\(82,8\%)} &
+\parbox[t]{3cm}{\raggedright Descartar y derivar a \texttt{CANTIDAD\_TRASLADOS}} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{SERVICIOALTA}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 89} &
+\parbox[t]{4.4cm}{\raggedright Cirugía, Medicina, Unidad de recuperación de pabellones, Obstetricia, Pediatría, Oncología \ldots} &
+\parbox[t]{1.4cm}{\centering 24.588\\(0,4\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{CONDICIONDEALTA\\NEONATO1-4}} &
+\parbox[t]{1.5cm}{\centering Clínica} &
+\parbox[t]{1cm}{\centering 2 a 0} &
+\parbox[t]{4.4cm}{\raggedright Vivo, Fallecido} &
+\parbox[t]{1.4cm}{\centering Desde 5.679.510\\(97,8\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{SEXORN1-4}} &
+\parbox[t]{1.5cm}{\centering Demográfica} &
+\parbox[t]{1cm}{\centering 2 a 1} &
+\parbox[t]{4.4cm}{\raggedright Hombre, Mujer, Nulos} &
+\parbox[t]{1.4cm}{\centering Desde 5.161.114\\(88,9\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{RN1ESTADO-4}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 13 a 2} &
+\parbox[t]{4.4cm}{\raggedright Nulos, 0, 9, 10, 8, 7 \ldots} &
+\parbox[t]{1.4cm}{\centering Desde 3.888.841\\(67\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{DIAGNOSTICO1-35}} &
+\parbox[t]{1.5cm}{\centering Clínica} &
+\parbox[t]{1cm}{\centering 15.300 a 799} &
+\parbox[t]{4.4cm}{\raggedright H26.9, K80.2, C50.9, C73, C16.9 \ldots} &
+\parbox[t]{1.4cm}{\centering Desde 11.316\\(0,2\%)} &
+\parbox[t]{3cm}{\raggedright Generar las variables derivadas: categoría de cáncer, tipo de diagnóstico oncológico, carga oncológica, número de comorbilidades y comorbilidad principal} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{PROCEDIMIENTO1-30}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 3.999 a 762} &
+\parbox[t]{4.4cm}{\raggedright 73.59, 74.1, 99.25, 86.07, 88.01 \ldots} &
+\parbox[t]{1.4cm}{\centering Desde 35\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Mantener \texttt{PROCEDIMIENTO1} y generar la variable \texttt{NUMERO\_PROCEDIMIENTOS}} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{ESPECIALIDAD\\INTERVENCION}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 103} &
+\parbox[t]{4.4cm}{\raggedright Cirugía general, Obstetricia y ginecología, Traumatología y ortopedia, Oftalmología, Urología \ldots} &
+\parbox[t]{1.4cm}{\centering 2.602.138\\(44,8\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{USOSPABELLON}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 71} &
+\parbox[t]{4.4cm}{\raggedright 1, 2, 3, 4, 5, 6, 7 \ldots} &
+\parbox[t]{1.4cm}{\centering 2.847.183\\(49\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{IR\_29301\_COD\_GRD}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 1.671} &
+\parbox[t]{4.4cm}{\raggedright 022360, 146101, 174132, 174133, 174131 \ldots} &
+\parbox[t]{1.4cm}{\centering 89\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{IR\_29301\_MORTALIDAD}} &
+\parbox[t]{1.5cm}{\centering Clínica} &
+\parbox[t]{1cm}{\centering 4} &
+\parbox[t]{4.4cm}{\raggedright 0 (Sin gravedad), 1 (Menor), 2 (Moderada), 3 (Mayor)} &
+\parbox[t]{1.4cm}{\centering 89\\(0\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\parbox[t]{2.6cm}{\raggedright \texttt{HOSPPROCEDENCIA}} &
+\parbox[t]{1.5cm}{\centering Hospitalaria} &
+\parbox[t]{1cm}{\centering 518} &
+\parbox[t]{4.4cm}{\raggedright Hospital San Pablo (Coquimbo), Hospital San José (Coronel), Hospital Carlos Van Buren (Valparaíso) \ldots} &
+\parbox[t]{1.4cm}{\centering 5.104.603\\(87,9\%)} &
+\parbox[t]{3cm}{\raggedright Descartar} \\ \hline
+
+\end{tabular}
+\end{table}
+
+
 
 
 \section{Análisis de variables demográficas, clínicas y hospitalarias}

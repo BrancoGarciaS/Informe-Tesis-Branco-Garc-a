@@ -65,24 +65,24 @@
 \contentsline {subsection}{\numberline {4.1.4}Juicio sobre las de variables temporales para la fase de modelado}{73}{subsection.4.1.4}%
 \contentsline {subsection}{\numberline {4.1.5}Cardinalidad de las variables categóricas objetivo (targets)}{76}{subsection.4.1.5}%
 \contentsline {subsection}{\numberline {4.1.6}Juicio sobre las de variables categóricas de entrada para la fase de modelado}{80}{subsection.4.1.6}%
-\contentsline {section}{\numberline {4.2}Análisis de variables demográficas, clínicas y hospitalarias}{80}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Análisis de variables identificadoras}{80}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Análisis de variables categóricas}{80}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Variables categóricas objetivo (targets)}{80}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}Variables categóricas de entrada}{80}{subsubsection.4.2.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Análisis de variables numéricas}{91}{subsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}Variable numérica objetivo (consumo de recursos)}{91}{subsubsection.4.2.3.1}%
-\contentsline {subsubsection}{\numberline {4.2.3.2}Análisis de variables numéricas de entrada}{95}{subsubsection.4.2.3.2}%
-\contentsline {section}{\numberline {4.3}Resultados del procesamiento de variables objetivo}{96}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Resultados del procesamiento de variables de entrada}{98}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Resultados de la generación de variables derivadas}{106}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Análisis de las variables derivadas categóricas}{106}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Comportamiento de las Variables Numéricas Derivadas}{108}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Depuración de Anomalías Temporales}{108}{subsection.4.5.3}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{110}{chapter.5}%
-\contentsline {chapter}{Glosario}{111}{chapter.5}%
-\contentsline {chapter}{Referencias bibliogr\'aficas}{112}{chapter*.61}%
-\contentsline {chapter}{Anexos}{116}{chapter*.62}%
-\contentsline {chapter}{\numberline {A}Título del anexo ejemplo}{116}{chapter.1}%
-\contentsline {chapter}{Apéndices}{117}{chapter.1}%
-\contentsline {chapter}{\numberline {A}Título del apéndice ejemplo}{117}{chapter.1}%
+\contentsline {section}{\numberline {4.2}Análisis de variables demográficas, clínicas y hospitalarias}{82}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Análisis de variables identificadoras}{82}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Análisis de variables categóricas}{82}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Variables categóricas objetivo (targets)}{82}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Variables categóricas de entrada}{82}{subsubsection.4.2.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Análisis de variables numéricas}{92}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Variable numérica objetivo (consumo de recursos)}{92}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Análisis de variables numéricas de entrada}{96}{subsubsection.4.2.3.2}%
+\contentsline {section}{\numberline {4.3}Resultados del procesamiento de variables objetivo}{97}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Resultados del procesamiento de variables de entrada}{99}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Resultados de la generación de variables derivadas}{107}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Análisis de las variables derivadas categóricas}{107}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Comportamiento de las Variables Numéricas Derivadas}{109}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Depuración de Anomalías Temporales}{109}{subsection.4.5.3}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{111}{chapter.5}%
+\contentsline {chapter}{Glosario}{112}{chapter.5}%
+\contentsline {chapter}{Referencias bibliogr\'aficas}{113}{chapter*.62}%
+\contentsline {chapter}{Anexos}{117}{chapter*.63}%
+\contentsline {chapter}{\numberline {A}Título del anexo ejemplo}{117}{chapter.1}%
+\contentsline {chapter}{Apéndices}{118}{chapter.1}%
+\contentsline {chapter}{\numberline {A}Título del apéndice ejemplo}{118}{chapter.1}%
